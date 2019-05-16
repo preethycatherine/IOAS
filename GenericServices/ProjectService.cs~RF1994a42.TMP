@@ -1,0 +1,2142 @@
+﻿using IOAS.DataModel;
+using IOAS.Infrastructure;
+using IOAS.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace IOAS.GenericServices
+{
+    public class ProjectService
+    {
+        //Creation of Proposal (Proposal Opening) - Save data in DB 
+        public int ProjectOpening(CreateProjectModel model)
+        {
+            using (var context = new IOASDBEntities())
+            {
+                try
+                {
+                
+                    var proposalid = model.ProposalID;
+                    tblProject create = new tblProject();
+                    var PIname = Convert.ToInt32(model.PIname);
+                    var PIusername = Common.getPIusernamebyname(PIname);
+                    var proposal = context.tblProposal.FirstOrDefault(dup => dup.ProposalId == model.ProposalID);
+                    var chkproject = context.tblProject.FirstOrDefault(dup => dup.ProjectTitle == model.Projecttitle);
+                    var query = context.tblProject.FirstOrDefault(dup => dup.ProjectId == model.ProjectID);
+                    if (query == null)
+                    {
+                        if (chkproject != null)
+                            return 0;
+                        var userquery = context.tblUser.FirstOrDefault(m => m.UserId == model.PIname);
+
+                        if (model.taxprooffile != null)
+                        {
+                            string taxprooffilepath = " ";
+                            taxprooffilepath = System.IO.Path.GetFileName(model.taxprooffile.FileName);
+                            var taxdocfileId = Guid.NewGuid().ToString();
+                            var taxdocname = taxdocfileId + "_" + taxprooffilepath;
+
+                            /*Saving the file in server folder*/
+                            model.taxprooffile.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + taxdocname));
+                            create.TaxExemptionDocPath = taxdocname;
+                        }
+
+                        create.ProposalNumber = model.ProposalNumber;
+                        create.ProjectType = model.Prjcttype;
+                        create.ProjectTitle = model.Projecttitle;
+                        create.PIDepartment = model.Department;
+                        create.PIName = model.PIname;
+                        create.PIDesignation = model.PIDesignation;
+                        create.SponsoringAgency = model.SponsoringAgency;
+                        create.SanctionOrderDate = model.SanctionOrderDate;
+                        create.SanctionOrderNumber = model.SanctionOrderNumber;
+                        if (create.ProjectType == 1)
+                        {
+                            create.ProjectSubType = model.ProjectSubType;
+                        }
+
+                        create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        create.SponsoringAgency = model.SponsoringAgency;
+                        create.FinancialYear = model.FinancialYear;
+                        create.SanctionValue = model.Sanctionvalue;
+                        create.SchemeName = model.Schemename;
+                        create.SchemeAgencyName = model.SchemeAgency;
+                        create.FundingType = model.ProjectFundingType_Qust_1;
+                        if (create.ProjectType == 1 && create.FundingType == "Indian")
+                        {
+                            create.IndianFundedBy = model.ProjectFundedby_Qust_1;
+                            if (create.IndianFundedBy == "Govt")
+                            {
+                                create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "Ministry")
+                                {
+                                    create.FundingGovtMinistry = model.indprjctfundbodygovt_Agencymnstryname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_mnstryAmount;
+                                }
+                                if (create.FundingGovtBody == "MHRD")
+                                {
+                                    create.FundingGovtAgency = model.indprjctfundbodygovt_Agencydeptname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "Universities")
+                                {
+                                    create.FundingGovtAgency = model.indprjctfundbodygovt_Agencyunivname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_univAmount;
+                                }
+                            }
+
+                            if (create.IndianFundedBy == "Nongovt")
+                            {
+                                create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                create.FundingNonGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingNonGovtBody == "Indstry")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_AgencyIndstryname;
+                                    create.FundingNonGovtAmount = model.indprjctfundbodynongovt_IndstryAmount;
+                                }
+                                if (create.FundingNonGovtBody == "Universities")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyunivname;
+                                    create.FundingNonGovtAmount = model.indprjctfundbodynongovt_univAmount;
+                                }
+                                if (create.FundingNonGovtBody == "Others")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyothersname;
+                                    create.FundingNonGovtAmount = model.indprjctfundbodynongovt_othersAmount;
+                                }
+                            }
+                            if (create.ProjectType == 2)
+                            {
+                                create.ProjectCategory = model.ProjectSubType;
+                            }
+                        }
+                        if (create.ProjectType == 1 && create.FundingType == "Foreign")
+                        {
+                            create.ForeignFundedBy = model.ForgnProjectFundedby_Qust_1;
+                            if (create.FundingType == "Foreign" && create.ForeignFundedBy == "Govt")
+                            {
+
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "ForgnGovtDept")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_country;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencydeptname;
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnGovtUniv")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_univcountry;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencyunivname;
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_univAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnOthers")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_otherscountry;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_othersagncyname;
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_othersAmount;
+                                }
+                            }
+                            if (create.FundingType == "Foreign" && create.ForeignFundedBy == "Nongovt")
+                            {
+
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "ForgnDept")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_country;
+                                    create.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencydeptname;
+                                    create.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnUniversities")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_univcountry;
+                                    create.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencyunivname;
+                                    create.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_univAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnOthers")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_otherscountry;
+                                    create.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_othersagncyname;
+                                    create.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_othersAmount;
+                                }
+                            }
+                        }
+
+                        if (create.ProjectType == 2 && create.FundingType == "Indian")
+                        {
+                            create.ConsProjectSubType = model.ConsProjectSubType;
+                            create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        }
+                        if (create.ProjectType == 2 && create.FundingType == "Foreign")
+                        {
+                            create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        }
+                        create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                        //   create.ProjectCategory = model.SponsoringAgency;
+                        create.DurationOfProject = model.Projectduration;
+                        create.SchemePersonApplied = model.SchemePersonApplied;
+                        create.SchemePersonDesignation = model.SchemePersonAppliedDesignation;
+                        create.AgencyRegisteredName = model.Agencyregname;
+                        create.CategoryOfProject = model.Categoryofproject;
+
+                        create.ConsultancyTaxServiceType = model.constaxservice;
+                        create.ProjectAgencyCountry = model.forgnfndngagncycountry;
+                        create.IndianProjectAgencyState = model.indfundngagncystate;
+
+                        create.IndianProjectAgencyLocation = model.indfundngagncylocation;
+                        create.TaxStatus = model.ConsProjectTaxType_Qust_1;
+                        create.ForeignProjectAgencyState = model.forgnfundngagncystate;
+                        create.ForeignProjectAgencyLocation = model.forgnfundngagncylocation;
+
+                        create.TaxExemptionReason = model.ConsProjectReasonfornotax;
+
+                        create.GSTIN = model.GSTNumber;
+                        create.PAN = model.PAN;
+                        create.TAN = model.TAN;
+                        create.SponsoringAgencyCode = model.AgencyCodeid;
+                        create.SponsoringAgencySOAddress = model.Agencyregaddress;
+                        create.SponsoringAgencyContactPerson = model.Agencycontactperson;
+                        create.SponsoringAgencyContactPersonDesignation = model.Agencycontactpersondesignation;
+                        create.SponsoringAgencyContactPersonEmail = model.AgencycontactpersonEmail;
+                        create.SponsoringAgencyContactPersonMobile = model.Agencycontactpersonmobile;
+                        create.TotalProjectStaffCount = model.TotalNoofProjectStaffs;
+                        create.JRFStaffCount = model.NoofJRFStaffs;
+                        create.JRFStaffSalary = model.SalaryofJRFStaffs;
+                        create.SRFStaffCount = model.NoofSRFStaffs;
+                        create.SRFStaffSalary = model.SalaryofSRFStaffs;
+                        create.RAStaffCount = model.NoofRAStaffs;
+                        create.RAStaffSalary = model.SalaryofRAStaffs;
+                        create.PAStaffCount = model.NoofPAStaffs;
+                        create.PAStaffSalary = model.SalaryofPAStaffs;
+                        create.PQStaffCount = model.NoofPQStaffs;
+                        create.PQStaffSalary = model.SalaryofPQStaffs;
+                        create.SumofStaffCount = model.SumofStaffs;
+                        create.SumSalaryofStaff = model.SumSalaryofStaffs;
+                        create.TentativeStartDate = model.TentativeStartdate;
+                        create.ActualStartDate = model.Startdate;
+                        create.TentativeCloseDate = model.TentativeClosedate;
+                        create.ActuaClosingDate = model.Closedate;
+                        create.ProposalApprovedDate = model.ProposalApprovedDate;
+                        create.Remarks = model.Remarks;
+                        create.CrtdUserId = model.ProjectcrtdID;
+                        create.CrtdTS = DateTime.Now;                        
+                        var departmentid = Convert.ToInt32(model.Department);
+                        var Departmentcode = Common.getDepartmentCode(departmentid);
+                        var facultycode = Common.getfacultycode(PIname);
+                        var AgencyID = model.AgencyCodeid;
+                        var Agencycode = Common.getagencycode(AgencyID);
+                        //  var institutecode = "IITM"; /*Common.getInstituteCode(PIusername);*/
+                        var financialyear = model.FinancialYear;
+                        var Sequencenumber = Common.getlastProjectID();
+
+                        if (Sequencenumber > 0)
+                        {
+                            model.ProjectNumber = Departmentcode + financialyear + Sequencenumber + Agencycode + facultycode;
+                        }
+                        else
+                        {
+                            model.ProjectNumber = Departmentcode + financialyear + "1" + Agencycode + facultycode;
+                        }                        
+                        create.ProjectNumber = model.ProjectNumber;
+                        create.ProjectStatus = 1;
+                        context.tblProject.Add(create);
+                        context.SaveChanges();
+                        int projectid = create.ProjectId;
+                        if (projectid > 0)
+                        {
+                            
+                            proposal.ProposalStatus = 2;
+                            context.SaveChanges();
+                            tblProjectStatusLog status = new tblProjectStatusLog();
+                            status.FromStatus = 0;
+                            status.ToStatus = 1;
+                            status.ProjectId = projectid;
+                            status.UpdtdUserId = model.ProjectcrtdID;
+                            status.UpdtdTS = DateTime.Now;
+                            context.tblProjectStatusLog.Add(status);
+                            context.SaveChanges();
+
+                            for (int i = 0; i < model.Allocationhead.Length; i++)
+                            {
+                                tblProjectAllocation Allocation = new tblProjectAllocation();
+                                Allocation.AllocationHead = model.Allocationhead[i];
+                                Allocation.AllocationValue = model.Allocationvalue[i];
+                                Allocation.CrtdUserId = model.ProjectcrtdID;
+                                Allocation.CrtdTS = DateTime.Now;
+                                Allocation.ProjectId = projectid;
+                                context.tblProjectAllocation.Add(Allocation);
+                                context.SaveChanges();
+                            }
+                        }
+                        if (model.CoPIname[0] != 0)
+                        {
+                            for (int i = 0; i < model.CoPIname.Length; i++)
+                            {
+
+                                tblProjectCoPI Copi = new tblProjectCoPI();
+                                Copi.ProjectId = projectid;
+                                Copi.Name = model.CoPIname[i];
+                                Copi.Department = model.CoPIDepartment[i];
+                                //  Copi.Email = model.CoPIEmail[i];
+                                Copi.CrtdUserId = model.ProjectcrtdID;
+                                Copi.Crtd_TS = DateTime.Now;
+                                context.tblProjectCoPI.Add(Copi);
+                                context.SaveChanges();
+
+                            }
+                        }
+                        if (model.AttachName[0] != null && model.AttachName[0] != "")
+                        {
+                            for (int i = 0; i < model.DocType.Length; i++)
+                            {
+
+                                string docpath = " ";
+                                docpath = System.IO.Path.GetFileName(model.file[i].FileName);
+                                var docfileId = Guid.NewGuid().ToString();
+                                var docname = docfileId + "_" + docpath;
+
+                                /*Saving the file in server folder*/
+                                model.file[i].SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                                tblSupportDocuments Document = new tblSupportDocuments();
+                                Document.ProposalId = proposalid;
+                                Document.ProjectId = projectid;
+                                if (model.file[i] != null)
+                                {
+                                    Document.DocName = model.file[i].FileName;
+                                }
+                                Document.AttachmentName = model.AttachName[i];
+                                Document.DocType = model.DocType[i];
+                                Document.AttachmentPath = docname;
+                                Document.DocUploadUserid = model.ProjectcrtdID;
+                                Document.DocUpload_TS = DateTime.Now;
+                                Document.IsCurrentVersion = true;
+                                context.tblSupportDocuments.Add(Document);
+                                context.SaveChanges();
+
+                            }
+                        }
+                        return projectid;
+                    }
+                    
+      if (query != null)
+         {
+
+                    var userquery = context.tblUser.FirstOrDefault(m => m.UserId == model.PIname);
+
+                    if (model.taxprooffile != null)
+                    {
+                        string taxprooffilepath = " ";
+                        taxprooffilepath = System.IO.Path.GetFileName(model.taxprooffile.FileName);
+                        var taxdocfileId = Guid.NewGuid().ToString();
+                        var taxdocname = taxdocfileId + "_" + taxprooffilepath;
+
+                        /*Saving the file in server folder*/
+                        model.taxprooffile.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + taxdocname));
+                            query.TaxExemptionDocPath = taxdocname;
+                    }
+
+                        query.ProposalNumber = model.ProposalNumber;
+                        query.ProjectNumber = model.ProjectNumber;
+                        query.ProjectType = model.Prjcttype;
+                        query.ProjectTitle = model.Projecttitle;
+                        query.PIDepartment = model.Department;
+                        query.PIName = model.PIname;
+                        query.PIDesignation = model.PIDesignation;
+                        query.SponsoringAgency = model.SponsoringAgency;
+                        query.SanctionOrderDate = model.SanctionOrderDate;
+                        query.SanctionOrderNumber = model.SanctionOrderNumber;
+                    if (model.ProjectType == 1)
+                    {
+                            query.ProjectSubType = model.ProjectSubType;
+                    }
+
+                        query.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        query.SponsoringAgency = model.SponsoringAgency;
+                        query.FinancialYear = model.FinancialYear;
+                        query.SanctionValue = model.Sanctionvalue;
+                        query.SchemeName = model.Schemename;
+                        query.SchemeAgencyName = model.SchemeAgency;
+                        query.FundingType = model.ProjectFundingType_Qust_1;
+                    if (query.ProjectType == 1 && query.FundingType == "Indian")
+                    {
+                            query.IndianFundedBy = model.ProjectFundedby_Qust_1;
+                        if (query.IndianFundedBy == "Govt")
+                        {
+                                query.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                query.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                            if (query.FundingGovtBody == "Ministry")
+                            {
+                                    query.FundingGovtMinistry = model.indprjctfundbodygovt_Agencymnstryname;
+                                    query.FundingGovtAmount = model.indprjctfundbodygovt_mnstryAmount;
+                            }
+                            if (query.FundingGovtBody == "MHRD")
+                            {
+                                    query.FundingGovtAgency = model.indprjctfundbodygovt_Agencydeptname;
+                                    query.FundingGovtAmount = model.indprjctfundbodygovt_deptAmount;
+                            }
+                            if (query.FundingGovtBody == "Universities")
+                            {
+                                    query.FundingGovtAgency = model.indprjctfundbodygovt_Agencyunivname;
+                                    query.FundingGovtAmount = model.indprjctfundbodygovt_univAmount;
+                            }
+                        }
+
+                        if (query.IndianFundedBy == "Nongovt")
+                        {
+                                query.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                query.FundingNonGovtBody = model.ProjectFundingBody_Qust_1;
+                            if (query.FundingNonGovtBody == "Indstry")
+                            {
+                                    query.FundingNonGovtAgency = model.indprjctfundbodynongovt_AgencyIndstryname;
+                                    query.FundingNonGovtAmount = model.indprjctfundbodynongovt_IndstryAmount;
+                            }
+                            if (query.FundingNonGovtBody == "Universities")
+                            {
+                                    query.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyunivname;
+                                    query.FundingNonGovtAmount = model.indprjctfundbodynongovt_univAmount;
+                            }
+                            if (query.FundingNonGovtBody == "Others")
+                            {
+                                    query.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyothersname;
+                                    query.FundingNonGovtAmount = model.indprjctfundbodynongovt_othersAmount;
+                            }
+                        }
+                        if (query.ProjectType == 2)
+                        {
+                                query.ProjectCategory = model.ProjectSubType;
+                        }
+                    }
+                    if (query.ProjectType == 1 && query.FundingType == "Foreign")
+                    {
+                            query.ForeignFundedBy = model.ForgnProjectFundedby_Qust_1;
+                        if (query.FundingType == "Foreign" && create.ForeignFundedBy == "Govt")
+                        {
+
+                                query.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                            if (query.FundingGovtBody == "ForgnGovtDept")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_country;
+                                    query.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencydeptname;
+                                    query.FundingGovtAmount = model.forgnprjctfundbodygovt_deptAmount;
+                            }
+                            if (query.FundingGovtBody == "ForgnGovtUniv")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_univcountry;
+                                    query.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencyunivname;
+                                    query.FundingGovtAmount = model.forgnprjctfundbodygovt_univAmount;
+                            }
+                            if (query.FundingGovtBody == "ForgnOthers")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_otherscountry;
+                                    query.FundingGovtAgency = model.forgnprjctfundbodygovt_othersagncyname;
+                                    query.FundingGovtAmount = model.forgnprjctfundbodygovt_othersAmount;
+                            }
+                        }
+                        if (query.FundingType == "Foreign" && query.ForeignFundedBy == "Nongovt")
+                        {
+
+                                query.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                            if (query.FundingGovtBody == "ForgnDept")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_country;
+                                    query.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencydeptname;
+                                    query.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_deptAmount;
+                            }
+                            if (query.FundingGovtBody == "ForgnUniversities")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_univcountry;
+                                    query.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencyunivname;
+                                    query.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_univAmount;
+                            }
+                            if (query.FundingGovtBody == "ForgnOthers")
+                            {
+                                    query.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_otherscountry;
+                                    query.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_othersagncyname;
+                                    query.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_othersAmount;
+                            }
+                        }
+                    }
+
+                    if (query.ProjectType == 2 && query.FundingType == "Indian")
+                    {
+                            query.ConsProjectSubType = model.ConsProjectSubType;
+                            query.ConsultancyFundingCategory = model.ConsFundingCategory;
+                    }
+                    if (query.ProjectType == 2 && query.FundingType == "Foreign")
+                    {
+                        create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                    }
+                        query.SponProjectCategory = model.Projectcatgry_Qust_1;
+                        //   create.ProjectCategory = model.SponsoringAgency;
+                        query.DurationOfProject = model.Projectduration;
+                        query.SchemeAgencyName = model.SchemeAgency;
+                        query.AgencyRegisteredName = model.Agencyregname;
+                        query.CategoryOfProject = model.Categoryofproject;
+
+                        query.ConsultancyTaxServiceType = model.constaxservice;
+                        query.ProjectAgencyCountry = model.forgnfndngagncycountry;
+                        query.IndianProjectAgencyState = model.indfundngagncystate;
+
+                        query.IndianProjectAgencyLocation = model.indfundngagncylocation;
+                        query.TaxStatus = model.ConsProjectTaxType_Qust_1;
+                        query.ForeignProjectAgencyState = model.forgnfundngagncystate;
+                        query.ForeignProjectAgencyLocation = model.forgnfundngagncylocation;
+
+                        query.TaxExemptionReason = model.ConsProjectReasonfornotax;
+
+                        query.GSTIN = model.GSTNumber;
+                        query.PAN = model.PAN;
+                        query.TAN = model.TAN;
+                        query.SponsoringAgencyCode = model.AgencyCodeid;
+                        query.SponsoringAgencySOAddress = model.Agencyregaddress;
+                        query.SponsoringAgencyContactPerson = model.Agencycontactperson;
+                        query.SponsoringAgencyContactPersonDesignation = model.Agencycontactpersondesignation;
+                        query.SponsoringAgencyContactPersonEmail = model.AgencycontactpersonEmail;
+                        query.SponsoringAgencyContactPersonMobile = model.Agencycontactpersonmobile;
+                        query.TotalProjectStaffCount = model.TotalNoofProjectStaffs;
+                        query.JRFStaffCount = model.NoofJRFStaffs;
+                        query.JRFStaffSalary = model.SalaryofJRFStaffs;
+                        query.SRFStaffCount = model.NoofSRFStaffs;
+                        query.SRFStaffSalary = model.SalaryofSRFStaffs;
+                        query.RAStaffCount = model.NoofRAStaffs;
+                        query.RAStaffSalary = model.SalaryofRAStaffs;
+                        query.PAStaffCount = model.NoofPAStaffs;
+                        query.PAStaffSalary = model.SalaryofPAStaffs;
+                        query.PQStaffCount = model.NoofPQStaffs;
+                        query.PQStaffSalary = model.SalaryofPQStaffs;
+                        query.SumofStaffCount = model.SumofStaffs;
+                        query.SumSalaryofStaff = model.SumSalaryofStaffs;
+                        query.TentativeStartDate = model.TentativeStartdate;
+                        query.ActualStartDate = model.Startdate;
+                        query.TentativeCloseDate = model.TentativeClosedate;
+                        query.ActuaClosingDate = model.Closedate;
+                        query.ProposalApprovedDate = model.ProposalApprovedDate;
+                        query.Remarks = model.Remarks;
+                        create.SchemePersonApplied = model.SchemePersonApplied;
+                        create.SchemePersonDesignation = model.SchemePersonAppliedDesignation;
+                        query.UpdatedUserId = model.ProjectcrtdID;
+                        query.UpdatedTS = DateTime.Now;
+
+                        query.ProjectStatus = 1;
+                        query.ProjectNumber = model.ProjectNumber;
+                   
+                        context.SaveChanges();
+                        int projectid = query.ProjectId;
+
+
+                        for (int i = 0; i < model.Allocationhead.Length; i++)
+                        {
+                            var allocationhead = model.Allocationhead[i];
+                            var allocationquery = (from P in context.tblProjectAllocation
+                                                   where (P.ProjectId == projectid && P.AllocationHead == allocationhead)
+                                                   select P).FirstOrDefault();
+                            if (allocationquery != null)
+                            {
+
+                                allocationquery.AllocationHead = model.Allocationhead[i];
+                                allocationquery.AllocationValue = model.Allocationvalue[i];
+                                allocationquery.UpdtUserId = model.ProjectcrtdID;
+                                allocationquery.UpdtTS = DateTime.Now;
+                                allocationquery.ProjectId = projectid;
+                                context.SaveChanges();
+                            }
+
+                            else
+                            {
+
+                                tblProjectAllocation Allocation = new tblProjectAllocation();
+                                Allocation.AllocationHead = model.Allocationhead[i];
+                                Allocation.AllocationValue = model.Allocationvalue[i];
+                                Allocation.CrtdUserId = model.ProjectcrtdID;
+                                Allocation.CrtdTS = DateTime.Now;
+                                Allocation.ProjectId = projectid;
+                                context.tblProjectAllocation.Add(Allocation);
+                                context.SaveChanges();
+
+                            }
+                        }
+                        
+                  if (model.CoPIname[0] != 0)
+                    {
+                        for (int i = 0; i < model.CoPIname.Length; i++)
+                        {
+                            var copi = model.CoPIid[i];
+                            var copiquery = (from CoPI in context.tblProjectCoPI
+                                             where CoPI.CoPIId == copi && CoPI.ProjectId == projectid 
+                                             select CoPI).ToList();
+                                if (copiquery.Count == 0)
+                                {
+                                    tblProjectCoPI Copi = new tblProjectCoPI();
+                                    Copi.ProjectId = projectid;
+                                    Copi.Name = model.CoPIname[i];
+                                    Copi.Department = model.CoPIDepartment[i];
+                                    Copi.Designation = model.CoPIDesignation[i];
+                                    //  Copi.Email = model.CoPIEmail[i];
+                                    Copi.CrtdUserId = model.ProjectcrtdID;
+                                    Copi.Crtd_TS = DateTime.Now;
+                                    context.tblProjectCoPI.Add(Copi);
+                                    context.SaveChanges();
+                                    
+                                }
+                                else
+                                {
+                                    copiquery[i].ProjectId = projectid;
+                                    copiquery[i].Name = model.CoPIname[i];
+                                    copiquery[i].Department = model.CoPIDepartment[i];
+                                    copiquery[i].Designation = model.CoPIDesignation[i];
+                                    //  Copi.Email = model.CoPIEmail[i];
+                                    copiquery[i].UpdtUserId = model.ProjectcrtdID;
+                                    copiquery[i].Updt_TS = DateTime.Now;
+                                    context.SaveChanges();
+                                }                              
+
+                        }
+                    }
+                    if (model.AttachName[0] != null && model.AttachName[0] != "")
+                    {
+                        for (int i = 0; i < model.DocType.Length; i++)
+                        {
+                            var docid = model.Docid[i];
+                            var docquery = (from doc in context.tblSupportDocuments
+                                            where (doc.DocId == docid && doc.ProjectId == projectid)
+                                             select doc).ToList();
+                            
+                                if(docquery.Count == 0)
+                                {
+                                    string docpath = " ";
+                                    docpath = System.IO.Path.GetFileName(model.file[i].FileName);
+                                    var docfileId = Guid.NewGuid().ToString();
+                                    var docname = docfileId + "_" + docpath;
+
+                                    /*Saving the file in server folder*/
+                                    model.file[i].SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+
+                                    tblSupportDocuments Document = new tblSupportDocuments();
+                                    Document.ProposalId = proposalid;
+                                    Document.ProjectId = projectid;
+                                    if (model.file[i] != null)
+                                    {
+                                        Document.DocName = model.file[i].FileName;
+                                    }
+                                    Document.AttachmentName = model.AttachName[i];
+                                    Document.DocType = model.DocType[i];
+                                    Document.AttachmentPath = docname;
+                                    Document.DocUploadUserid = model.ProjectcrtdID;
+                                    Document.DocUpload_TS = DateTime.Now;
+                                    Document.IsCurrentVersion = true;
+                                    context.tblSupportDocuments.Add(Document);
+                                    context.SaveChanges();
+
+                                }
+                                else
+                                {
+                                    docquery[0].ProposalId = proposalid;
+                                    docquery[0].ProjectId = projectid;
+                                    docquery[0].AttachmentName = model.AttachName[i];
+                                    docquery[0].DocType = model.DocType[i];                                  
+                                    docquery[0].DocUploadUserid = model.ProjectcrtdID;
+                                    docquery[0].DocUpload_TS = DateTime.Now;
+                                    docquery[0].IsCurrentVersion = true;
+                                    context.SaveChanges();
+                                }
+                               
+                        }
+                            
+                        }
+                        
+                    }
+                    return query.ProjectId;
+                }
+               
+             catch (Exception ex)
+            {
+                
+                return -1;
+            }
+         }
+      }
+        public PagedData<ProposalResultModels> GetProposal(ProposalSrchFieldsModel model, int page, int pageSize)
+        {
+            try
+            {
+                List<ProposalResultModels> proposalList = new List<ProposalResultModels>();
+                var searchData = new PagedData<ProposalResultModels>();
+
+                int skiprec = 0;
+
+                if (page == 1)
+                {
+                    skiprec = 0;
+                }
+                else
+                {
+                    skiprec = (page - 1) * pageSize;
+                }
+
+                using (var context = new IOASDBEntities())
+                {
+                    int[] status = { 1, 2, 3 };
+                    var result = (from psl in context.tblProposal
+                                  join user in context.tblUser on psl.PI equals user.UserId
+                                  where (psl.IsDeleted != true)                                  
+                                  && (String.IsNullOrEmpty(model.srchKeyword) || psl.ProposalNumber == model.srchKeyword
+                                  || psl.ProposalTitle.Contains(model.srchKeyword))
+                                  orderby psl.ProposalId descending
+                                  select new { psl, user.FirstName, user.LastName }).Skip(skiprec).Take(pageSize).ToList();
+                    //var result = query.Skip(skiprec).Take(pageSize).ToList();
+                    if (result.Count > 0)
+                    {
+                        for (int i = 0; i < result.Count; i++)
+                        {
+                            int proposalId = result[i].psl.ProposalId;
+                            proposalList.Add(new ProposalResultModels()
+                            {
+                                proposalId = proposalId,                                
+                                nameOfPI = result[i].FirstName + " " + result[i].LastName,
+                                PIUserID = result[i].psl.PI,
+                                proposalTitle = result[i].psl.ProposalTitle,
+                                proposedBudget = Convert.ToDecimal(result[i].psl.ProposalValue),
+                                status = Convert.ToInt32(result[i].psl.ProposalStatus),
+                               
+                            });
+
+                        }
+                        var records = (from psl in context.tblProposal
+                                       join user in context.tblUser on psl.PI equals user.UserId
+                                       where (psl.IsDeleted != true)
+                                       && (String.IsNullOrEmpty(model.srchKeyword) || psl.ProposalNumber == model.srchKeyword
+                                       || psl.ProposalTitle.Contains(model.srchKeyword))
+                                       orderby psl.ProposalId descending
+                                       select new { psl, user.FirstName, user.LastName }).Count();
+                        searchData.TotalPages = Convert.ToInt32(Math.Ceiling((double)records / pageSize));
+
+                    }
+                }
+                searchData.Data = proposalList;
+                searchData.visiblePages = 10;
+                searchData.CurrentPage = page;
+                searchData.pageSize = pageSize;
+                return searchData;
+
+            }
+            catch (Exception ex)
+            {                
+                List<ProposalResultModels> proposalList = new List<ProposalResultModels>();
+                var searchData = new PagedData<ProposalResultModels>();
+                searchData.Data = proposalList;
+                return searchData;
+            }
+        }        
+        public static CreateProjectModel EditProject(int ProjectId)
+        {
+            try
+            {
+                CreateProjectModel editProject = new CreateProjectModel();
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from P in context.tblProject                                 
+                                 where (P.ProjectId == ProjectId)
+                                 select P).FirstOrDefault();
+                    var CoPIquery = (from CoPI in context.tblProjectCoPI                                     
+                                     where (CoPI.ProjectId == ProjectId)
+                                     select CoPI).ToList();
+                    var SupportDocquery = (from Doc in context.tblSupportDocuments
+                                     where (Doc.ProjectId == ProjectId)
+                                     select Doc).ToList();
+                    var allocationquery = (from alloc in context.tblProjectAllocation
+                                           where (alloc.ProjectId == ProjectId)
+                                           select alloc).ToList();
+                    var ProjectTypeName = (from C in context.tblCodeControl
+                                           where C.CodeName == "Projecttype" && C.CodeValAbbr == query.ProjectType
+                                           select C).FirstOrDefault();
+                    var Agencyquery = (from C in context.tblAgencyMaster
+                                           where C.AgencyId == query.SponsoringAgency
+                                           select C).FirstOrDefault();
+                   
+                    if (query != null)
+                    {
+                        editProject.ProjectID = ProjectId;
+                        editProject.ProposalNumber = query.ProposalNumber;
+                        editProject.ProjectNumber = query.ProjectNumber;
+                        //  editProject.ProjectType = Convert.ToInt32(query.ProjectType);
+                        editProject.PrpsalApprovedDate = String.Format("{0:dd}", (DateTime)query.ProposalApprovedDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ProposalApprovedDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ProposalApprovedDate);
+                        editProject.ProposalApprovedDate = (DateTime)query.ProposalApprovedDate;
+                        editProject.FinancialYear = query.FinancialYear;
+                        editProject.Projecttitle = query.ProjectTitle;
+                        editProject.ProjectType = query.ProjectType;
+                        editProject.ProjectTypeName = ProjectTypeName.CodeValDetail;
+                        if (editProject.ProjectType == 1)
+                        {
+                            editProject.ProjectSubType = query.ProjectSubType;
+                        }
+                        editProject.Schemename = query.SchemeName;
+                        editProject.SchemeAgency = query.SchemeAgencyName;
+                        editProject.Department = query.PIDepartment;
+                        editProject.PIname = Convert.ToInt32(query.PIName);
+                        editProject.PIDesignation = query.PIDesignation;
+                        editProject.SponsoringAgency = query.SponsoringAgency;
+                        editProject.AgencyCodeid = Convert.ToInt32(query.SponsoringAgencyCode);
+                        editProject.AgencyCode = Agencyquery.AgencyCode;
+                        editProject.Agencyregname = query.AgencyRegisteredName;
+                        editProject.Agencyregaddress = query.SponsoringAgencySOAddress;
+                        editProject.Agencycontactpersonmobile = query.SponsoringAgencyContactPersonMobile;
+                        editProject.Agencycontactpersondesignation = query.SponsoringAgencyContactPersonDesignation;
+                        editProject.AgencycontactpersonEmail = query.SponsoringAgencyContactPersonEmail;
+                        editProject.Agencycontactperson = query.SponsoringAgencyContactPerson;
+                        editProject.SanctionOrderNumber = query.SanctionOrderNumber;
+                        editProject.SODate = String.Format("{0:dd}", (DateTime)query.SanctionOrderDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.SanctionOrderDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.SanctionOrderDate);
+                        editProject.SanctionOrderDate = (DateTime)query.SanctionOrderDate;
+                        editProject.TentativestrtDate = String.Format("{0:dd}", (DateTime)query.TentativeStartDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.TentativeStartDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.TentativeStartDate);
+                        editProject.TentativeStartdate = (DateTime)query.TentativeStartDate;
+                        editProject.strtDate = String.Format("{0:dd}", (DateTime)query.ActualStartDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActualStartDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActualStartDate);
+                        editProject.Startdate = (DateTime)query.ActualStartDate;
+                        editProject.TentativeclsDate = String.Format("{0:dd}", (DateTime)query.TentativeCloseDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.TentativeCloseDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.TentativeCloseDate);
+                        editProject.TentativeClosedate = (DateTime)query.TentativeCloseDate;
+                        editProject.clsDate = String.Format("{0:dd}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActuaClosingDate);
+                        editProject.Closedate = (DateTime)query.ActuaClosingDate;
+                        editProject.Budget = query.SanctionValue;
+                        editProject.Projectduration = query.DurationOfProject;
+                        editProject.SchemePersonAppliedDesignation = query.SchemePersonDesignation;
+                        editProject.Personapplied = query.SchemePersonApplied;
+                        editProject.TotalNoofProjectStaffs = query.TotalProjectStaffCount;
+                        editProject.NoofJRFStaffs = query.JRFStaffCount;
+                        editProject.SalaryofJRFStaffs = query.JRFStaffSalary;
+                        editProject.NoofSRFStaffs = query.SRFStaffCount;
+                        editProject.SalaryofSRFStaffs = query.SRFStaffSalary;
+                        editProject.NoofRAStaffs = query.RAStaffCount;
+                        editProject.SalaryofRAStaffs = query.RAStaffSalary;
+                        editProject.NoofPAStaffs = query.PAStaffCount;
+                        editProject.SalaryofPAStaffs = query.PAStaffSalary;
+                        editProject.NoofPQStaffs = query.PQStaffCount;
+                        editProject.SalaryofPQStaffs = query.PQStaffSalary;
+                        editProject.SumofStaffs = query.SumofStaffCount;
+                        editProject.SumSalaryofStaffs = query.SumSalaryofStaff;
+                        editProject.Allocationtotal = Convert.ToDecimal(query.SanctionValue);
+                        if(editProject.ProjectType == 2)
+                        {
+                            editProject.ConsProjectSubType = query.ConsProjectSubType;
+                            editProject.ConsFundingCategory = query.ConsultancyFundingCategory;
+                            editProject.constaxservice = query.ConsultancyTaxServiceType;
+                            editProject.ConsProjectTaxType_Qust_1 = query.TaxStatus;
+                            if(query.ConsultancyTaxServiceType == 1 || query.ConsultancyTaxServiceType == 2)
+                            {
+                                editProject.indfundngagncystate = query.IndianProjectAgencyState;
+                                editProject.indfundngagncylocation = query.IndianProjectAgencyLocation;
+                            }
+                            if (query.ConsultancyTaxServiceType == 3)
+                            {
+                                editProject.forgnfndngagncycountry = query.ForeignFundedFundingCountry;
+                                editProject.forgnfundngagncystate = query.ForeignProjectAgencyState;
+                                editProject.forgnfundngagncylocation = query.ForeignProjectAgencyLocation;
+                            }
+                            if (editProject.ConsProjectTaxType_Qust_1 == "Non Taxable" || editProject.ConsProjectTaxType_Qust_1 == "Tax Exempted")
+                            {
+                                editProject.ConsProjectReasonfornotax = query.TaxExemptionReason;
+                                editProject.Docpathfornotax = query.TaxExemptionDocPath;
+                            }
+                            if (editProject.ConsProjectTaxType_Qust_1 == "Taxable")
+                            {
+                                editProject.GSTNumber = query.GSTIN;
+                                editProject.TAN = query.TAN;
+                                editProject.PAN = query.PAN;
+                            }
+
+                        }
+                                               
+                            editProject.ProjectFundingType_Qust_1 = query.FundingType;
+                        if(editProject.ProjectType == 1 && editProject.ProjectFundingType_Qust_1 == "Indian")
+                        { 
+                            editProject.ProjectFundedby_Qust_1 = query.IndianFundedBy;
+                                if(editProject.ProjectFundedby_Qust_1 == "Govt")
+                                {
+                                    editProject.Projectcatgry_Qust_1 = query.SponProjectCategory;
+                                    editProject.ProjectFundingBody_Qust_1 = query.FundingGovtBody;
+                                    if (editProject.ProjectFundingBody_Qust_1 == "MHRD")
+                                        {
+                                            editProject.indprjctfundbodygovt_Agencydeptname = query.FundingGovtBody;
+                                            editProject.indprjctfundbodygovt_deptAmount = query.FundingGovtAmount;
+
+                                        }
+                                    if (editProject.ProjectFundingBody_Qust_1 == "Ministry")
+                                        {
+                                            editProject.indprjctfundbodygovt_Agencymnstryname = query.FundingGovtMinistry;
+                                            editProject.indprjctfundbodygovt_mnstryAmount = query.FundingGovtAmount;
+                                        }
+                                     if (editProject.ProjectFundingBody_Qust_1 == "Universities")
+                                        {
+                                            editProject.indprjctfundbodygovt_Agencyunivname = query.FundingGovtAgency;
+                                            editProject.indprjctfundbodygovt_univAmount = query.FundingGovtAmount;
+                                        }
+                                }
+                                else if (editProject.ProjectFundedby_Qust_1 == "Nongovt")
+                                {
+                                    editProject.Projectcatgry_Qust_1 = query.SponProjectCategory;
+                                    editProject.ProjectFundingBody_Qust_1 = query.FundingNonGovtBody;
+                                 if (editProject.ProjectFundingBody_Qust_1 == "Indstry")
+                                        {
+                                            editProject.indprjctfundbodynongovt_AgencyIndstryname = query.FundingNonGovtAgency;
+                                            editProject.indprjctfundbodynongovt_IndstryAmount = query.FundingNonGovtAmount;
+
+                                        }
+                                    if (editProject.ProjectFundingBody_Qust_1 == "Universities")
+                                        {
+                                            editProject.indprjctfundbodynongovt_Agencyunivname = query.FundingNonGovtAgency;
+                                            editProject.indprjctfundbodynongovt_univAmount = query.FundingNonGovtAmount;
+                                        }
+                                     if (editProject.ProjectFundingBody_Qust_1 == "Others")
+                                        {
+                                            editProject.indprjctfundbodynongovt_Agencyothersname = query.FundingNonGovtAgency;
+                                            editProject.indprjctfundbodynongovt_othersAmount = query.FundingNonGovtAmount;
+                                        }
+                                }
+                            
+                        }
+
+
+                        if (editProject.ProjectType == 1 && editProject.ProjectFundingType_Qust_1 == "Foreign")
+                        {
+                            editProject.ForgnProjectFundedby_Qust_1 = query.ForeignFundedBy;
+
+                            if (editProject.ForgnProjectFundedby_Qust_1 == "Govt")
+                            {                               
+                                editProject.ProjectFundingBody_Qust_1 = query.FundingGovtBody;
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnGovtDept")
+                                {
+                                    editProject.forgnprjctfundbodygovt_country = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodygovt_Agencydeptname = query.FundingGovtAgency;
+                                    editProject.forgnprjctfundbodygovt_deptAmount = query.FundingGovtAmount;
+
+                                }
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnGovtUniv")
+                                {
+                                    editProject.forgnprjctfundbodygovt_univcountry = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodygovt_Agencyunivname = query.FundingGovtAgency;
+                                    editProject.forgnprjctfundbodygovt_univAmount = query.FundingGovtAmount;
+                                }
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnOthers")
+                                {
+                                    editProject.forgnprjctfundbodygovt_otherscountry = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodygovt_othersagncyname = query.FundingGovtAgency;
+                                    editProject.forgnprjctfundbodygovt_othersAmount = query.FundingGovtAmount;
+                                }
+                            }
+                            else if (editProject.ForgnProjectFundedby_Qust_1 == "Nongovt")
+                            {
+                                
+                                editProject.ProjectFundingBody_Qust_1 = query.FundingNonGovtBody;
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnDept")
+                                {
+                                    editProject.forgnprjctfundbodynongovt_country = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodynongovt_Agencydeptname = query.FundingNonGovtAgency;
+                                    editProject.forgnprjctfundbodynongovt_deptAmount = query.FundingNonGovtAmount;
+
+                                }
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnUniversities")
+                                {
+                                    editProject.forgnprjctfundbodynongovt_univcountry = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodynongovt_Agencyunivname = query.FundingNonGovtAgency;
+                                    editProject.forgnprjctfundbodynongovt_univAmount = query.FundingNonGovtAmount;
+                                }
+                                if (editProject.ProjectFundingBody_Qust_1 == "ForgnOthers")
+                                {
+                                    editProject.forgnprjctfundbodynongovt_otherscountry = query.ForeignFundedFundingCountry;
+                                    editProject.forgnprjctfundbodynongovt_othersagncyname = query.FundingNonGovtAgency;
+                                    editProject.forgnprjctfundbodynongovt_othersAmount = query.FundingNonGovtAmount;
+                                }
+                            }
+                        }
+
+                       
+                        
+                        editProject.Categoryofproject = query.CategoryOfProject;
+                        
+                        editProject.PIname = Convert.ToInt32(query.PIName);
+                        editProject.PIDesignation = query.PIDesignation;
+                        editProject.SponsoringAgency = query.SponsoringAgency;
+                        editProject.Budget = query.SanctionValue;
+                        editProject.Projectduration = query.DurationOfProject;
+                        editProject.SchemePersonAppliedDesignation = query.SchemePersonDesignation;
+                        editProject.SchemePersonApplied = query.SchemePersonApplied;
+                        editProject.ProjectFundingType_Qust_1 = query.FundingType;
+                        editProject.Remarks = query.Remarks;
+                       
+                    }
+                    if (CoPIquery.Count > 0)
+                    {
+                        int[] _prjctid = new int[CoPIquery.Count];
+                        int[] _copiid = new int[CoPIquery.Count];
+                        int[] _copidepartment = new int[CoPIquery.Count];
+                        int[] _copiname = new int[CoPIquery.Count];
+                        int[] _copidesig = new int[CoPIquery.Count];
+                        string[] _copiemail = new string[CoPIquery.Count];
+                        List<MasterlistviewModel>[] _piList = new List<MasterlistviewModel>[CoPIquery.Count];
+                        for (int i = 0; i < CoPIquery.Count; i++)
+                        {
+                            int depId = Convert.ToInt32(CoPIquery[i].Department);
+                            _prjctid[i] = Convert.ToInt32(CoPIquery[i].ProjectId);
+                            _copidepartment[i] = depId;
+                            _copiname[i] = Convert.ToInt32(CoPIquery[i].Name);
+                            _copiid[i] = Convert.ToInt32(CoPIquery[i].CoPIId);
+                            _copiemail[i] = CoPIquery[i].Email;
+                            _copidesig[i] = Convert.ToInt32(CoPIquery[i].Designation);
+                            _piList[i] = AccountService.getPIList(depId);
+                        }
+                        editProject.CoPIDepartment = _copidepartment;
+                        editProject.CoPIname = _copiname;
+                        editProject.CoPIEmail = _copiemail;
+                        editProject.CoPIid = _copiid;
+                        editProject.CoPIDesignation = _copidesig;
+                        editProject.PIListDepWise = _piList;
+                    }
+                    if (SupportDocquery.Count > 0)
+                    {
+                        int[] _docid = new int[SupportDocquery.Count];
+                        int[] _doctype = new int[SupportDocquery.Count];
+                        string[] _docname = new string[SupportDocquery.Count];
+                        string[] _attachname = new string[SupportDocquery.Count];
+                        string[] _docpath = new string[SupportDocquery.Count];
+                        for (int i = 0; i < SupportDocquery.Count; i++)
+                        {
+                            _docid[i] = Convert.ToInt32(SupportDocquery[i].DocId);
+                            _doctype[i] = Convert.ToInt32(SupportDocquery[i].DocType);
+                            _docname[i] = SupportDocquery[i].DocName;
+                            _docpath[i] = SupportDocquery[i].AttachmentPath;
+                            _attachname[i] = SupportDocquery[i].AttachmentName;
+                        }
+                        editProject.DocType = _doctype;
+                        editProject.AttachName = _attachname;
+                        editProject.DocName = _docname;
+                        editProject.DocPath = _docpath;
+                        editProject.Docid = _docid;
+                    }
+
+
+                    if (allocationquery.Count > 0)
+                    {
+                        int[] _prjectid = new int[allocationquery.Count];
+                        int[] _allocationid = new int[allocationquery.Count];
+                        int[] _allocationhead = new int[allocationquery.Count];
+                        Nullable<decimal>[] _allocationvalue = new Nullable<decimal>[allocationquery.Count];
+                       
+                        for (int i = 0; i < allocationquery.Count; i++)
+                        {
+                            _prjectid[i] = Convert.ToInt32(allocationquery[i].ProjectId);
+                            _allocationid[i] = allocationquery[i].AllocationId;
+                            _allocationhead[i] = Convert.ToInt32(allocationquery[i].AllocationHead);
+                            _allocationvalue[i] = allocationquery[i].AllocationValue;
+                            
+                        }
+
+                        editProject.Allocationid = _allocationid;
+                        editProject.Allocationhead = _allocationhead;
+                        editProject.Allocationvalue = _allocationvalue;
+                       
+                    }
+                    return editProject;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static int DeleteProject(int ProjectId)
+        {
+            try
+            {
+                tblProject project;
+
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from D in context.tblProject
+                                 where (D.ProjectId == ProjectId)
+                                 select D.ProjectId).FirstOrDefault();
+
+                    project = context.tblProject.Where(P => P.ProjectId == ProjectId).FirstOrDefault();
+                    context.Entry(project).State = System.Data.Entity.EntityState.Deleted;
+                    context.SaveChanges();
+                    var proposalid = project.ProposalId;
+                    var proposalquery = context.tblProposal.Where(P => P.ProposalId == proposalid).FirstOrDefault();
+                    proposalquery.ProposalStatus = 1;
+                    context.SaveChanges();
+                }
+                return 4;
+            }
+            catch (Exception ex)
+            {
+                return 4;
+            }
+        }
+        public static List<CreateProjectModel> GetProjectList()
+        {
+            List<CreateProjectModel> project = new List<CreateProjectModel>();
+            using (var context = new IOASDBEntities())
+            {
+                var query = (from P in context.tblProject
+                             join user in context.tblUser on P.PIName equals user.UserId
+                             join dept in context.tblPIDepartmentMaster on P.PIDepartment equals dept.DepartmentId
+                             join agency in context.tblAgencyMaster on P.SponsoringAgency equals agency.AgencyId
+                             orderby P.ProjectId
+                             select new { P, user.FirstName, user.LastName, user.EMPCode, dept.Department,agency.AgencyName }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        project.Add(new CreateProjectModel()
+                        {
+                            Sno = i + 1,
+                            ProjectID = query[i].P.ProjectId,
+                            Projecttitle = query[i].P.ProjectTitle,
+                            ProjectNumber = query[i].P.ProjectNumber,
+                            Budget = query[i].P.SanctionValue,
+                            SponsoringAgency = query[i].P.SponsoringAgency,
+                            SponsoringAgencyName = query[i].AgencyName,
+                            NameofPI = query[i].FirstName + " " + query[i].LastName,
+                            PIDepartmentName = query[i].Department,
+                            EmpCode = query[i].EMPCode
+                    });
+                    }
+                }
+            }
+            return project;
+        }
+
+        public static CreateProjectModel getproposaldetails(int proposalid)
+        {
+            try
+            {
+
+                CreateProjectModel Proposaldetails = new CreateProjectModel();
+            
+                using (var context = new IOASDBEntities())
+                {
+                    
+                        var query = context.tblProposal.FirstOrDefault(m => m.ProposalId == proposalid);
+                        var prjcttypequery = (from C in context.tblCodeControl
+                                          where (C.CodeName == "Projecttype" && C.CodeValAbbr == query.ProjectType)
+                                          select C).FirstOrDefault();
+                    var pidetailsquery = (from c in context.tblUser
+                                          where c.UserId == query.PI
+                                          select c).FirstOrDefault();
+                    var agencydetailsquery = (from c in context.tblAgencyMaster
+                                          where c.AgencyId == query.SponsoringAgency
+                                          select c).FirstOrDefault();
+                    var Proposalid = proposalid;                       
+                        if (query != null)
+                        {
+                            
+                            Proposaldetails.ProposalNumber = query.ProposalNumber;
+                            Proposaldetails.ProposalID = query.ProposalId;
+                            Proposaldetails.Projectduration = query.DurationOfProject;
+                            Proposaldetails.ProjectType = query.ProjectType;                           
+                            Proposaldetails.Projecttitle = query.ProposalTitle;
+                            Proposaldetails.ProjectTypeName = prjcttypequery.CodeValDetail;
+                            Proposaldetails.Department = query.Department;
+                            Proposaldetails.PIname = query.PI;
+                            Proposaldetails.PIDesignation = pidetailsquery.Designation;
+                            Proposaldetails.Sanctionvalue = query.ProposalValue;
+                            Proposaldetails.SponsoringAgency = agencydetailsquery.AgencyId;
+                            Proposaldetails.AgencyCode = agencydetailsquery.AgencyCode;
+                            Proposaldetails.AgencyCodeid = agencydetailsquery.AgencyId;
+
+                    }
+                       
+
+                        var copi = (from C in context.tblProposalCoPI
+                                    where C.ProposalId == Proposalid
+                                    select C).ToList();
+                    
+                    if (copi.Count != 0)
+                            {
+                        int[] _prposalid = new int[copi.Count];
+                        int[] _copiid = new int[copi.Count];
+                        int[] _copidepartment = new int[copi.Count];
+                        int[] _copiname = new int[copi.Count];
+                        int[] _copidesignation = new int[copi.Count];
+                        string[] _copiemail = new string[copi.Count];
+                        List<MasterlistviewModel>[] _piList = new List<MasterlistviewModel>[copi.Count];
+                        for (int i = 0; i < copi.Count; i++)
+                                {
+                            int depId = Convert.ToInt32(copi[i].Department);
+                            var copiid = copi[i].Name;
+                            var copidetails = (from C in context.tblUser
+                                               where C.UserId == copiid
+                                               select C).ToList();
+                            var copidesig = copidetails[0].Designation;
+                            _prposalid[i] = Convert.ToInt32(copi[i].ProposalId);
+                            _copiid[i] = copi[i].CoPIId;
+                            _copidepartment[i] = Convert.ToInt32(copi[i].Department);
+                            _copiname[i] = Convert.ToInt32(copi[i].Name);
+                            _copidesignation[i] = Convert.ToInt32(copidesig);
+                            _copiemail[i] = copi[i].Email;
+                            _piList[i] = AccountService.getPIList(depId);
+
+                        }
+                        Proposaldetails.CoPIname = _copiname;
+                        Proposaldetails.CoPIDepartment = _copidepartment;
+                        Proposaldetails.CoPIEmail = _copiemail;
+                        Proposaldetails.CoPIDesignation = _copidesignation;
+                        Proposaldetails.CoPIid = _copiid;
+                        Proposaldetails.PIListDepWise = _piList;
+                    }
+
+                    
+                        }
+
+                return Proposaldetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public static List<CreateProposalModel> GetProposalDetails()
+        {
+            List<CreateProposalModel> proposal = new List<CreateProposalModel>();
+            using (var context = new IOASDBEntities())
+            {
+                var query = (from P in context.tblProposal
+                             join user in context.tblUser on P.PI equals user.UserId
+                             join dept in context.tblPIDepartmentMaster on P.Department equals dept.DepartmentId
+                             where P.ProposalStatus == 1
+                             orderby P.ProposalId
+                             select new { P, user.FirstName, user.LastName, user.EMPCode, dept.Department }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        proposal.Add(new CreateProposalModel()
+                        {
+                            Sno = i + 1,
+                            ProposalID = query[i].P.ProposalId,
+                            ProposalNumber = query[i].P.ProposalNumber,
+                            Projecttitle = query[i].P.ProposalTitle,
+                            Budget = query[i].P.ProposalValue,
+                            NameofPI = query[i].FirstName + " " + query[i].LastName,
+                            EmpCode = query[i].EMPCode,
+                            PIDepartmentName = query[i].Department
+                        });
+                    }
+                }
+            }
+            return proposal;
+        }
+
+        public int ProjectEnhancement(ProjectEnhancementModel model)
+        {
+            try
+            {
+                using (var context = new IOASDBEntities())
+                {
+                    var projectid = model.ProjectID;
+                    tblProjectEnhancement enhance = new tblProjectEnhancement();                                      
+                    var chkproject = context.tblProject.FirstOrDefault(dup => dup.ProjectId == model.ProjectID);
+                    var allocation = (from c in context.tblProjectAllocation
+                                      where c.ProjectId == model.ProjectID
+                                      select c).ToList();
+                    var userquery = context.tblUser.FirstOrDefault(m => m.UserId == chkproject.PIName);
+                    var prjctenhancequery = context.tblProjectEnhancement.FirstOrDefault(m => m.ProjectEnhancementId == model.ProjectEnhancementID);
+                    var enhancequery = (from c in context.tblProjectEnhancement
+                                        where c.ProjectId == projectid
+                                        orderby c.ProjectId descending
+                                        select c).ToList();
+                    if (prjctenhancequery == null)
+                    {
+
+                        if (model.AttachmentName != null)
+                        {
+                            string filepath = " ";
+                            filepath = System.IO.Path.GetFileName(model.file.FileName);
+                            var fileId = Guid.NewGuid().ToString();
+                            var docname = fileId + "_" + filepath;
+
+                            /*Saving the file in server folder*/
+                            model.file.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                            enhance.AttachmentPath = docname;
+                        }
+
+                        enhance.ProjectId = model.ProjectID;
+                        enhance.DocumentReferenceNumber = model.DocumentReferenceNumber;
+                        enhance.OldSanctionValue = model.OldSanctionValue;
+                        enhance.EnhancedSanctionValue = model.EnhancedSanctionValue;
+                        enhance.Status = chkproject.ProjectStatus;
+                        enhance.PresentDueDate = model.PresentDueDate;
+                        enhance.ExtendedDueDate = model.ExtendedDueDate;
+                        enhance.CrtdUserId = model.CrtdUserid;
+                        enhance.CrtsTS = DateTime.Now;
+                        enhance.AttachmentName = model.AttachmentName;
+                        enhance.TotalAllocatedValue = model.TotalAllocatedvalue;
+                        enhance.TotalEnhancedValue = model.TotalEnhancedAllocationvalue;
+                        
+                        if (enhance.ExtendedDueDate != null)
+                        {
+                            enhance.IsEnhancementonly = false;
+                            enhance.IsEnhancementWithExtension = true;
+                        }
+                        else if (enhance.ExtendedDueDate == null)
+                        {
+                            enhance.IsEnhancementonly = true;
+                            enhance.IsEnhancementWithExtension = false;
+                        }
+                        for (int i = 0; i < enhancequery.Count(); i++)
+                        {
+                            enhancequery[i].IsCurrentVersion = false;
+                        }
+                        enhance.IsCurrentVersion = true;
+                        context.tblProjectEnhancement.Add(enhance);
+                        context.SaveChanges();
+                        int prjctid = Convert.ToInt32(enhance.ProjectId);                      
+                        var enhanceid = (from c in context.tblProjectEnhancement
+                                         where c.ProjectId == projectid && c.IsCurrentVersion == true                                        
+                                         select c).FirstOrDefault();
+                        int projectenhancementid = enhanceid.ProjectEnhancementId;
+                        
+                        if (prjctid > 0)
+                        {
+
+                            for (int i = 0; i < model.Allocationhead.Length; i++)
+                            {
+                                if (model.Allocationhead[i] != 0)
+                                {
+                                    var allocationid = model.AllocationId[i];
+                                    var allochead = model.Allocationhead[i];
+                                    var query = (from alloc in context.tblProjectAllocation
+                                                 where (alloc.AllocationId == allocationid && alloc.ProjectId == prjctid && alloc.AllocationHead == allochead)
+                                                 select alloc).ToList();
+                                    var enhanceallocationquery = (from alloc in context.tblProjectEnhancementAllocation
+                                                                  where (alloc.ProjectEnhancementId == projectenhancementid && alloc.ProjectId == prjctid && alloc.AllocationHead == allochead)
+                                                                  select alloc).ToList();
+                                    if (query.Count == 0)
+                                    {
+                                        tblProjectAllocation Allocation = new tblProjectAllocation();
+                                        Allocation.ProjectId = prjctid;
+                                        Allocation.AllocationHead = model.Allocationhead[i];                                         
+                                        Allocation.AllocationValue = model.HeadwiseTotalAllocationvalue[i];                                        
+                                        Allocation.CrtdUserId = model.CrtdUserid;
+                                        Allocation.CrtdTS = DateTime.Now;
+                                        context.tblProjectAllocation.Add(Allocation);
+                                        context.SaveChanges();
+
+                                        tblProjectEnhancementAllocation EnhanceAllocation = new tblProjectEnhancementAllocation();
+                                        EnhanceAllocation.AllocationHead = model.Allocationhead[i];
+                                        EnhanceAllocation.ProjectId = prjctid;
+                                        EnhanceAllocation.ProjectEnhancementId = projectenhancementid;
+                                        EnhanceAllocation.OldValue = model.OldAllocationvalue[i];                                       
+                                        EnhanceAllocation.EnhancedValue = model.EnhancedAllocationvalue[i];
+                                        EnhanceAllocation.TotalValue = model.HeadwiseTotalAllocationvalue[i];
+                                        EnhanceAllocation.CrtdUserId = model.CrtdUserid;
+                                        EnhanceAllocation.CrtdTS = DateTime.Now;
+                                        if (enhanceallocationquery.Count() > 0)
+                                        {
+                                            enhanceallocationquery[0].IsCurrentVersion = false;
+                                        }
+                                        EnhanceAllocation.IsCurrentVersion = true;
+                                        context.tblProjectEnhancementAllocation.Add(EnhanceAllocation);
+                                        context.SaveChanges();
+                                    }
+                                    else if (query.Count > 0)
+                                    {
+                                        query[0].AllocationHead = model.Allocationhead[i];
+                                        if (model.HeadwiseTotalAllocationvalue[i] != null && model.HeadwiseTotalAllocationvalue[i] != 0)
+                                        {
+                                        query[0].AllocationValue = model.EnhancedAllocationvalue[i];
+                                        }
+                                        query[0].ProjectId = prjctid;
+                                        query[0].UpdtUserId = model.CrtdUserid;
+                                        query[0].UpdtTS = DateTime.Now;
+                                        context.SaveChanges();
+
+                                        tblProjectEnhancementAllocation EnhanceAllocation = new tblProjectEnhancementAllocation();
+                                        EnhanceAllocation.AllocationHead = model.Allocationhead[i];
+                                        EnhanceAllocation.ProjectId = prjctid;
+                                        EnhanceAllocation.ProjectEnhancementId = projectenhancementid;
+                                        EnhanceAllocation.OldValue = model.OldAllocationvalue[i];
+                                        EnhanceAllocation.EnhancedValue = model.EnhancedAllocationvalue[i];
+                                        EnhanceAllocation.TotalValue = model.HeadwiseTotalAllocationvalue[i];
+                                        EnhanceAllocation.CrtdUserId = model.CrtdUserid;
+                                        EnhanceAllocation.CrtdTS = DateTime.Now;
+                                        if (enhanceallocationquery.Count() > 0)
+                                        {
+                                            enhanceallocationquery[0].IsCurrentVersion = false;
+                                        }
+                                        EnhanceAllocation.IsCurrentVersion = true;
+                                        context.tblProjectEnhancementAllocation.Add(EnhanceAllocation);
+                                        context.SaveChanges();
+
+                                    }
+                                }
+
+                            }
+
+                        }
+                        return projectid;
+                    }
+
+                    else
+                    {
+                        if (model.AttachmentName != null)
+                        {
+                            string filepath = " ";
+                            filepath = System.IO.Path.GetFileName(model.file.FileName);
+                            var fileId = Guid.NewGuid().ToString();
+                            var docname = fileId + "_" + filepath;
+
+                            /*Saving the file in server folder*/
+                            model.file.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                            prjctenhancequery.AttachmentPath = docname;
+                        }
+
+                        prjctenhancequery.ProjectId = model.ProjectID;
+                        prjctenhancequery.DocumentReferenceNumber = model.DocumentReferenceNumber;
+                        prjctenhancequery.OldSanctionValue = model.OldSanctionValue;
+                        prjctenhancequery.EnhancedSanctionValue = model.EnhancedSanctionValue;
+                        prjctenhancequery.Status = chkproject.ProjectStatus;
+                        prjctenhancequery.PresentDueDate = model.PresentDueDate;
+                        prjctenhancequery.ExtendedDueDate = model.ExtendedDueDate;
+                        prjctenhancequery.LastUpdtUserId = model.CrtdUserid;
+                        prjctenhancequery.LastUpdtTS = DateTime.Now;
+                        prjctenhancequery.AttachmentName = model.AttachmentName;
+                        prjctenhancequery.TotalAllocatedValue = model.TotalAllocatedvalue;
+                        prjctenhancequery.TotalEnhancedValue = model.TotalEnhancedAllocationvalue;
+                        if (prjctenhancequery.ExtendedDueDate != null)
+                        {
+                            prjctenhancequery.IsEnhancementonly = false;
+                            prjctenhancequery.IsEnhancementWithExtension = true;
+                        }
+                        else if (prjctenhancequery.ExtendedDueDate == null)
+                        {
+                            prjctenhancequery.IsEnhancementonly = true;
+                            prjctenhancequery.IsEnhancementWithExtension = false;
+                        }
+
+                        context.SaveChanges();
+                        int prjctid = Convert.ToInt32(prjctenhancequery.ProjectId);                       
+                        int projectenhancementid = prjctenhancequery.ProjectEnhancementId;
+                        if (prjctid > 0)
+                        {
+
+                            for (int i = 0; i < model.Allocationhead.Length; i++)
+                            {
+                                if (model.Allocationhead[i] != 0)
+                                {
+                                    var allocationid = model.AllocationId[i];
+                                    var allochead = model.Allocationhead[i];
+                                    var query = (from alloc in context.tblProjectAllocation
+                                                 where (alloc.AllocationId == allocationid && alloc.ProjectId == prjctid && alloc.AllocationHead == allochead)
+                                                 select alloc).ToList();
+                                    var enhanceallocationquery = (from alloc in context.tblProjectEnhancementAllocation
+                                                                  where (alloc.ProjectEnhancementId == projectenhancementid && alloc.ProjectId == prjctid && alloc.AllocationHead == allochead)
+                                                                  select alloc).ToList();
+                                    if (query.Count == 0)
+                                    {
+                                        tblProjectAllocation Allocation = new tblProjectAllocation();
+                                        Allocation.ProjectId = prjctid;
+                                        Allocation.AllocationHead = model.Allocationhead[i];
+                                        if(model.HeadwiseTotalAllocationvalue[i] != null && model.EnhancedAllocationvalue[i] !=null)
+                                        {
+                                            Allocation.AllocationValue = model.HeadwiseTotalAllocationvalue[i];
+                                        }
+                                        
+                                        Allocation.CrtdUserId = model.CrtdUserid;
+                                        Allocation.CrtdTS = DateTime.Now;
+                                        context.tblProjectAllocation.Add(Allocation);
+                                        context.SaveChanges();
+
+                                        tblProjectEnhancementAllocation EnhanceAllocation = new tblProjectEnhancementAllocation();
+                                        EnhanceAllocation.AllocationHead = model.Allocationhead[i];
+                                        EnhanceAllocation.ProjectId = prjctid;
+                                        EnhanceAllocation.ProjectEnhancementId = projectenhancementid;
+                                        EnhanceAllocation.OldValue = model.OldAllocationvalue[i];
+                                        EnhanceAllocation.EnhancedValue = model.EnhancedAllocationvalue[i];
+                                        EnhanceAllocation.CrtdUserId = model.CrtdUserid;
+                                        EnhanceAllocation.CrtdTS = DateTime.Now;
+                                        if (enhanceallocationquery.Count() > 0)
+                                        {
+                                            enhanceallocationquery[0].IsCurrentVersion = false;
+                                        }
+                                        EnhanceAllocation.IsCurrentVersion = true;
+                                        context.tblProjectEnhancementAllocation.Add(EnhanceAllocation);
+                                        context.SaveChanges();
+                                    }
+                                    else if (query.Count > 0)
+                                    {
+                                        query[0].AllocationHead = model.Allocationhead[i];
+                                        query[0].AllocationValue = model.EnhancedAllocationvalue[i];
+                                        query[0].ProjectId = prjctid;
+                                        query[0].UpdtUserId = model.CrtdUserid;
+                                        query[0].UpdtTS = DateTime.Now;
+                                        context.SaveChanges();
+
+                                        tblProjectEnhancementAllocation EnhanceAllocation = new tblProjectEnhancementAllocation();
+                                        EnhanceAllocation.AllocationHead = model.Allocationhead[i];
+                                        EnhanceAllocation.ProjectId = prjctid;
+                                        EnhanceAllocation.ProjectEnhancementId = projectenhancementid;
+                                        EnhanceAllocation.OldValue = model.OldAllocationvalue[i];
+                                        EnhanceAllocation.EnhancedValue = model.EnhancedAllocationvalue[i];
+                                        EnhanceAllocation.CrtdUserId = model.CrtdUserid;
+                                        EnhanceAllocation.CrtdTS = DateTime.Now;
+                                        if (enhanceallocationquery.Count() > 0)
+                                        {
+                                            enhanceallocationquery[0].IsCurrentVersion = false;
+                                        }
+                                        EnhanceAllocation.IsCurrentVersion = true;
+                                        context.tblProjectEnhancementAllocation.Add(EnhanceAllocation);
+                                        context.SaveChanges();
+
+                                    }
+                                }
+
+                            }
+
+                        }
+                        return projectid;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return -1;
+            }
+        }
+
+        public static List<MasterlistviewModel> LoadProjecttitledetails(int projecttype)
+        {
+            try
+            {
+
+                List<MasterlistviewModel> Title = new List<MasterlistviewModel>();
+
+                Title.Add(new MasterlistviewModel()
+                {
+                    id = null,
+                    name = "Select Any"
+                });
+                using (var context = new IOASDBEntities())
+                {
+                    if (projecttype == 1 || projecttype == 2)
+                    {
+
+
+                        var query = (from C in context.tblProject
+
+                                     join U in context.tblUser on C.PIName equals U.UserId
+                                     where (C.ProjectStatus == 1 && C.ProjectType == projecttype)
+                                     orderby C.ProjectId
+                                     select new { U.FirstName, U.LastName, C }).ToList();
+
+
+                        if (query.Count > 0)
+                        {
+                            for (int i = 0; i < query.Count; i++)
+                            {
+                                Title.Add(new MasterlistviewModel()
+                                {
+                                    id = query[i].C.ProjectId,
+                                    name = query[i].C.ProjectNumber + "-" + query[i].C.ProjectTitle + "- " + query[i].FirstName + " " + query[i].LastName,
+                                });
+                            }
+                        }
+
+                    }
+                }
+
+                    
+
+                return Title;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
+        public static List<ProjectEnhancementModel> GetEnhancedProjectList()
+        {
+            List<ProjectEnhancementModel> project = new List<ProjectEnhancementModel>();
+            using (var context = new IOASDBEntities())
+
+                
+            {
+                var query = (from enhance in context.tblProjectEnhancement
+                             join P in context.tblProject on enhance.ProjectId equals P.ProjectId
+                             where (enhance.IsExtensiononly == null)                            
+                             orderby enhance.ProjectEnhancementId
+                             select new { enhance, P.PIName, P.SanctionValue, P.ProjectNumber, P.ProjectId, P.ProjectTitle, P.ActuaClosingDate }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        var userid = query[i].PIName;
+                        var userquery = context.tblUser.FirstOrDefault(dup => dup.UserId == userid);
+                        decimal oldsanctnval = 0;
+                        decimal presentsanctnval = 0;
+                        Nullable<DateTime> oldduedate = DateTime.MinValue;
+                        Nullable<DateTime> presentduedate = DateTime.MinValue;
+                        var PrsntDueDate = "";
+                        if (query[i].enhance.OldSanctionValue == 0 || query[i].enhance.OldSanctionValue == null)
+                        {
+                            oldsanctnval = Convert.ToDecimal(query[i].SanctionValue);
+
+                        }
+                        else
+                        {
+                            oldsanctnval = Convert.ToDecimal(query[i].enhance.OldSanctionValue);
+                        }
+                        if (query[i].enhance.EnhancedSanctionValue == 0 || query[i].enhance.EnhancedSanctionValue == null)
+                        {
+                            presentsanctnval = 0;
+
+                        }
+                        else
+                        {
+                            presentsanctnval = Convert.ToDecimal(query[i].enhance.EnhancedSanctionValue);
+                        }
+                        if (query[i].enhance.PresentDueDate == null)
+                        {
+                            oldduedate = query[i].ActuaClosingDate;
+                        }
+                        else
+                        {
+                            oldduedate = query[i].enhance.PresentDueDate;
+                        }
+                        if (query[i].enhance.ExtendedDueDate == null)
+                        {
+                            PrsntDueDate = String.Format("{0:dd}", (DateTime)query[i].ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query[i].ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query[i].ActuaClosingDate);
+                            presentduedate = query[i].ActuaClosingDate;
+                        }
+                        else
+                        {
+                            PrsntDueDate = String.Format("{0:dd}", (DateTime)query[i].enhance.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query[i].enhance.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query[i].enhance.ExtendedDueDate);
+                            presentduedate = query[i].enhance.ExtendedDueDate;
+                        }
+                        project.Add(new ProjectEnhancementModel()
+                        {
+                            Sno = i + 1,
+                            ProjectID = query[i].ProjectId,
+                            ProjectEnhancementID = query[i].enhance.ProjectEnhancementId,
+                            Projecttitle = query[i].ProjectTitle,
+                            ProjectNumber = query[i].ProjectNumber,
+                            PIname = userquery.FirstName + " " + userquery.LastName,
+                            OldSanctionValue = oldsanctnval,
+                            PresentDueDate = oldduedate,
+                            EnhancedSanctionValue = presentsanctnval,
+                            ExtndDueDate = PrsntDueDate
+                        });
+                    }
+                }
+            }
+            return project;
+        }
+        public static ProjectEnhancementModel getprojectdetailsforenhance(int projectid)
+        {
+            try
+            {
+
+                ProjectEnhancementModel Projectdetails = new ProjectEnhancementModel();
+
+                using (var context = new IOASDBEntities())
+                {
+
+                    var query = (from P in context.tblProject
+                                 where (P.ProjectId == projectid && P.ProjectStatus == 1)
+                                 select P).FirstOrDefault();
+                    // var selectprojectid = query.ProjectId;                   
+                    var prjctenhancequery = (from E in context.tblProjectEnhancement
+                                              where (E.ProjectId == projectid && E.IsCurrentVersion == true)
+                                              select E).FirstOrDefault();
+                    var pidetailsquery = (from U in context.tblUser
+                                          where U.UserId == query.PIName
+                                          select U).FirstOrDefault();
+                    var enhancementid = 0;
+                    if (query != null)
+                    {
+
+                        Projectdetails.ProjectID = query.ProjectId;
+                        Projectdetails.ProjectNumber = query.ProjectNumber;
+                        Projectdetails.Projecttitle = query.ProjectTitle;
+                                                
+                        if (prjctenhancequery != null)
+                        {
+                            if(prjctenhancequery.ExtendedDueDate != null)
+                            {
+                                Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)prjctenhancequery.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)prjctenhancequery.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)prjctenhancequery.ExtendedDueDate);
+                                Projectdetails.PresentDueDate = prjctenhancequery.ExtendedDueDate;
+                            }
+                            if (prjctenhancequery.ExtendedDueDate == null)
+                            {
+                                Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActuaClosingDate);
+                                Projectdetails.PresentDueDate = query.ActuaClosingDate;
+                            }
+
+                            Projectdetails.OldSanctionValue = prjctenhancequery.TotalAllocatedValue;
+                            Projectdetails.ProjectEnhancementID = prjctenhancequery.ProjectEnhancementId;
+                           
+                        }
+                        else
+                        {
+                            Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActuaClosingDate);
+                            Projectdetails.PresentDueDate = query.ActuaClosingDate;                            
+                            Projectdetails.OldSanctionValue = query.SanctionValue;
+                        }                      
+
+                    }
+
+                    
+                    
+                    var allocation = (from C in context.tblProjectAllocation
+                                      where (C.ProjectId == projectid)
+                                      select C).ToList();
+                    enhancementid = Projectdetails.ProjectEnhancementID;
+                    var enhanceallocation = (from C in context.tblProjectEnhancementAllocation
+                                      where (C.ProjectId == projectid && C.ProjectEnhancementId == enhancementid && C.IsCurrentVersion == true)
+                                      select C).ToList();
+                    if (enhanceallocation.Count == 0)
+                    { 
+                           
+                                int[] _prjectid = new int[allocation.Count];
+                                int[] _allocationid = new int[allocation.Count];
+                                int[] _allocationhead = new int[allocation.Count];
+                                Nullable<decimal>[] _allocationvalue = new Nullable<decimal>[allocation.Count];
+                        
+                                for (int i = 0; i < allocation.Count; i++)
+                                {
+                                    _prjectid[i] = Convert.ToInt32(allocation[i].ProjectId);
+                                    _allocationid[i] = allocation[i].AllocationId;
+                                    _allocationhead[i] = Convert.ToInt32(allocation[i].AllocationHead);
+                                    _allocationvalue[i] = allocation[i].AllocationValue;
+                            
+                                }
+                                Projectdetails.AllocationId = _allocationid;
+                                Projectdetails.Allocationhead = _allocationhead;
+                                Projectdetails.OldAllocationvalue = _allocationvalue;
+                       
+                            
+                    }
+                    else if (enhanceallocation.Count != 0)
+                    {
+                        
+                            int[] _prjectid = new int[enhanceallocation.Count];
+                            int[] _allocationid = new int[enhanceallocation.Count];
+                            int[] _allocationhead = new int[enhanceallocation.Count];
+                            Nullable<decimal>[] _allocationvalue = new Nullable<decimal>[enhanceallocation.Count];
+
+                            for (int i = 0; i < allocation.Count; i++)
+                            {
+                                _prjectid[i] = Convert.ToInt32(enhanceallocation[i].ProjectId);
+                                _allocationid[i] = allocation[i].AllocationId;
+                                _allocationhead[i] = Convert.ToInt32(enhanceallocation[i].AllocationHead);
+                                _allocationvalue[i] = enhanceallocation[i].TotalValue;
+
+                            }
+                            Projectdetails.AllocationId = _allocationid;
+                            Projectdetails.Allocationhead = _allocationhead;
+                            Projectdetails.OldAllocationvalue = _allocationvalue;
+
+                       
+                    }
+
+
+                }
+
+                return Projectdetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+
+        public static ProjectEnhancementModel EditEnhancement(int EnhanceId)
+        {
+            try
+            {
+                ProjectEnhancementModel editenhancement = new ProjectEnhancementModel();
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from P in context.tblProjectEnhancement
+                                 where (P.ProjectEnhancementId == EnhanceId)
+                                 select P).FirstOrDefault();
+                    var allocationquery = (from alloc in context.tblProjectEnhancementAllocation
+                                     where (alloc.IsCurrentVersion == true && alloc.ProjectEnhancementId == EnhanceId)
+                                     select alloc).ToList();
+                    var projectallocquery = (from prjct in context.tblProjectAllocation
+                                        where prjct.ProjectId == query.ProjectId
+                                        select prjct).ToList();
+                    if (query != null)
+                    {
+                        editenhancement.ProjectID = Convert.ToInt32(query.ProjectId);
+                        editenhancement.ProjectEnhancementID = query.ProjectEnhancementId;
+                        editenhancement.DocumentReferenceNumber = query.DocumentReferenceNumber;
+                        if(query.PresentDueDate != null)
+                        {
+                            editenhancement.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.PresentDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.PresentDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.PresentDueDate);
+                            editenhancement.PresentDueDate = (DateTime)query.PresentDueDate;
+                            editenhancement.ExtndDueDate = String.Format("{0:dd}", (DateTime)query.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ExtendedDueDate);
+                            editenhancement.ExtendedDueDate = (DateTime)query.ExtendedDueDate;
+                        }
+                        
+                        editenhancement.OldSanctionValue = query.OldSanctionValue;
+                        editenhancement.EnhancedSanctionValue = query.EnhancedSanctionValue;
+                        editenhancement.TotalEnhancedAllocationvalue = query.TotalEnhancedValue;
+                        editenhancement.TotalAllocatedvalue = query.TotalAllocatedValue;
+                        if (query.AttachmentName != null)
+                        {
+                            editenhancement.AttachmentName = query.AttachmentName;
+                        }
+                        else
+                        {
+                            editenhancement.AttachmentName = "No Document found";
+                        }
+                        editenhancement.AttachmentPath = query.AttachmentPath;
+                        var projectid = editenhancement.ProjectID;
+                        var projectquery = (from P in context.tblProject
+                                            where (P.ProjectId == projectid)
+                                            select P).FirstOrDefault();
+                        editenhancement.ProjectNumber = projectquery.ProjectNumber;
+                        editenhancement.Projecttitle = projectquery.ProjectTitle;
+                        if(query.IsEnhancementWithExtension == true)
+                        {
+                            editenhancement.ExtendedDueDate = query.ExtendedDueDate;
+                        }
+
+                    }
+                    if (allocationquery.Count > 0)
+                    {
+                        int[] _prjectid = new int[allocationquery.Count];
+                        int[] _allocationid = new int[allocationquery.Count];
+                        int[] _allocationhead = new int[allocationquery.Count];
+                        Nullable<decimal>[] _oldallocationvalue = new Nullable<decimal>[allocationquery.Count];
+                        Nullable<decimal>[] _enhancedallocationvalue = new Nullable<decimal>[allocationquery.Count];
+                        Nullable<decimal>[] _totalallocationvalue = new Nullable<decimal>[allocationquery.Count];
+
+                        for (int i = 0; i < allocationquery.Count; i++)
+                        {
+                            _prjectid[i] = Convert.ToInt32(allocationquery[i].ProjectId);
+                            _allocationid[i] = projectallocquery[i].AllocationId;
+                            _allocationhead[i] = Convert.ToInt32(allocationquery[i].AllocationHead);
+                            _oldallocationvalue[i] = allocationquery[i].OldValue;
+                            _enhancedallocationvalue[i] = allocationquery[i].EnhancedValue;
+                            _totalallocationvalue[i] = allocationquery[i].TotalValue;
+                        }
+                        editenhancement.AllocationId = _allocationid;
+                        editenhancement.Allocationhead = _allocationhead;
+                        editenhancement.OldAllocationvalue = _oldallocationvalue;
+                        editenhancement.EnhancedAllocationvalue = _enhancedallocationvalue;
+                        editenhancement.HeadwiseTotalAllocationvalue = _totalallocationvalue;
+                    }
+                    return editenhancement;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static List<ProjectEnhancementModel> GetExtendedProjectList()
+        {
+            List<ProjectEnhancementModel> project = new List<ProjectEnhancementModel>();
+            using (var context = new IOASDBEntities())
+
+
+            {
+                var query = (from enhance in context.tblProjectEnhancement
+                             join P in context.tblProject on enhance.ProjectId equals P.ProjectId
+                             orderby enhance.ProjectEnhancementId
+                             where ((enhance.IsExtensiononly == true || enhance.IsEnhancementWithExtension == true) && enhance.IsExtensionOnlyCurrentversion == true)
+                             select new { enhance, P.PIName, P.SanctionValue, P.ProjectNumber, P.ProjectId, P.ProjectTitle, P.ActuaClosingDate }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        var userid = query[i].PIName;
+                        var userquery = context.tblUser.FirstOrDefault(dup => dup.UserId == userid);                        
+                        Nullable<decimal> presentsanctnval = 0;
+                        Nullable<DateTime> oldduedate = DateTime.MinValue;
+                        Nullable<DateTime> presentduedate = DateTime.MinValue;
+                        var PrsntDueDate = "";
+                        
+                        if (query[i].enhance.OldSanctionValue == 0 || query[i].enhance.OldSanctionValue == null)
+                        {
+                            presentsanctnval = query[i].SanctionValue;
+
+                        }
+                        else
+                        {
+                            presentsanctnval = Convert.ToDecimal(query[i].enhance.OldSanctionValue);
+                        }
+                        if (query[i].enhance.PresentDueDate == null)
+                        {
+                            oldduedate = query[i].ActuaClosingDate;
+                        }
+                        else
+                        {
+                            oldduedate = query[i].enhance.PresentDueDate;
+                        }
+                        if (query[i].enhance.ExtendedDueDate == null)
+                        {
+                            PrsntDueDate = String.Format("{0:dd}", (DateTime)query[i].ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query[i].ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query[i].ActuaClosingDate);
+                            presentduedate = query[i].ActuaClosingDate;
+                        }
+                        else
+                        {
+                            PrsntDueDate = String.Format("{0:dd}", (DateTime)query[i].enhance.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query[i].enhance.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query[i].enhance.ExtendedDueDate);
+                            presentduedate = query[i].enhance.ExtendedDueDate;
+                        }
+                        project.Add(new ProjectEnhancementModel()
+                        {
+                            Sno = i + 1,
+                            ProjectID = query[i].ProjectId,
+                            ProjectEnhancementID = query[i].enhance.ProjectEnhancementId,
+                            Projecttitle = query[i].ProjectTitle,
+                            ProjectNumber = query[i].ProjectNumber,
+                            PIname = userquery.FirstName + " " + userquery.LastName,                            
+                            PresentDueDate = oldduedate,
+                            EnhancedSanctionValue = presentsanctnval,
+                            ExtndDueDate = PrsntDueDate
+                        });
+                    }
+                }
+            }
+            return project;
+        }
+        public static ProjectEnhancementModel getprojectdetailsforextension(int projectid)
+        {
+            try
+            {
+
+                ProjectEnhancementModel Projectdetails = new ProjectEnhancementModel();
+
+                using (var context = new IOASDBEntities())
+                {
+
+                    var query = context.tblProject.FirstOrDefault(m => m.ProjectId == projectid);
+                    var selectprojectid = query.ProjectId;
+                    var prjctenhancequery = (from C in context.tblProjectEnhancement
+                                             where (C.ProjectId == selectprojectid && (C.IsExtensiononly == true || C.IsEnhancementWithExtension == true) && C.IsCurrentVersion == true)
+                                             select C).FirstOrDefault();
+                    var pidetailsquery = (from c in context.tblUser
+                                          where c.UserId == query.PIName
+                                          select c).FirstOrDefault();
+
+                    if (query != null)
+                    {
+
+                        Projectdetails.ProjectID = query.ProjectId;
+                        Projectdetails.ProjectNumber = query.ProjectNumber;
+                        Projectdetails.Projecttitle = query.ProjectTitle;
+
+                        if (prjctenhancequery != null)
+                        {
+                            if(prjctenhancequery.ExtendedDueDate != null)
+                            { 
+                            Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)prjctenhancequery.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)prjctenhancequery.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)prjctenhancequery.ExtendedDueDate);
+                            Projectdetails.PresentDueDate = prjctenhancequery.ExtendedDueDate;
+                            }
+                            else
+                            {
+                                Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActuaClosingDate);
+                                Projectdetails.PresentDueDate = query.ActuaClosingDate;                               
+                            }
+                            Projectdetails.OldSanctionValue = prjctenhancequery.TotalAllocatedValue;
+                        }
+                        else
+                        {
+                            Projectdetails.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ActuaClosingDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ActuaClosingDate);
+                            Projectdetails.PresentDueDate = query.ActuaClosingDate;
+                            Projectdetails.OldSanctionValue = query.SanctionValue;
+                        }
+
+
+                    }
+
+                    
+                }
+
+                return Projectdetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public int ProjectExtension(ProjectEnhancementModel model)
+        {
+            try
+            {
+                using (var context = new IOASDBEntities())
+                {
+                    var projectid = 0;
+                    tblProjectEnhancement extend = new tblProjectEnhancement();
+                    var chkproject = context.tblProject.FirstOrDefault(dup => dup.ProjectId == model.ProjectID);
+                    
+                    var userquery = context.tblUser.FirstOrDefault(m => m.UserId == chkproject.PIName);
+                    var extendquery = context.tblProjectEnhancement.FirstOrDefault(m => m.ProjectEnhancementId == model.ProjectEnhancementID);
+                    var chkextendproject = (from C in context.tblProjectEnhancement
+                                            where (C.ProjectId == model.ProjectID && (C.IsExtensiononly == true || C.IsEnhancementWithExtension == true) && C.IsExtensionOnlyCurrentversion == true)
+                                            select C).ToList();
+                    
+                    if (extendquery == null)
+                    { 
+                            if (model.AttachmentName != null)
+                            {
+                                string filepath = " ";
+                                filepath = System.IO.Path.GetFileName(model.file.FileName);
+                                var fileId = Guid.NewGuid().ToString();
+                                var docname = fileId + "_" + filepath;
+
+                                /*Saving the file in server folder*/
+                                model.file.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                                extend.AttachmentPath = docname;
+                            }
+
+                            extend.ProjectId = model.ProjectID;
+                            extend.DocumentReferenceNumber = model.DocumentReferenceNumber;
+                            extend.OldSanctionValue = model.OldSanctionValue;
+                            extend.Status = chkproject.ProjectStatus;
+                            extend.PresentDueDate = model.PresentDueDate;
+                            extend.ExtendedDueDate = model.ExtendedDueDate;
+                            extend.CrtdUserId = model.CrtdUserid;
+                            extend.CrtsTS = DateTime.Now;
+                            extend.AttachmentName = model.AttachmentName;                    
+                            if (extend.ExtendedDueDate != null && extend.EnhancedSanctionValue == null)
+                            {
+                                extend.IsEnhancementonly = false;
+                                extend.IsEnhancementWithExtension = false;
+                                extend.IsExtensiononly = true;
+                            }
+                            else if (extend.ExtendedDueDate == null)
+                            {
+                                extend.IsEnhancementonly = false;
+                                extend.IsEnhancementWithExtension = false;
+                                extend.IsExtensiononly = false;
+                            }
+                            extend.IsExtensionOnlyCurrentversion = true;
+                            context.tblProjectEnhancement.Add(extend);
+                            context.SaveChanges();
+                            int prjctid = Convert.ToInt32(extend.ProjectId);
+                            projectid = prjctid;
+                        if(chkextendproject != null)
+                        {
+                            for(int i = 0; i < chkextendproject.Count(); i++)
+                            {
+                                chkextendproject[i].IsExtensionOnlyCurrentversion = false;
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        if (model.AttachmentName != null)
+                        {
+                            string filepath = " ";
+                            filepath = System.IO.Path.GetFileName(model.file.FileName);
+                            var fileId = Guid.NewGuid().ToString();
+                            var docname = fileId + "_" + filepath;
+
+                            /*Saving the file in server folder*/
+                            model.file.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                            extendquery.AttachmentPath = docname;
+                        }
+
+                        extendquery.ProjectId = model.ProjectID;
+                        extendquery.DocumentReferenceNumber = model.DocumentReferenceNumber;
+                        extendquery.OldSanctionValue = model.OldSanctionValue;
+                        extendquery.Status = chkproject.ProjectStatus;
+                        extendquery.PresentDueDate = model.PresentDueDate;
+                        extendquery.ExtendedDueDate = model.ExtendedDueDate;
+                        extendquery.CrtdUserId = model.CrtdUserid;
+                        extendquery.CrtsTS = DateTime.Now;
+                        extendquery.AttachmentName = model.AttachmentName;
+                        if (extendquery.ExtendedDueDate != null && extendquery.EnhancedSanctionValue == null)
+                        {
+                            extendquery.IsEnhancementonly = false;
+                            extendquery.IsEnhancementWithExtension = false;
+                            extendquery.IsExtensiononly = true;
+                        }
+                        else if (extendquery.ExtendedDueDate == null)
+                        {
+                            extendquery.IsEnhancementonly = false;
+                            extendquery.IsEnhancementWithExtension = false;
+                            extendquery.IsExtensiononly = false;
+                        }
+                        extendquery.IsCurrentVersion = true;                        
+                        context.SaveChanges();
+                        int prjctid = Convert.ToInt32(extendquery.ProjectId);
+                        projectid = prjctid;
+                    }
+                    return projectid;
+                  }
+                }
+            
+            catch (Exception ex)
+            {
+
+                return -1;
+            }
+        }
+
+        public static ProjectEnhancementModel EditExtension(int EnhanceId)
+        {
+            try
+            {
+                ProjectEnhancementModel editextension = new ProjectEnhancementModel();
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from P in context.tblProjectEnhancement
+                                 where (P.ProjectEnhancementId == EnhanceId)
+                                 select P).FirstOrDefault();
+                    
+
+                    if (query != null)
+                    {
+                        editextension.ProjectID = Convert.ToInt32(query.ProjectId);
+                        editextension.ProjectEnhancementID = query.ProjectEnhancementId;
+                        editextension.DocumentReferenceNumber = query.DocumentReferenceNumber;
+                        if (query.PresentDueDate != null && query.ExtendedDueDate != null)
+                        {
+                            editextension.PrsntDueDate = String.Format("{0:dd}", (DateTime)query.PresentDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.PresentDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.PresentDueDate);
+                            editextension.PresentDueDate = (DateTime)query.PresentDueDate;
+                            editextension.ExtndDueDate = String.Format("{0:dd}", (DateTime)query.ExtendedDueDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ExtendedDueDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ExtendedDueDate);
+                            editextension.ExtendedDueDate = (DateTime)query.ExtendedDueDate;
+                        }
+
+                        editextension.OldSanctionValue = query.OldSanctionValue;
+                        if (query.AttachmentName != null)
+                        {
+                            editextension.AttachmentName = query.AttachmentName;
+                        }
+                        else
+                        {
+                            editextension.AttachmentName = "No Document found";
+                        }
+
+                        editextension.AttachmentPath = query.AttachmentPath;                      
+                        var projectid = editextension.ProjectID;
+                        var projectquery = (from P in context.tblProject
+                                            where (P.ProjectId == projectid)
+                                            select P).FirstOrDefault();
+                        editextension.ProjectNumber = projectquery.ProjectNumber;
+                        editextension.Projecttitle = projectquery.ProjectTitle;
+                        
+                    }
+                    return editextension;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+      
+
+    }
+}

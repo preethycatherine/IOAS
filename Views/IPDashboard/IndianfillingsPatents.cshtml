@@ -1,0 +1,138 @@
+﻿@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "Indian_fillings_and_Patents Rights";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+<script>
+    $(function () {
+        //$("[data-toggle=popover]").popover({ html: true });
+
+        $('[data-toggle="popover"]').popover();
+        $('.popuplink').on("click", function (e) {
+            e.preventDefault();
+        });
+
+        $('.popuplink').click(function (e) {
+            $('.popuplink').not(this).popover('hide');
+            $(this).popover("toggle");
+            e.stopPropagation();
+        });
+
+        $(document).click(function (e) {
+            if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
+                $('.popuplink').popover('hide');
+            }
+        });
+    });
+
+    //$('#fileno').click(function () {
+    //    var url = "/IPDashboard/patentinfoR102IPDetails";
+    //    var name = $('#fileno').val();
+    //    $.get(url, { input: name }, function (data) {
+    //        $("#fileno").html(data);
+    //    });
+    //})
+
+</script>
+@using (Html.BeginForm("IndianfillingsPatents", "IPDashboard", FormMethod.Post))
+{
+    <head>
+        <style>
+            th, td {
+                padding: 15px;
+                text-space-collapse: collapse;
+            }
+
+
+
+            #headerpanel {
+                padding-top: 30px;
+                padding-bottom: 20px;
+                font-weight: 600;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Indian fillings and Patents</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td><b>Institute ID :</b></td>
+                                        <td><span id="fileno">@Model.PIInfo.EmployeeId</span></td>
+                                        <td><b>Date :</b>@Model.PIInfo.todaydate </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>CoordinatorName :</b></td>
+                                        <td><span>@Model.PIInfo.EmployeeName</span>  </td>
+                                        <td><b>Department :</b> </td>
+                                        <td><span>@Model.PIInfo.DepartmentCode</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-md-12">
+            <table class="table" id="tbllist">
+                <thead>
+                    <tr>
+                        <th scope="col">File No.</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Application No.</th>
+                        <th scope="col">Filing Date</th>
+                        <th scope="col">Grant / Registration No.</th>
+                        <th scope="col">Grant / Registration Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+
+                    @foreach (var rec in Model.patentList)
+                {
+                        <tr>
+                            @*<td><a href="#" class="popuplink" data-toggle="popover" title="" data-content="<a href='IPDashboard/patentinfoR102IPDetails'>IDF Details </a> <br/><a href=''>IDF Cost  </a> <br/><a href=''>IDF Receipt  </a> <br/>" data-original-title="" data-html="true">@rec.FileNo</a></td>*@
+                            <td><a href="#" class="popuplink" data-toggle="popover" title="" data-content="@popupLink(rec.FileNo)" data-original-title='' data-html="true">@rec.FileNo</a></td>
+                            <td>@rec.Title</td>
+                            <td>@rec.Type</td>
+                            <td>@rec.Applcn_no</td>
+                            <td>@rec.Filing_dt</td>
+                            <td>@rec.Pat_no</td>
+                            <td>@rec.Pat_dt</td>
+                            <td>@rec.Status</td>
+                        </tr>
+                    }
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@functions{
+    public string popupLink(string fileno)
+    {
+        string link=Html.ActionLink("IDF Details", "patentinfoR102IPDetails", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        string link1 = Html.ActionLink("IDF Cost", "patentinfoR301PaymentDetailsR102", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        string link2 = Html.ActionLink("IDF Receipt", "Patentreceipt", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        //return string.Format(@"{0} <br/><a href=''>IDF Cost  </a> <br/><a href=''>IDF Receipt  </a> <br/>", link);
+        return string.Format(@"{0} <br/>{1}<br/> {2} <br/>", link,link1,link2);
+    }
+
+}

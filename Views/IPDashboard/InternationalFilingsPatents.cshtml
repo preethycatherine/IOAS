@@ -1,0 +1,95 @@
+﻿@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "InternationalFilingsPatents";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+<script>
+    $(function () {
+        
+        $('[data-toggle="popover"]').popover();
+        $('.popuplink').on("click", function (e) {
+            e.preventDefault();
+        });
+
+        $('.popuplink').click(function (e) {
+            $('.popuplink').not(this).popover('hide');
+            $(this).popover("toggle");
+            e.stopPropagation();
+        });
+
+        $(document).click(function (e) {
+            if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
+                $('.popuplink').popover('hide');
+            }
+        });
+    });
+
+</script>
+@using (Html.BeginForm("InternationalFilingsPatents", "IPDashboard", FormMethod.Post))
+{
+    <head>
+        <style>
+            th, td {
+                padding: 15px;
+                text-space-collapse: collapse;
+            }
+            #headerpanel {
+                padding-top: 30px;
+                padding-bottom: 20px;
+                font-weight: 600;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>International Filings and Patents </h3>
+            </div>
+        </div>
+    </div>
+   
+    <div class="row mt30">
+        <div class="col-md-12">
+            <table class="table" id="tbllist">
+                <thead>
+                    <tr>
+                        <th scope="col">File No.</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Application No.</th>                      
+                        <th scope="col">Filing Date</th>
+                        <th scope="col">Grant / Registration No.</th>
+                        <th scope="col">Grant / Registration Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+
+                    @foreach (var rec in Model.internfillings)
+                    {
+                        <tr>
+                            <td><a href="#" class="popuplink" data-toggle="popover" title="" data-content="@popupLink(rec.subFileNo)" data-original-title='' data-html="true">@rec.subFileNo</a></td>                         
+                            <td>@rec.Country</td>
+                            <td>@rec.Applcn_no</td>
+                            <td>@rec.Filing_dt</td>
+                            <td>@rec.Pat_no</td>
+                            <td>@rec.Pat_dt</td>
+                            <td>@rec.Status</td>
+                        </tr>
+                    }
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+}
+@functions{
+    public string popupLink(string fileno)
+    {
+        string instid = Session["fileno"].ToString();
+        string subfileno = fileno;
+        string[] s1 = fileno.Split('-');
+        fileno = s1[0].ToString();
+
+        string link = Html.ActionLink("Patent IDF Details", "patentinfoR202IPDetails", "IPDashboard" ,new { instid= instid, fileno = fileno,subfileno=subfileno }, new {  }).ToString();
+        return string.Format(@"{0} <br/>", link);
+    }
+}

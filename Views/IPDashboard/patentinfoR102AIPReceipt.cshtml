@@ -1,0 +1,103 @@
+﻿@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "patentinfoR102AIPReceipt";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+@using (Html.BeginForm("patentinfoR102AIPReceipt", "IPDashboard", FormMethod.Post))
+{
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Patent Information System</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><B>Receipt Details</B></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <table style="width:100%;" class="table table-hover">
+                                    <tr>
+                                        <td>Title </td>
+                                        <td>@Model.patrecpdet.title</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Application No.  </td>
+                                        <td>@Model.patrecpdet.ApplicationNo</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Filing Date  </td>
+                                        <td>@Model.patrecpdet.filing_dt</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inventor </td>
+                                        <td>@Model.patrecpdet.Inventor</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Department </td>
+                                        <td>@Model.patrecpdet.department</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patent No.</td>
+                                        <td>@Model.patrecpdet.PatentNo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patent Date </td>
+                                        <td>@Model.patrecpdet.PatentDt</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-md-12">
+            <table style="width:100%;" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Submission Date </th>
+                        <th scope="col">Transaction Type</th>
+                        <th scope="col">Payment Group  </th>
+                        <th scope="col">Payment Date</th>
+                        <th scope="col">Payment Reference</th>
+                        <th scope="col">Payment Description </th>
+                        <th scope="col">Party  </th>
+                        <th scope="col">Technology transfer No.  </th>
+                        <th scope="col">Amount in Rupees  </th>
+                    </tr>
+                    @foreach (var rec in Model.patrecptble)
+                    {
+                        <tr>
+
+                            <td>@rec.SubmissionDt</td>
+                            <td>@rec.TransType</td>
+                            <td>@rec.PaymentGroup</td>
+                            <td>@rec.PaymentDate</td>
+                            <td>@rec.PaymentRef</td>
+                            <td>@rec.PaymentDescription</td>
+                            <td>@rec.Party</td>
+                            <td>@rec.TechTransferNo</td>
+                            <td>@rec.total</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td colspan=8 align="right"><b>@Model.patrecptbletotal.total</b></td>
+
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+}

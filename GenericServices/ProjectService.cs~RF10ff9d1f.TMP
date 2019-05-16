@@ -1,0 +1,660 @@
+﻿using IOAS.DataModel;
+using IOAS.Infrastructure;
+using IOAS.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace IOAS.GenericServices
+{
+    public class ProjectService
+    {
+        //Creation of Proposal (Proposal Opening) - Save data in DB 
+        public int ProjectOpening(CreateProjectModel model)
+        {
+            try
+            {
+                using (var context = new IOASDBEntities())
+                {
+                    var proposalid = model.ProposalID;
+                    tblProject create = new tblProject();
+                    var PIname = Convert.ToInt32(model.PIname);
+                    var PIusername = Common.getPIusernamebyname(PIname);
+                    var proposal = context.tblProposal.FirstOrDefault(dup => dup.ProposalId == model.ProposalID);
+                    var chkproject = context.tblProject.FirstOrDefault(dup => dup.ProjectTitle == model.Projecttitle);
+                    if (chkproject != null)
+                        return 0;
+                    var userquery = context.tblUser.FirstOrDefault(m => m.UserId == model.PIname);
+                    
+                    if (model.taxprooffile != null )
+                    { 
+                        string taxprooffilepath = " ";
+                        taxprooffilepath = System.IO.Path.GetFileName(model.taxprooffile.FileName);
+                        var taxdocfileId = Guid.NewGuid().ToString();
+                        var taxdocname = taxdocfileId + "_" + taxprooffilepath;
+                    
+                    /*Saving the file in server folder*/
+                    model.taxprooffile.SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + taxdocname));
+                        create.TaxExemptionDocPath = taxdocname;
+                    }
+                                      
+                    create.ProposalNumber = model.ProposalNumber;
+                    create.ProjectType = model.Prjcttype;
+                    create.ProjectTitle = model.Projecttitle;
+                    create.PIDepartment = model.Department;
+                    create.PIName = model.PIname;
+                    create.PIDesignation = model.PIDesignation;                   
+                    create.SponsoringAgency = model.SponsoringAgency;
+                        if(create.ProjectType == 1) { 
+                        create.ProjectSubType = model.ProjectSubType;
+                        }
+                        
+                        create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        create.SponsoringAgency = model.SponsoringAgency;
+                        create.FinancialYear = model.FinancialYear;
+                        create.SanctionValue = model.Sanctionvalue;
+                        create.SchemeName = model.Schemename;
+                        create.SchemeAgencyName = model.SchemeAgency;
+                        create.FundingType = model.ProjectFundingType_Qust_1;
+                        if (create.FundingType == "Indian")
+                        {
+                            create.IndianFundedBy = model.ProjectFundedby_Qust_1;
+                            if (create.IndianFundedBy == "Govt")
+                            {
+                                create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "Ministry")
+                                {
+                                    create.FundingGovtMinistry = model.indprjctfundbodygovt_Agencymnstryname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_mnstryAmount;
+                                }
+                                if (create.FundingGovtBody == "MHRD")
+                                {
+                                    create.FundingGovtAgency = model.indprjctfundbodygovt_Agencydeptname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "Universities")
+                                {
+                                    create.FundingGovtAgency = model.indprjctfundbodygovt_Agencyunivname;
+                                    create.FundingGovtAmount = model.indprjctfundbodygovt_univAmount;
+                                }
+                            }
+
+                            if (create.IndianFundedBy == "Nongovt")
+                            {
+                                create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "Indstry")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_AgencyIndstryname;
+                                    create.FundingGovtAmount = model.indprjctfundbodynongovt_IndstryAmount;
+                                }
+                                if (create.FundingGovtBody == "Universities")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyunivname;
+                                    create.FundingGovtAmount = model.indprjctfundbodynongovt_univAmount;
+                                }
+                                if (create.FundingGovtBody == "Others")
+                                {
+                                    create.FundingNonGovtAgency = model.indprjctfundbodynongovt_Agencyothersname;
+                                    create.FundingGovtAmount = model.indprjctfundbodynongovt_othersAmount;
+                                }
+                            }
+                            if (create.ProjectType == 2)
+                            {
+                                create.ProjectCategory = model.ProjectSubType;
+                            }
+                        }
+                        if (create.FundingType == "Foreign")
+                        {
+                            create.ForeignFundedBy = model.ForgnProjectFundedby_Qust_1;
+                            if (create.FundingType == "Foreign" && create.ForeignFundedBy == "Govt")
+                            {
+                                
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "ForgnGovtDept")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_country;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencydeptname;                                    
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnGovtUniv")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_country;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_Agencyunivname;
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_univAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnUniv")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodygovt_otherscountry;
+                                    create.FundingGovtAgency = model.forgnprjctfundbodygovt_othersagncyname;
+                                    create.FundingGovtAmount = model.forgnprjctfundbodygovt_othersAmount;
+                                }
+                            }
+                            if (create.FundingType == "Foreign" && create.ForeignFundedBy == "Nongovt")
+                            {
+
+                                create.FundingGovtBody = model.ProjectFundingBody_Qust_1;
+                                if (create.FundingGovtBody == "ForgnDept")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_country;
+                                    create.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencydeptname;
+                                    create.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_deptAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnUniversities")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_univcountry;
+                                    create.FundingNonGovtAgency = model.forgnprjctfundbodynongovt_Agencyunivname;
+                                    create.FundingNonGovtAmount = model.forgnprjctfundbodynongovt_univAmount;
+                                }
+                                if (create.FundingGovtBody == "ForgnUniv")
+                                {
+                                    create.ForeignFundedFundingCountry = model.forgnprjctfundbodynongovt_country;
+                                    create.FundingNonGovtAgency = model.indprjctfundbodygovt_Agencyunivname;
+                                    create.FundingNonGovtAmount = model.indprjctfundbodygovt_univAmount;
+                                }
+                            }
+                        }
+                        create.SponProjectCategory = model.Projectcatgry_Qust_1;
+                     //   create.ProjectCategory = model.SponsoringAgency;
+                        create.DurationOfProject = model.Projectduration;
+                        create.SchemeAgencyName = model.SchemeAgency;
+                        create.CategoryOfProject = model.Categoryofproject;
+                        create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                        create.ConsultancyTaxServiceType = model.constaxservice;
+                        create.ProjectAgencyCountry = model.forgnfndngagncycountry;
+                        create.IndianProjectAgencyState = model.indfundngagncystate;
+
+                        create.IndianProjectAgencyLocation = model.indfundngagncylocation;
+                        create.TaxStatus = model.ConsProjectTaxType_Qust_1;
+                        create.ForeignProjectAgencyState = model.forgnfundngagncystate;
+                        create.ForeignProjectAgencyLocation = model.forgnfundngagncylocation;
+                        create.ConsultancyFundingCategory = model.ConsFundingCategory;
+                       
+                        create.TaxExemptionReason = model.ConsProjectReasonfornotax;
+                        
+                        create.GSTIN = model.GSTNumber;
+                        create.PAN = model.PAN;
+                        create.TAN = model.TAN;
+                        create.SponsoringAgencyCode = model.AgencyCode;
+                        create.SponsoringAgencySOAddress = model.Agencyregaddress;
+                        create.SponsoringAgencyContactPerson = model.Agencycontactperson;
+                        create.SponsoringAgencyContactPersonDesignation = model.Agencycontactpersondesignation;
+                        create.SponsoringAgencyContactPersonEmail = model.AgencycontactpersonEmail;
+                        create.SponsoringAgencyContactPersonMobile = model.Agencycontactpersonmobile;
+                        create.TotalProjectStaffCount = model.TotalNoofProjectStaffs;
+                        create.JRFStaffCount = model.NoofJRFStaffs;
+                        create.JRFStaffSalary = model.SalaryofJRFStaffs;
+                        create.SRFStaffCount = model.NoofSRFStaffs;
+                        create.SRFStaffSalary = model.SalaryofSRFStaffs;
+                        create.RAStaffCount = model.NoofRAStaffs;
+                        create.RAStaffSalary = model.SalaryofRAStaffs;
+                        create.PAStaffCount = model.NoofPAStaffs;
+                        create.PQStaffCount = model.NoofPQStaffs;
+                        create.PQStaffSalary = model.SalaryofPQStaffs;
+                        create.SumofStaffCount = model.SumofStaffs;
+                        create.SumSalaryofStaff = model.SumSalaryofStaffs;
+                        create.TentativeStartDate = model.TentativeStartdate;
+                        create.ActualStartDate = model.Startdate;
+                        create.TentativeCloseDate = model.TentativeClosedate;
+                        create.ActuaClosingDate = model.Closedate;
+                        create.ProposalApprovedDate = model.ProposalApprovedDate;                        
+                        create.Remarks = model.Remarks;
+                        create.CrtdUserId = model.ProjectcrtdID;
+                        create.CrtdTS = DateTime.Now;
+
+                        var departmentid = Convert.ToInt32(model.Department);
+                        var Departmentcode = Common.getDepartmentCode(departmentid);
+                        var facultycode = Common.getfacultycode(PIname);                    
+                        var AgencyID = model.AgencyCode;
+                        var Agencycode = Common.getagencycode(AgencyID);
+                      //  var institutecode = "IITM"; /*Common.getInstituteCode(PIusername);*/
+                        var financialyear = model.FinancialYear;
+                        var Sequencenumber = Common.getlastProjectID();
+
+                    if (Sequencenumber > 0)
+                    {
+                        model.ProjectNumber = Departmentcode + financialyear + Sequencenumber + Agencycode + facultycode;
+                    }
+                    else
+                    {
+                        model.ProjectNumber = Departmentcode + financialyear + "1" + Agencycode + facultycode;
+                    }
+                    create.ProjectNumber = model.ProjectNumber;
+                    context.tblProject.Add(create);
+                    context.SaveChanges();
+                    int projectid = create.ProjectId;
+                    if(projectid > 0)
+                    { 
+                     proposal.ProposalStatus = 2;
+                     context.SaveChanges();
+                        for (int i = 0; i < model.Allocationhead.Length; i++)
+                        {
+                            tblProjectAllocation Allocation = new tblProjectAllocation();
+                            Allocation.AllocationHead = model.Allocationhead[i];
+                            Allocation.AllocationValue = model.Allocationvalue[i];                           
+                            Allocation.CrtdUserId = model.ProjectcrtdID;
+                            Allocation.CrtdTS = DateTime.Now;
+                            Allocation.ProjectId = projectid;
+                            context.tblProjectAllocation.Add(Allocation);
+                            context.SaveChanges();
+                        }
+                    }
+                    if (model.CoPIname[0] != 0)
+                    {
+                        for (int i = 0; i < model.CoPIname.Length; i++)
+                        {
+
+                            tblProjectCoPI Copi = new tblProjectCoPI();                            
+                            Copi.ProjectId = projectid;
+                            Copi.Name = model.CoPIname[i];
+                            Copi.Department = model.CoPIDepartment[i];
+                          //  Copi.Email = model.CoPIEmail[i];
+                            Copi.CrtdUserId = model.ProjectcrtdID;
+                            Copi.Crtd_TS = DateTime.Now;
+                            context.tblProjectCoPI.Add(Copi);
+                            context.SaveChanges();
+
+                        }
+                    }
+                    if (model.AttachName[0] != null && model.AttachName[0] != "")
+                    {
+                        for (int i = 0; i < model.DocType.Length; i++)
+                        {
+
+                            string docpath = " ";
+                            docpath = System.IO.Path.GetFileName(model.file[i].FileName);
+                            var docfileId = Guid.NewGuid().ToString();
+                            var docname = docfileId + "_" + docpath;
+
+                            /*Saving the file in server folder*/
+                            model.file[i].SaveAs(HttpContext.Current.Server.MapPath("~/Content/SupportDocuments/" + docname));
+                            tblSupportDocuments Document = new tblSupportDocuments();
+                            Document.ProposalId = proposalid;
+                            Document.ProjectId = projectid;
+                                if (model.file[i] != null)
+                             { 
+                              Document.DocName = model.file[i].FileName;
+                              }
+                            Document.AttachmentName = model.AttachName[i];
+                            Document.DocType = model.DocType[i];
+                            Document.AttachmentPath = docname;
+                            Document.DocUploadUserid = model.ProjectcrtdID;
+                            Document.DocUpload_TS = DateTime.Now;
+                            Document.IsCurrentVersion = true;
+                            context.tblSupportDocuments.Add(Document);
+                            context.SaveChanges();
+
+                        }
+                    }
+                    
+                   
+  
+                    return projectid;
+
+                }
+            }
+             catch (Exception ex)
+            {
+                
+                return -1;
+            }
+        }
+        public PagedData<ProposalResultModels> GetProposal(ProposalSrchFieldsModel model, int page, int pageSize)
+        {
+            try
+            {
+                List<ProposalResultModels> proposalList = new List<ProposalResultModels>();
+                var searchData = new PagedData<ProposalResultModels>();
+
+                int skiprec = 0;
+
+                if (page == 1)
+                {
+                    skiprec = 0;
+                }
+                else
+                {
+                    skiprec = (page - 1) * pageSize;
+                }
+
+                using (var context = new IOASDBEntities())
+                {
+                    int[] status = { 1, 2, 3 };
+                    var result = (from psl in context.tblProposal
+                                  join user in context.tblUser on psl.PI equals user.UserId
+                                  where (psl.IsDeleted != true)                                  
+                                  && (String.IsNullOrEmpty(model.srchKeyword) || psl.ProposalNumber == model.srchKeyword
+                                  || psl.ProposalTitle.Contains(model.srchKeyword))
+                                  orderby psl.ProposalId descending
+                                  select new { psl, user.FirstName, user.LastName }).Skip(skiprec).Take(pageSize).ToList();
+                    //var result = query.Skip(skiprec).Take(pageSize).ToList();
+                    if (result.Count > 0)
+                    {
+                        for (int i = 0; i < result.Count; i++)
+                        {
+                            int proposalId = result[i].psl.ProposalId;
+                            proposalList.Add(new ProposalResultModels()
+                            {
+                                proposalId = proposalId,                                
+                                nameOfPI = result[i].FirstName + " " + result[i].LastName,
+                                PIUserID = result[i].psl.PI,
+                                proposalTitle = result[i].psl.ProposalTitle,
+                                proposedBudget = Convert.ToDecimal(result[i].psl.ProposalValue),
+                                status = Convert.ToInt32(result[i].psl.ProposalStatus),
+                               
+                            });
+
+                        }
+                        var records = (from psl in context.tblProposal
+                                       join user in context.tblUser on psl.PI equals user.UserId
+                                       where (psl.IsDeleted != true)
+                                       && (String.IsNullOrEmpty(model.srchKeyword) || psl.ProposalNumber == model.srchKeyword
+                                       || psl.ProposalTitle.Contains(model.srchKeyword))
+                                       orderby psl.ProposalId descending
+                                       select new { psl, user.FirstName, user.LastName }).Count();
+                        searchData.TotalPages = Convert.ToInt32(Math.Ceiling((double)records / pageSize));
+
+                    }
+                }
+                searchData.Data = proposalList;
+                searchData.visiblePages = 10;
+                searchData.CurrentPage = page;
+                searchData.pageSize = pageSize;
+                return searchData;
+
+            }
+            catch (Exception ex)
+            {                
+                List<ProposalResultModels> proposalList = new List<ProposalResultModels>();
+                var searchData = new PagedData<ProposalResultModels>();
+                searchData.Data = proposalList;
+                return searchData;
+            }
+        }        
+        public static CreateProjectModel EditProject(int ProjectId)
+        {
+            try
+            {
+                CreateProjectModel editProject = new CreateProjectModel();
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from P in context.tblProject                                 
+                                 where (P.ProjectId == ProjectId)
+                                 select P).FirstOrDefault();
+                    var CoPIquery = (from CoPI in context.tblProjectCoPI                                     
+                                     where (CoPI.ProjectId == ProjectId)
+                                     select CoPI).ToList();
+                    var SupportDocquery = (from Doc in context.tblSupportDocuments
+                                     where (Doc.ProjectId == ProjectId)
+                                     select Doc).ToList();
+                    if (query != null)
+                    {
+                        editProject.ProposalID = ProjectId;
+                        editProject.ProposalNumber = query.ProposalNumber;
+                        editProject.ProjectType = Convert.ToInt32(query.ProjectType);
+                        editProject.PrpsalApprovedDate = String.Format("{0:dd}", (DateTime)query.ProposalApprovedDate) + "-" + String.Format("{0:MMMM}", (DateTime)query.ProposalApprovedDate) + "-" + String.Format("{0:yyyy}", (DateTime)query.ProposalApprovedDate);
+                        editProject.ProposalApprovedDate = (DateTime)query.ProposalApprovedDate;
+                        editProject.FinancialYear = query.FinancialYear;
+                        editProject.Projecttitle = query.ProjectTitle;
+                        editProject.ProjectType = query.ProjectType;
+                        editProject.ProjectSubType = query.ProjectSubType;
+                        editProject.Schemename = query.SchemeName;
+                        editProject.SchemeAgency = query.SchemeAgencyName;
+                        editProject.Department = query.PIDepartment;
+                        editProject.PIname = Convert.ToInt32(query.PIName);
+                        editProject.PIDesignation = query.PIDesignation;
+                        editProject.SponsoringAgency = query.SponsoringAgency;
+                        editProject.Budget = query.SanctionValue;
+                        editProject.Projectduration = query.DurationOfProject;
+                        editProject.SchemePersonAppliedDesignation = query.SchemePersonDesignation;
+                        editProject.Personapplied = query.SchemePersonApplied;
+                        editProject.ProjectFundingType_Qust_1 = query.FundingType;
+                        if(editProject.ProjectFundingType_Qust_1 == "Indian") { 
+                        editProject.ProjectFundedby_Qust_1 = query.IndianFundedBy;
+                            editProject.ProjectFundingBody_Qust_1 = query.FundingGovtBody;
+                        }
+                        if (editProject.ProjectFundingType_Qust_1 == "Foreign")
+                        {
+                            editProject.ProjectFundedby_Qust_1 = query.ForeignFundedBy;
+                        }
+
+
+                        editProject.Categoryofproject = query.CategoryOfProject;
+                        editProject.TotalNoofProjectStaffs = query.TotalProjectStaffCount;
+                        editProject.PIname = Convert.ToInt32(query.PIName);
+                        editProject.PIDesignation = query.PIDesignation;
+                        editProject.SponsoringAgency = query.SponsoringAgency;
+                        editProject.Budget = query.SanctionValue;
+                        editProject.Projectduration = query.DurationOfProject;
+                        editProject.SchemePersonAppliedDesignation = query.SchemePersonDesignation;
+                        editProject.Personapplied = query.SchemePersonApplied;
+                        editProject.ProjectFundingType_Qust_1 = query.FundingType;
+                        editProject.Remarks = query.Remarks;
+                        editProject.Remarks = query.Remarks;
+
+
+                    }
+                    if (CoPIquery.Count > 0)
+                    {
+                        int[] _prjctid = new int[CoPIquery.Count];
+                        int[] _copiid = new int[CoPIquery.Count];
+                        int[] _copidepartment = new int[CoPIquery.Count];
+                        int[] _copiname = new int[CoPIquery.Count];
+                        string[] _copiemail = new string[CoPIquery.Count];
+                        for (int i = 0; i < CoPIquery.Count; i++)
+                        {
+                            _prjctid[i] = Convert.ToInt32(CoPIquery[i].ProjectId);
+                            _copidepartment[i] = Convert.ToInt32(CoPIquery[i].Department);
+                            _copiname[i] = Convert.ToInt32(CoPIquery[i].Name);
+                            _copiid[i] = Convert.ToInt32(CoPIquery[i].CoPIId);
+                            _copiemail[i] = CoPIquery[i].Email;
+                        }
+                        editProject.CoPIDepartment = _copidepartment;
+                        editProject.CoPIname = _copiname;
+                        editProject.CoPIEmail = _copiemail;
+                        editProject.CoPIid = _copiid;
+                    }
+                    if (SupportDocquery.Count > 0)
+                    {
+                        int[] _docid = new int[SupportDocquery.Count];
+                        int[] _doctype = new int[SupportDocquery.Count];
+                        string[] _docname = new string[SupportDocquery.Count];
+                        string[] _attachname = new string[SupportDocquery.Count];
+                        string[] _docpath = new string[SupportDocquery.Count];
+                        for (int i = 0; i < SupportDocquery.Count; i++)
+                        {
+                            _docid[i] = Convert.ToInt32(SupportDocquery[i].DocId);
+                            _doctype[i] = Convert.ToInt32(SupportDocquery[i].DocType);
+                            _docname[i] = SupportDocquery[i].DocName;
+                            _docpath[i] = SupportDocquery[i].AttachmentPath;
+                            _attachname[i] = SupportDocquery[i].AttachmentName;
+                        }
+                        editProject.DocType = _doctype;
+                        editProject.AttachName = _attachname;
+                        editProject.DocName = _docname;
+                        editProject.DocPath = _docpath;
+                        editProject.Docid = _docid;
+                    }
+                    return editProject;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static int DeleteProject(int ProjectId)
+        {
+            try
+            {
+                tblProject project;
+
+                using (var context = new IOASDBEntities())
+                {
+                    var query = (from D in context.tblProject
+                                 where (D.ProjectId == ProjectId)
+                                 select D.ProjectId).FirstOrDefault();
+
+                    project = context.tblProject.Where(P => P.ProjectId == ProjectId).FirstOrDefault();
+                    context.Entry(project).State = System.Data.Entity.EntityState.Deleted;
+                    context.SaveChanges();  
+                                                          
+                }
+                return 4;
+            }
+            catch (Exception ex)
+            {
+                return 4;
+            }
+        }
+        public static List<CreateProjectModel> GetProjectList()
+        {
+            List<CreateProjectModel> project = new List<CreateProjectModel>();
+            using (var context = new IOASDBEntities())
+            {
+                var query = (from P in context.tblProject
+                             join user in context.tblUser on P.PIName equals user.UserId
+                             join dept in context.tblPIDepartmentMaster on P.PIDepartment equals dept.DepartmentId
+                             join agency in context.tblAgencyMaster on P.SponsoringAgency equals agency.AgencyId
+                             orderby P.ProjectId
+                             select new { P, user.FirstName, user.LastName, user.EMPCode, dept.Department,agency.AgencyName }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        project.Add(new CreateProjectModel()
+                        {
+                            Sno = i + 1,
+                            ProjectID = query[i].P.ProjectId,
+                            Projecttitle = query[i].P.ProjectTitle,
+                            ProjectNumber = query[i].P.ProjectNumber,
+                            Budget = query[i].P.SanctionValue,
+                            SponsoringAgency = query[i].P.SponsoringAgency,
+                            SponsoringAgencyName = query[i].AgencyName,
+                            NameofPI = query[i].FirstName + " " + query[i].LastName,
+                            PIDepartmentName = query[i].Department,
+                            EmpCode = query[i].EMPCode
+                    });
+                    }
+                }
+            }
+            return project;
+        }
+
+        public static CreateProjectModel getproposaldetails(int proposalid)
+        {
+            try
+            {
+
+                CreateProjectModel Proposaldetails = new CreateProjectModel();
+            
+                using (var context = new IOASDBEntities())
+                {
+                    
+                        var query = context.tblProposal.FirstOrDefault(m => m.ProposalId == proposalid);
+                        var prjcttypequery = (from C in context.tblCodeControl
+                                          where (C.CodeName == "Projecttype" && C.CodeValAbbr == query.ProjectType)
+                                          select C).FirstOrDefault();
+                    var pidetailsquery = (from c in context.tblUser
+                                          where c.UserId == query.PI
+                                          select c).FirstOrDefault();
+                        var Proposalid = proposalid;                       
+                        if (query != null)
+                        {
+                            
+                            Proposaldetails.ProposalNumber = query.ProposalNumber;
+                            Proposaldetails.ProposalID = query.ProposalId;
+                            Proposaldetails.Projectduration = query.DurationOfProject;
+                            Proposaldetails.ProjectType = query.ProjectType;                           
+                            Proposaldetails.Projecttitle = query.ProposalTitle;
+                            Proposaldetails.ProjectTypeName = prjcttypequery.CodeValDetail;
+                            Proposaldetails.Department = query.Department;
+                            Proposaldetails.PIname = query.PI;
+                            Proposaldetails.PIDesignation = pidetailsquery.Designation;
+                            Proposaldetails.Sanctionvalue = query.ProposalValue;
+
+                         }
+                       
+
+                        var copi = (from C in context.tblProposalCoPI
+                                    where C.ProposalId == Proposalid
+                                    select C).ToList();
+                    
+                    if (copi.Count != 0)
+                            {
+                        int[] _prposalid = new int[copi.Count];
+                        int[] _copiid = new int[copi.Count];
+                        int[] _copidepartment = new int[copi.Count];
+                        int[] _copiname = new int[copi.Count];
+                        int[] _copidesignation = new int[copi.Count];
+                        string[] _copiemail = new string[copi.Count];
+                        for (int i = 0; i < copi.Count; i++)
+                                {
+                            var copiid = copi[i].Name;
+                            var copidetails = (from C in context.tblUser
+                                               where C.UserId == copiid
+                                               select C).ToList();
+                            var copidesig = copidetails[0].Designation;
+                            _prposalid[i] = Convert.ToInt32(copi[i].ProposalId);
+                            _copiid[i] = copi[i].CoPIId;
+                            _copidepartment[i] = Convert.ToInt32(copi[i].Department);
+                            _copiname[i] = Convert.ToInt32(copi[i].Name);
+                            _copidesignation[i] = Convert.ToInt32(copidesig);
+                            _copiemail[i] = copi[i].Email;
+                                   
+                                }
+                        Proposaldetails.CoPIname = _copiname;
+                        Proposaldetails.CoPIDepartment = _copidepartment;
+                        Proposaldetails.CoPIEmail = _copiemail;
+                        Proposaldetails.CoPIDesignation = _copidesignation;
+                        Proposaldetails.CoPIid = _copiid;
+                            }
+
+                    
+                        }
+
+                return Proposaldetails;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
+        public static List<CreateProposalModel> GetProposalDetails()
+        {
+            List<CreateProposalModel> proposal = new List<CreateProposalModel>();
+            using (var context = new IOASDBEntities())
+            {
+                var query = (from P in context.tblProposal
+                             join user in context.tblUser on P.PI equals user.UserId
+                             join dept in context.tblPIDepartmentMaster on P.Department equals dept.DepartmentId
+                             where P.ProposalStatus == 1
+                             orderby P.ProposalId
+                             select new { P, user.FirstName, user.LastName, user.EMPCode, dept.Department }).ToList();
+                if (query.Count > 0)
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        proposal.Add(new CreateProposalModel()
+                        {
+                            Sno = i + 1,
+                            ProposalID = query[i].P.ProposalId,
+                            ProposalNumber = query[i].P.ProposalNumber,
+                            Projecttitle = query[i].P.ProposalTitle,
+                            Budget = query[i].P.ProposalValue,
+                            NameofPI = query[i].FirstName + " " + query[i].LastName,
+                            EmpCode = query[i].EMPCode,
+                            PIDepartmentName = query[i].Department
+                        });
+                    }
+                }
+            }
+            return proposal;
+        }
+
+    }
+}

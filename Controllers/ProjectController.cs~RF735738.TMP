@@ -1,0 +1,791 @@
+﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using IOAS.Models;
+using IOAS.GenericServices;
+using System.Collections.Generic;
+using System.Web.Security;
+using IOAS.Infrastructure;
+using System.IO;
+using IOAS.Filter;
+
+namespace IOAS.Controllers
+{
+    [Authorized]
+    public class ProjectController : Controller
+    {
+        // Creation of Project (Project Opening)
+
+        public ActionResult ProjectOpening(int pId = 0)
+        {
+            try
+            {
+                var roleId = Common.GetRoleId(User.Identity.Name);
+                if (roleId != 1)
+                    return RedirectToAction("Index", "Home");
+                CreateProjectModel model = new CreateProjectModel();
+                var country = Common.getCountryList();
+                var department = Common.getDepartment();
+                var gender = Common.getGender();
+                var PI = Common.GetProjectPIWithDetails();
+                var Doctype = Common.getProposalDocType();
+                var scheme = Common.getschemes();
+                var agency = Common.getagency();
+                var projecttype = Common.getprojecttype();
+                var proposalnumber = Common.getproposalnumber();
+                var ministry = Common.getMinistry();
+                var projectsponsubtype = Common.getsponprojectsubtype();
+                var projectconssubtype = Common.getconsprojectsubtype();
+                var categoryofproject = Common.getcategoryofproject();
+                var Cadre = Common.getFacultyCadre();
+                var fundingcategory = Common.getconsfundingcategory();
+                var allocatehead = Common.getallocationhead();
+                var taxservice = Common.gettaxservice();
+                var internalfundingagency = Common.getinternalfundingagency();
+                var staffcategory = Common.getstaffcategory();
+                ViewBag.country = country;
+                ViewBag.deprtmnt = department;
+                ViewBag.gender = gender;
+                ViewBag.Docmenttype = Doctype;
+                ViewBag.PI = PI;
+                ViewBag.Scheme = scheme;
+                ViewBag.Agency = agency;
+                ViewBag.projecttype = projecttype;
+                ViewBag.proposalnumber = proposalnumber;
+                ViewBag.ministry = ministry;
+                ViewBag.projectsponsubtype = projectsponsubtype;
+                ViewBag.projectconssubtype = projectconssubtype;
+                ViewBag.categoryofproject = categoryofproject;
+                ViewBag.Cadre = Cadre;
+                ViewBag.fundingcategory = fundingcategory;
+                ViewBag.allocatehead = allocatehead;
+                ViewBag.taxservice = taxservice;
+                ViewBag.internalfundingagency = internalfundingagency;
+                ViewBag.staffcategory = staffcategory;
+
+
+                //ViewBag.Msg = System.Web.HttpContext.Current.Request.ApplicationPath;
+                // model.ProposalID = 0;
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+
+                return View();
+            }
+
+        }
+
+
+        [HttpPost]
+        public ActionResult ProjectOpening(CreateProjectModel model)
+        {
+            try
+            {
+                string user_logged_in = User.Identity.Name;
+                var data = Common.getUserIdAndRole(user_logged_in);
+                int logged_in_userid = data.Item1;
+                int user_role = data.Item2;
+                if (user_role != 1)
+                    return RedirectToAction("Index", "Home");
+                //var username = User.Identity.Name;
+                //int userid = Common.GetUserid(username);
+                var country = Common.getCountryList();
+                var department = Common.getDepartment();
+                var gender = Common.getGender();
+                var PI = Common.GetProjectPIWithDetails();
+                var Doctype = Common.getProposalDocType();
+                var scheme = Common.getschemes();
+                var agency = Common.getagency();
+                var projecttype = Common.getprojecttype();
+                var proposalnumber = Common.getproposalnumber();
+                var ministry = Common.getMinistry();
+                var projectsponsubtype = Common.getsponprojectsubtype();
+                var projectconssubtype = Common.getconsprojectsubtype();
+                var categoryofproject = Common.getcategoryofproject();
+                var Cadre = Common.getFacultyCadre();
+                var fundingcategory = Common.getconsfundingcategory();
+                var allocatehead = Common.getallocationhead();
+                var taxservice = Common.gettaxservice();
+                var internalfundingagency = Common.getinternalfundingagency();
+                ViewBag.country = country;
+                ViewBag.deprtmnt = department;
+                ViewBag.gender = gender;
+                ViewBag.Docmenttype = Doctype;
+                ViewBag.PI = PI;
+                ViewBag.Scheme = scheme;
+                ViewBag.Agency = agency;
+                ViewBag.projecttype = projecttype;
+                ViewBag.proposalnumber = proposalnumber;
+                ViewBag.ministry = ministry;
+                ViewBag.projectsponsubtype = projectsponsubtype;
+                ViewBag.projectconssubtype = projectconssubtype;
+                ViewBag.categoryofproject = categoryofproject;
+                ViewBag.Cadre = Cadre;
+                ViewBag.fundingcategory = fundingcategory;
+                ViewBag.allocatehead = allocatehead;
+                ViewBag.taxservice = taxservice;
+                ViewBag.internalfundingagency = internalfundingagency;
+                // model.PIEmail = model.PIEmail;
+                if (ModelState.IsValid)
+                {
+                    var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".jpg", ".png" };
+                    if ((model.AttachName[0] != null && model.AttachName[0] != "") || (model.taxprooffile != null))
+                    {
+                        if ((model.AttachName[0] != null && model.AttachName[0] != ""))
+                        {
+                            for (int i = 0; i < model.DocType.Length; i++)
+                            {
+                                if (model.file[i] != null)
+                                {
+                                    string docname = Path.GetFileName(model.file[i].FileName);
+                                    var docextension = Path.GetExtension(docname);
+                                    if (!allowedExtensions.Contains(docextension))
+                                    {
+                                        ModelState.AddModelError("", "Please upload any one of these type doc [.pdf, .doc, .docx]");
+                                        return RedirectToAction("ProjectOpening", "Project");
+                                    }
+                                }
+
+                            }
+                        }
+                        if (model.taxprooffile != null)
+                        {
+
+                            string taxprooffilename = Path.GetFileName(model.taxprooffile.FileName);
+                            var docextension = Path.GetExtension(taxprooffilename);
+                            if (!allowedExtensions.Contains(docextension))
+                            {
+                                ModelState.AddModelError("", "Please upload any one of these type doc [.pdf, .doc, .docx]");
+                                return RedirectToAction("ProjectOpening", "Project");
+                            }
+
+                        }
+                        ProjectService _ps = new ProjectService();
+                        model.ProjectcrtdID = logged_in_userid;
+
+                        var projectid = _ps.ProjectOpening(model);
+
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Project has been opened successfully with Project number - " + projectnumber + ".";
+                            return View(model);
+                        }
+                        if (projectid == -2)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Project - " + projectnumber + " updated successfully.";
+                            return View(model);
+                        }
+                        else if (projectid == 0)
+                        {
+                            ViewBag.errMsg = "Project " + model.Projecttitle + "Already Exists";
+                        }
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+                    }
+                    else
+                    {
+                        ProjectService _ps = new ProjectService();
+                        model.ProjectcrtdID = logged_in_userid;
+
+                        var projectid = _ps.ProjectOpening(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Project has been opened successfully with Project number - " + projectnumber + ".";
+                            return View(model);
+                        }
+                        if (projectid == -2)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Project - " + projectnumber + " updated successfully.";
+                            return View(model);
+                        }
+                        else if (projectid == 0)
+                        {
+                            ViewBag.errMsg = "Project " + model.Projecttitle + "Already Exists";
+                        }
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+                    }
+                }
+                else
+                {
+                    string messages = string.Join("", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+                    ViewBag.errMsg = messages;
+                }
+                //  return RedirectToAction("ProjectOpening", "Project");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.errMsg = "Something went wrong please contact administrator";
+                return View(model);
+            }
+
+        }
+        [Authorize]
+        public ActionResult ProjectEnhancement(int pId = 0)
+        {
+            try
+            {
+                var roleId = Common.GetRoleId(User.Identity.Name);
+                if (roleId != 1)
+                    return RedirectToAction("Index", "Home");
+                ProjectEnhancementModel model = new ProjectEnhancementModel();
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+                var allocatehead = Common.getallocationhead();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+                ViewBag.allocatehead = allocatehead;
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+
+                return View();
+            }
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult ProjectEnhancement(ProjectEnhancementModel model)
+        {
+            try
+            {
+                string user_logged_in = User.Identity.Name;
+                var data = Common.getUserIdAndRole(user_logged_in);
+                int logged_in_userid = data.Item1;
+                int user_role = data.Item2;
+                if (user_role != 1)
+                    return RedirectToAction("Index", "Home");
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+                var allocatehead = Common.getallocationhead();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+                ViewBag.allocatehead = allocatehead;
+
+                if (ModelState.IsValid)
+                {
+                    var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".jpg", ".png" };
+                    if ((model.AttachmentName != null && model.AttachmentName != ""))
+                    {
+
+                        if (model.file != null)
+                        {
+                            string docname = Path.GetFileName(model.file.FileName);
+                            var docextension = Path.GetExtension(docname);
+                            if (!allowedExtensions.Contains(docextension))
+                            {
+                                ModelState.AddModelError("", "Please upload any one of these type doc [.pdf, .doc, .docx]");
+                                return RedirectToAction("ProjectOpening", "Project");
+                            }
+                        }
+
+                        ProjectService _ps = new ProjectService();
+                        model.CrtdUserid = logged_in_userid;
+
+                        var projectid = _ps.ProjectEnhancement(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Enhancement successfully done for Project - " + projectnumber + ".";
+                            return View(model);
+                        }
+
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+
+                    }
+
+                    else
+                    {
+                        ProjectService _ps = new ProjectService();
+                        model.CrtdUserid = logged_in_userid;
+
+                        var projectid = _ps.ProjectEnhancement(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Enhancement successfully done for Project - " + projectnumber + ".";
+                            return View(model);
+                        }
+
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+                    }
+                }
+                else
+                {
+                    string messages = string.Join("", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+                    ViewBag.errMsg = messages;
+                }
+                //  return RedirectToAction("ProjectOpening", "Project");
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.errMsg = "Something went wrong please contact administrator";
+                return View(model);
+            }
+
+        }
+
+        [Authorize]
+        public ActionResult ProjectExtension(int pId = 0)
+        {
+            try
+            {
+                var roleId = Common.GetRoleId(User.Identity.Name);
+                if (roleId != 1)
+                    return RedirectToAction("Index", "Home");
+                ProjectEnhancementModel model = new ProjectEnhancementModel();
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+
+                return View();
+            }
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult ProjectExtension(ProjectEnhancementModel model)
+        {
+            try
+            {
+                string user_logged_in = User.Identity.Name;
+                var data = Common.getUserIdAndRole(user_logged_in);
+                int logged_in_userid = data.Item1;
+                int user_role = data.Item2;
+                if (user_role != 1)
+                    return RedirectToAction("Index", "Home");
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+
+                if (ModelState.IsValid)
+                {
+                    var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".jpg", ".png" };
+                    if ((model.AttachmentName != null && model.AttachmentName != ""))
+                    {
+
+                        if (model.file != null)
+                        {
+                            string docname = Path.GetFileName(model.file.FileName);
+                            var docextension = Path.GetExtension(docname);
+                            if (!allowedExtensions.Contains(docextension))
+                            {
+                                ModelState.AddModelError("", "Please upload any one of these type doc [.pdf, .doc, .docx]");
+                                View(model);
+                            }
+                        }
+                        ProjectService _ps = new ProjectService();
+                        model.CrtdUserid = logged_in_userid;
+
+                        var projectid = _ps.ProjectExtension(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Extension successfully done for Project - " + projectnumber + ".";
+                            return View(model);
+                        }
+
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+
+                    }
+
+                    else
+                    {
+                        ProjectService _ps = new ProjectService();
+                        model.CrtdUserid = logged_in_userid;
+
+                        var projectid = _ps.ProjectExtension(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Extension successfully done for Project - " + projectnumber + ".";
+                            return View(model);
+                        }
+
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+                    }
+                }
+                else
+                {
+                    string messages = string.Join("", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+                    ViewBag.errMsg = messages;
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.errMsg = "Something went wrong please contact administrator";
+                return View(model);
+            }
+
+        }
+        [HttpGet]
+        public JsonResult GetProjectList()
+        {
+            object output = ProjectService.GetProjectList();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetSearchProposalList(string keyword)
+        {
+            object output = ProposalService.GetProposalDetails();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public JsonResult EditProject(int ProjectId)
+        {
+            object output = ProjectService.EditProject(ProjectId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult DeleteProject(int ProjectId)
+        {
+            object output = ProjectService.DeleteProject(ProjectId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult ShowDocument(string file, string filepath)
+        {
+            try
+            {
+                int roleId = Common.GetRoleId(User.Identity.Name);
+                if (roleId != 1 && roleId != 3)
+                    return new EmptyResult();
+                string fileType = Common.GetMimeType(Path.GetExtension(file));
+                byte[] fileData = file.GetFileData(Server.MapPath(filepath));
+                Response.AddHeader("Content-Disposition", "inline; filename=\"" + file + "\"");
+                return File(fileData, fileType);
+            }
+            catch (FileNotFoundException)
+            {
+                throw new HttpException(404, "File not found.");
+            }
+        }
+
+        
+
+        [HttpPost]
+        public JsonResult Loadproposaldetailsbyid(int ProposalId)
+        {
+
+            object output = ProjectService.getproposaldetails(ProposalId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetProposalList()
+        {
+            object output = ProjectService.GetProposalDetails();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+        [Authorize]
+        [AcceptVerbs(HttpVerbs.Get)]
+        public JsonResult Loadprojectdetailsbytype(string projecttype)
+        {
+            projecttype = projecttype == "" ? "0" : projecttype;
+            var locationdata = ProjectService.LoadProjecttitledetails(Convert.ToInt32(projecttype));
+            return Json(locationdata, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetEnhancedProjectList()
+        {
+            object output = ProjectService.GetEnhancedProjectList();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public JsonResult LoadProjectdetailsforenhance(int ProjectId)
+        {
+
+            object output = ProjectService.getprojectdetailsforenhance(ProjectId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public JsonResult EditProjectenhancement(int EnhanceId)
+        {
+            object output = ProjectService.EditEnhancement(EnhanceId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetExtendedProjectList()
+        {
+            object output = ProjectService.GetExtendedProjectList();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult LoadProjectdetailsforextend(int ProjectId)
+        {
+
+            object output = ProjectService.getprojectdetailsforextension(ProjectId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+        [Authorize]
+        [HttpPost]
+        public JsonResult EditProjectextension(int ExtensionId)
+        {
+            object output = ProjectService.EditExtension(ExtensionId);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+        [Authorized]
+        [HttpPost]
+        public JsonResult LoadAgencycodebyagency(string agencyid)
+        {
+            object output = AccountService.getagencycode(Convert.ToInt32(agencyid));
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        public ActionResult CloseProject(int pId = 0)
+        {
+            try
+            {
+                var roleId = Common.GetRoleId(User.Identity.Name);
+                if (roleId != 1)
+                    return RedirectToAction("Index", "Home");
+                ProjectClosingModel model = new ProjectClosingModel();
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+
+                return View(model);
+
+            }
+            catch (Exception ex)
+            {
+
+                return View();
+            }
+
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult CloseProject(ProjectClosingModel model)
+        {
+            try
+            {
+                string user_logged_in = User.Identity.Name;
+                var data = Common.getUserIdAndRole(user_logged_in);
+                int logged_in_userid = data.Item1;
+                int user_role = data.Item2;
+                if (user_role != 1)
+                    return RedirectToAction("Index", "Home");
+                var Projecttitle = Common.GetProjecttitledetails();
+                var projecttype = Common.getprojecttype();
+
+                ViewBag.Project = Projecttitle;
+                ViewBag.projecttype = projecttype;
+
+                if (ModelState.IsValid)
+                {
+                    
+                        ProjectService _ps = new ProjectService();
+                        model.UpdtUserid = logged_in_userid;
+                        model.Updt_TS = DateTime.Now;
+                       
+                        var projectid = _ps.CloseProject(model);
+                        if (projectid > 0)
+                        {
+                            var projectnumber = Common.getprojectnumber(projectid);
+                            ViewBag.succMsg = "Project - " + projectnumber + "has been closed successfully." ;
+                            return View(model);
+                        }
+
+                        else
+                            ViewBag.errMsg = "Something went wrong please contact administrator";
+                    }
+                
+                else
+                {
+                    string messages = string.Join("", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+                    ViewBag.errMsg = messages;
+                }
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.errMsg = "Something went wrong please contact administrator";
+                return View(model);
+            }
+
+        }
+
+        [HttpGet]
+        public JsonResult GetClosedProjectList()
+        {
+            object output = ProjectService.GetClosedProjectList();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ProjectStatus()
+        {        
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetProjectDetails()
+        {
+            object output = ProjectService.GetProjectDetails();
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult LoadActionDDL()
+        {
+            try
+            {
+                object output = ProjectService.LoadControls();
+                return Json(output, JsonRequestBehavior.AllowGet);
+            }
+            catch
+            {
+                return Json("Error:LoadControls", JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateStatusDetails(UpdateProjectStatusModel model)
+        {
+            try
+            {
+                ProjectStatusModel newModel = new ProjectStatusModel();
+                var user = User.Identity.Name;
+                var UserId = Common.GetUserid(user);
+                string DocName = "";
+                if (ModelState.IsValid)
+                {
+                    if (model.file != null)
+                    {
+                        var allowedExtensions = new[] { ".pdf", ".doc", ".docx"};
+                        string docname = Path.GetFileName(model.file.FileName);
+                        var docextension = Path.GetExtension(docname);
+                        if (!allowedExtensions.Contains(docextension))
+                        {
+                            ViewBag.errMsg = "Please upload any one of these type doc [.pdf, .doc, .docx]";
+                            return View("ProjectStatus", newModel);
+                        }                                                
+                             DocName = System.IO.Path.GetFileName(model.file.FileName);
+                            var fileId = Guid.NewGuid().ToString();
+                            DocName = fileId + "_" + DocName;
+                            model.file.SaveAs(Server.MapPath("~/Content/OtherDocuments/" + DocName));
+
+                    }
+                    int result = ProjectService.UpdateProjectDetails(model, UserId, DocName);
+                    if (result == 1)
+                    {
+                        ViewBag.SuccMsg = "Status has been updated successfully";
+                    }
+                    else
+                    {
+                        ViewBag.ErrMsg = "Somenthing went wrong please contact administrator";
+                    }
+
+                }
+                else
+                {
+                    string messages = string.Join("<br />", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+
+                    ViewBag.errMsg = messages;
+                }               
+                return View("ProjectStatus",newModel);
+            }
+            catch
+            {
+                ProjectStatusModel newModel = new ProjectStatusModel();
+                return View(newModel);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult PopupUpdateStatus(int ProjectId, int StatusId)
+        {
+            try
+            {
+                UpdateProjectStatusModel model = new UpdateProjectStatusModel();
+                model.ProjectID = ProjectId;
+                model.StatusID = StatusId;
+                return PartialView(model);
+            }
+            catch (Exception ex)
+            {
+                return new EmptyResult();
+            }
+        }
+               
+        [HttpGet]
+        public JsonResult SearchProjectList(int ProjectType, string ProposalNumber, int PIname, DateTime FromSOdate, DateTime ToSOdate, DateTime Fromdate, DateTime Todate)
+        {
+            object output = ProjectService.SearchProjectList(ProjectType, ProposalNumber, PIname, FromSOdate, ToSOdate, Fromdate, Todate);
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        
+    }
+}

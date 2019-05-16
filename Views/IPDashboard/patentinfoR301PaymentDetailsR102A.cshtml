@@ -1,0 +1,107 @@
+﻿
+@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "patentinfoR301PaymentDetailsR102A";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+@using (Html.BeginForm("patentinfoR301PaymentDetailsR102A", "IPDashboard", FormMethod.Post))
+{
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Patent Information System</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><B>Payment Details</B></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <table style="width:100%;" class="table table-hover">
+                                    <tr>
+                                        <td>File No. </td>
+                                        <td>@Model.patpydet.FileNo</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title  </td>
+                                        <td>@Model.patpydet.Title</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Application No. </td>
+                                        <td>@Model.patpydet.Applcn_no</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filing Date  </td>
+                                        <td>@Model.patpydet.Filing_dt</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Inventor </td>
+                                        <td>@Model.patpydet.Inventor1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Department </td>
+                                        <td>@Model.patpydet.Department</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patent No.</td>
+                                        <td>@Model.patpydet.Pat_no</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Patent Date </td>
+                                        <td>@Model.patpydet.Pat_dt</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt30">
+        <div class="col-md-12">          
+            <table style="width:100%;" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Date </th>
+                        <th scope="col">Cost Group</th>
+                        <th scope="col">Activity  </th>
+                        <th scope="col">Invoice No. </th>
+                        <th scope="col">Invoice date  </th>
+                        <th scope="col">Payment Reference   </th>
+                        <th scope="col">Party Group </th>
+                        <th scope="col">Party  </th>
+                        <th scope="col">Amount  </th>
+                    </tr>
+                    @foreach (var rec in Model.patcstdet)
+                    {
+                        <tr>
+                          
+                            <td>@rec.PaymentOrChequeDt</td>
+                            <td>@rec.CostGroup</td>
+                            <td>@rec.Activity</td>
+                            <td>@rec.InvoiceNo</td>
+                            <td>@rec.InvoiceDt</td>
+                            <td>@rec.PaymentRefOrChequeNo</td>
+                            <td>@rec.PType</td>
+                            <td>@rec.Party</td>
+                            <td>@rec.amount</td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><b>Total</b></td>
+                        <td colspan=8 align="right"><b>@Model.pattotal.total</b></td>
+
+                    </tr>    
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+}

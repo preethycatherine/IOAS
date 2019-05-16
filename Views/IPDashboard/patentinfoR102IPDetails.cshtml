@@ -1,0 +1,140 @@
+﻿@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "patent_info_R102_IP_Details";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+@using (Html.BeginForm("patentinfoR102IPDetails", "IPDashboard", FormMethod.Post))
+{
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Patent Information System</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">          
+            <div class="page-wrapper">              
+                <div class="white-bg">
+                    <h3><B>IDF Details</B></h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">                               
+                                <table style="width:100%;"  class="table table-hover">
+                                    <tr>
+                                        <td>Title </td> 
+                                        <td>@Model.patentIPdetails.Title</td>
+                                    </tr>
+                                    <tr>
+                                        <td>IDF Type  </td>
+                                        <td>@Model.patentIPdetails.Type</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Initial Filling </td>
+                                        <td>@Model.patentIPdetails.InitialFiling</td>
+                                    </tr>
+                                    <tr>
+                                        <td>First Applicant  </td>
+                                        <td>@Model.patentIPdetails.FirstApplicant</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Second Applicant </td>
+                                        <td>@Model.patentIPdetails.SecondApplicant</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Request State </td>
+                                        <td>@Model.patentIPdetails.request_dt</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Write Up</td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-md-12">
+            <h3><B>Inventor Details</B></h3>
+            <table class="table" id="tbllist">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo.</th>
+                        <th scope="col">Inventor Name</th>
+                        <th scope="col">Inventor Type</th>
+                        <th scope="col">Department</th>                      
+                    </tr> 
+                    @foreach (var rec in Model.patentinventordetails)
+                    {
+                        <tr>
+                            <td>@rec.SlNo</td>
+                            <td>@rec.InventorName</td>
+                            <td>@rec.InventorType</td>
+                            <td>@rec.Dept</td>
+                        </tr>
+                    }
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-md-12">
+            <h3><b>Indian Patent Status</b></h3>
+            <table class="table" id="tbllist">
+                <thead>
+                    <tr>
+                        <td>Attorney </td>
+                        <td>@Model.indpatentstatus.Attorney</td>
+                    </tr>
+                    <tr>
+                        <td>Application Number  </td>
+                        <td>@Model.indpatentstatus.Applcn_no</td>
+                    </tr>
+                    <tr>
+                        <td>Filling Date </td>
+                        <td>@Model.indpatentstatus.Filing_dt</td>
+                    </tr>
+                    <tr>
+                        <td>Examination  </td>
+                        <td>@Model.indpatentstatus.Examination</td>
+                    </tr>
+                    <tr>
+                        <td>Examination Date </td>
+                        <td>@Model.indpatentstatus.Exam_dt</td>
+                    </tr>
+                    <tr>
+                        <td>Publication </td>
+                        <td>@Model.indpatentstatus.Publication</td>
+                    </tr>
+                    <tr>
+                        <td>Publication Date</td>
+                        <td>@Model.indpatentstatus.Pub_dt</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Status </td>
+                        <td>@Model.indpatentstatus.Status</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Sub Status</td>
+                        <td>@Model.indpatentstatus.Sub_status</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Grant Number </td>
+                        <td>@Model.indpatentstatus.Pat_no</td>
+                    </tr>
+                    <tr>
+                        <td>Patent Issue Date</td>
+                        <td>@Model.indpatentstatus.Pat_dt</td>
+                    </tr>                  
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+}

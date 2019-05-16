@@ -1,0 +1,524 @@
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\ApplicationInsights.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\csc.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\System.Collections.Immutable.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\vbc.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\VBCSCompiler.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\roslyn\VBCSCompiler.exe.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\IOAS.dll.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\IOAS.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\IOAS.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Antlr3.Runtime.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\DynamicReports.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\EntityFramework.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\EntityFramework.SqlServer.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\FoolproofValidation.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\IOAS.DataModel.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.Web.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.WindowsServer.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.ApplicationInsights.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Google.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Web.Infrastructure.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Newtonsoft.Json.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Helpers.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Mvc.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Optimization.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Razor.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.Deployment.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.Razor.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\WebGrease.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\stdole.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\DynamicReports.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\IOAS.DataModel.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.Web.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AI.WindowsServer.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.ApplicationInsights.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Helpers.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Mvc.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Optimization.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.Razor.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.Deployment.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\System.Web.WebPages.Razor.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Antlr3.Runtime.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Newtonsoft.Json.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\EntityFramework.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\EntityFramework.SqlServer.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Google.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\obj\Debug\IOAS.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS\IOAS\IOAS\obj\Debug\IOAS.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\obj\Debug\IOAS.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\obj\Debug\IOAS.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\ApplicationInsights.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\csc.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\System.Collections.Immutable.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\vbc.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\IOAS.dll.config
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\IOAS.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\IOAS.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Antlr3.Runtime.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\DynamicReports.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\EntityFramework.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\EntityFramework.SqlServer.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\FoolproofValidation.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\IOAS.DataModel.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.Web.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Web.Infrastructure.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Newtonsoft.Json.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Owin.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Helpers.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Mvc.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Optimization.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Razor.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\WebGrease.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\stdole.dll
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\DynamicReports.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\IOAS.DataModel.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.Web.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Helpers.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Mvc.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Optimization.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.Razor.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Antlr3.Runtime.pdb
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Newtonsoft.Json.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\EntityFramework.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\EntityFramework.SqlServer.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Logic Field\LF Visual Studio 2015 Projects\Projects\Development\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\IOAS Public\IOAS\bin\ApplicationInsights.config
+D:\IOAS Public\IOAS\bin\roslyn\csc.exe
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\IOAS Public\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\IOAS Public\IOAS\bin\roslyn\System.Collections.Immutable.dll
+D:\IOAS Public\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+D:\IOAS Public\IOAS\bin\roslyn\vbc.exe
+D:\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe
+D:\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe.config
+D:\IOAS Public\IOAS\bin\IOAS.dll.config
+D:\IOAS Public\IOAS\bin\IOAS.dll
+D:\IOAS Public\IOAS\bin\IOAS.pdb
+D:\IOAS Public\IOAS\bin\Antlr3.Runtime.dll
+D:\IOAS Public\IOAS\bin\DynamicReports.dll
+D:\IOAS Public\IOAS\bin\EntityFramework.dll
+D:\IOAS Public\IOAS\bin\EntityFramework.SqlServer.dll
+D:\IOAS Public\IOAS\bin\FoolproofValidation.dll
+D:\IOAS Public\IOAS\bin\IOAS.DataModel.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.Web.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.dll
+D:\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+D:\IOAS Public\IOAS\bin\Microsoft.Web.Infrastructure.dll
+D:\IOAS Public\IOAS\bin\Newtonsoft.Json.dll
+D:\IOAS Public\IOAS\bin\Owin.dll
+D:\IOAS Public\IOAS\bin\System.Web.Helpers.dll
+D:\IOAS Public\IOAS\bin\System.Web.Mvc.dll
+D:\IOAS Public\IOAS\bin\System.Web.Optimization.dll
+D:\IOAS Public\IOAS\bin\System.Web.Razor.dll
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.dll
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.dll
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.dll
+D:\IOAS Public\IOAS\bin\WebGrease.dll
+D:\IOAS Public\IOAS\bin\DynamicReports.pdb
+D:\IOAS Public\IOAS\bin\IOAS.DataModel.pdb
+D:\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AI.Web.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.xml
+D:\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.xml
+D:\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\IOAS Public\IOAS\bin\System.Web.Helpers.xml
+D:\IOAS Public\IOAS\bin\System.Web.Mvc.xml
+D:\IOAS Public\IOAS\bin\System.Web.Optimization.xml
+D:\IOAS Public\IOAS\bin\System.Web.Razor.xml
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.xml
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.xml
+D:\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.xml
+D:\IOAS Public\IOAS\bin\Antlr3.Runtime.pdb
+D:\IOAS Public\IOAS\bin\Newtonsoft.Json.xml
+D:\IOAS Public\IOAS\bin\EntityFramework.xml
+D:\IOAS Public\IOAS\bin\EntityFramework.SqlServer.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+D:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\IOAS Public\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+D:\IOAS Public\IOAS\obj\Debug\IOAS.dll
+D:\IOAS Public\IOAS\obj\Debug\IOAS.pdb
+E:\IOAS Public\IOAS\bin\ApplicationInsights.config
+E:\IOAS Public\IOAS\bin\roslyn\csc.exe
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\IOAS Public\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\IOAS Public\IOAS\bin\roslyn\System.Collections.Immutable.dll
+E:\IOAS Public\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+E:\IOAS Public\IOAS\bin\roslyn\vbc.exe
+E:\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe
+E:\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe.config
+E:\IOAS Public\IOAS\bin\IOAS.dll.config
+E:\IOAS Public\IOAS\bin\IOAS.dll
+E:\IOAS Public\IOAS\bin\IOAS.pdb
+E:\IOAS Public\IOAS\bin\Antlr3.Runtime.dll
+E:\IOAS Public\IOAS\bin\DynamicReports.dll
+E:\IOAS Public\IOAS\bin\EntityFramework.dll
+E:\IOAS Public\IOAS\bin\EntityFramework.SqlServer.dll
+E:\IOAS Public\IOAS\bin\FoolproofValidation.dll
+E:\IOAS Public\IOAS\bin\IOAS.DataModel.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.Web.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.dll
+E:\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\IOAS Public\IOAS\bin\Microsoft.Web.Infrastructure.dll
+E:\IOAS Public\IOAS\bin\Newtonsoft.Json.dll
+E:\IOAS Public\IOAS\bin\Owin.dll
+E:\IOAS Public\IOAS\bin\System.Web.Helpers.dll
+E:\IOAS Public\IOAS\bin\System.Web.Mvc.dll
+E:\IOAS Public\IOAS\bin\System.Web.Optimization.dll
+E:\IOAS Public\IOAS\bin\System.Web.Razor.dll
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.dll
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.dll
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.dll
+E:\IOAS Public\IOAS\bin\WebGrease.dll
+E:\IOAS Public\IOAS\bin\DynamicReports.pdb
+E:\IOAS Public\IOAS\bin\IOAS.DataModel.pdb
+E:\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AI.Web.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.xml
+E:\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.xml
+E:\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\IOAS Public\IOAS\bin\System.Web.Helpers.xml
+E:\IOAS Public\IOAS\bin\System.Web.Mvc.xml
+E:\IOAS Public\IOAS\bin\System.Web.Optimization.xml
+E:\IOAS Public\IOAS\bin\System.Web.Razor.xml
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.xml
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.xml
+E:\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.xml
+E:\IOAS Public\IOAS\bin\Antlr3.Runtime.pdb
+E:\IOAS Public\IOAS\bin\Newtonsoft.Json.xml
+E:\IOAS Public\IOAS\bin\EntityFramework.xml
+E:\IOAS Public\IOAS\bin\EntityFramework.SqlServer.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\IOAS Public\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+E:\IOAS Public\IOAS\obj\Debug\IOAS.dll
+E:\IOAS Public\IOAS\obj\Debug\IOAS.pdb
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\ApplicationInsights.config
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\csc.exe
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\System.Collections.Immutable.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\vbc.exe
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe.config
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.dll.config
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.pdb
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Antlr3.Runtime.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\DynamicReports.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.SqlServer.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\FoolproofValidation.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.DataModel.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Web.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Web.Infrastructure.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Newtonsoft.Json.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Owin.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Helpers.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Mvc.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Optimization.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Razor.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\WebGrease.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\DynamicReports.pdb
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.DataModel.pdb
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Web.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Helpers.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Mvc.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Optimization.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Razor.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Antlr3.Runtime.pdb
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Newtonsoft.Json.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.SqlServer.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.dll
+E:\ioas code\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.pdb
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.csprojResolveAssemblyReference.cache
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\ApplicationInsights.config
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\csc.exe
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\System.Collections.Immutable.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\System.Reflection.Metadata.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\vbc.exe
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\roslyn\VBCSCompiler.exe.config
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.dll.config
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.pdb
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Antlr3.Runtime.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\DynamicReports.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.SqlServer.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\FoolproofValidation.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.DataModel.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Agent.Intercept.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Web.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Web.Infrastructure.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Newtonsoft.Json.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Owin.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Helpers.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Mvc.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Optimization.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Razor.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\WebGrease.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\DynamicReports.pdb
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\IOAS.DataModel.pdb
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.DependencyCollector.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.Web.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AI.WindowsServer.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.ApplicationInsights.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Helpers.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Mvc.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Optimization.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.Razor.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Deployment.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\System.Web.WebPages.Razor.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Antlr3.Runtime.pdb
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Newtonsoft.Json.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\EntityFramework.SqlServer.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Core.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Facebook.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Cookies.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.OAuth.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Google.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.Twitter.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.dll
+E:\ioas code\IOAS Public - Invoice Code1\IOAS Public - Invoice Code\IOAS Public\IOAS\obj\Debug\IOAS.pdb

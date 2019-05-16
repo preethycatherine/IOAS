@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "Process Guideline";
+    ViewBag.Subtitle = "Process Guideline";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/Process/ProcessGuideline.js")"></script>
+
+@*Temp solution for modal popup. to be work*@
+<style>
+    .modal-backdrop.in {
+        opacity: 0;
+        display: none;
+    }
+</style>
+
+<div class="row hd-tt-bg">
+
+    <div class="col-md-4">
+        <div class="search-btn">
+            <input type="text" value="Search" class="form-control">
+            <a href="#" class="btn"> <i class="ion-search"></i></a>
+        </div>
+    </div>
+    <div class="col-md-8 flt-nav-links">
+        <a href="#"> <i class="ion-android-funnel"></i>Filters</a>
+        <a href="#" id="btnAddNew"> <i class="ion-plus"></i>Add New</a>
+        <a href="#" id="btnClose"> <i class="ion-plus"></i>Close</a>
+    </div>
+
+</div>
+<div class="">
+    <div class="sb-cnt-bg" id="divOuterPGL">
+        <div class="">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <label>Function</label>
+                                <select id="selectFunctionSrch" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <label>Process</label>
+                                <input type="text" class="form-control" id="txtProcessSrch">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row mt30">
+                    <div class="col-md-12 text-center">
+                        <input type="button" class="btn btn-primary mr10" value="Search" name="Button" id="btnSearchPGL" />
+                        <input type="button" class="btn btn-default" value="Reset" name="Button" id="btnResetSrchPGL" />
+
+                    </div>
+                </div>
+                <div class="row mt30">
+                    <div class="custom-jsgrid-normal">
+                        <div class="col-md-12">
+                            <div id="gridProcessGuidelineSearch"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sb-cnt-bg" id="divInnerPGL" style="display:none">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="grd-box">
+                    <h3>Process Flow</h3>
+                    <div class="form-group frm-sp-txt">
+                        <div class="col-md-4">
+                            <label>Function</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select id="selectFunction" class="form-control"></select>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-default" id="btnSave">Save</a>
+                        </div>
+                    </div>
+                    <div class="form-group frm-sp-txt">
+                        <div class="col-md-4">
+                            <label>Process</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="txtProcess">
+                        </div>
+                        <div class="col-md-4">
+                            <a href="#" class="btn btn-default" id="btnResetSave">Cancel</a>
+                            <a href="#" class="btn btn-default" style="display:none">+</a>
+                        </div>
+                    </div>
+                    <div class="custom-jsgrid-bg">
+                        <div id="gridProcessFlow"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="grd-box bg-green">
+                    <h3>Un Assigned User for : <span id="spanAssignedUser"></span></h3>
+                    <div class="form-group frm-sp-txt text-center">
+                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">Assign More User</a>&nbsp;&nbsp;
+                        <a href="#" class="btn btn-default" id="btnUnmapUser">Unmap</a>
+                    </div>
+                    <div class="custom-jsgrid-bg">
+                        <div id="gridAssignedUser"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="grd-boxdsd">
+                    <h3>Approval list : <span id="spanApprover"></span></h3>
+                    <div class="custom-jsgrid-normal">
+                        <div>
+                            <div id="gridApproverList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Assign More User</h3>
+            </div>
+            <div class="modal-body">
+                <div class="custom-jsgrid-normal">
+                    <div class="col-md-12">
+                        <div id="gridUnassigneduser"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" id="btnMapUser">Map</a>&nbsp;&nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

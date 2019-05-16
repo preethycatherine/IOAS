@@ -1,0 +1,247 @@
+﻿@model IOAS.Models.CreateTapalModel
+
+<div class="row mt30">
+    <div id="InwardIUModal" class="modal fade" role="dialog">
+        @using (Html.BeginForm("Tapal", "Facility", FormMethod.Post, new { @id = "frmTapal", role = "form", enctype = "multipart/form-data" }))
+        {
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        @if (Model.TapalId == 0)
+                        {
+                            <h3 class="modal-title">Create Inward</h3>
+                        }
+                        else
+                        {
+                            <h3 class="modal-title">Edit Inward</h3>
+                        }
+                    </div>
+                    <div class="modal-body">
+                        <div class="custom-jsgrid-normal">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-6">
+                                        @Html.HiddenFor(m => m.TapalId)
+                                        <div class="form-group custom-form-group">
+                                            <label class="required">Tapal Catagory</label>
+                                            @Html.DropDownListFor(m => m.selTapalType, new SelectList(ViewBag.TapalCatagory, "id", "name"), "Select Catagory", new { @class = "form-control", @id = "TapalCatagory" })
+                                            <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.selTapalType)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="required">Sender Detail</label>
+                                            @Html.TextBoxFor(m => m.SenderDetails, new { @class = "form-control", @id = "SenderDetails" })
+                                            <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.SenderDetails)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group custom-form-group">
+                                            <label class="required">Receipt Date</label>
+                                            @Html.EditorFor(m => m.ReceiptDate, new { @class = "form-control", @id = "ReceiptDate" })
+                                            <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.ReceiptDate)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group custom-form-group">
+                                            <p><label class="required">Project Tapal</label></p>
+                                            <b>
+
+                                                @if (!String.IsNullOrWhiteSpace(Model.tapalType) && Model.tapalType == "No")
+                                                {
+                                                    <label class="radio chkbox-adj">
+                                                        @Html.RadioButtonFor(m => m.tapalType, "Yes", new { @id = "ProjectTabal" })
+                                                        <span></span> Yes
+                                                    </label>
+                                                    <label class="radio chkbox-adj">
+                                                        @Html.RadioButtonFor(m => m.tapalType, "No", new { @id = "ProjectTabal", @checked = "checked" })
+                                                        <span></span> No
+                                                    </label>
+                                                }
+                                                else
+                                                {
+                                                    <label class="radio chkbox-adj">
+                                                        @Html.RadioButtonFor(m => m.tapalType, "Yes", new { @id = "ProjectTabal", @checked = "checked" })
+                                                        <span></span> Yes
+
+                                                    </label>
+                                                    <label class="radio chkbox-adj">
+                                                        @Html.RadioButtonFor(m => m.tapalType, "No", new { @id = "ProjectTabal" })
+                                                        <span></span> No
+                                                    </label>
+                                                }
+
+
+
+                                            </b>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12" id="PIDiv">
+                                    <div class="col-md-6">
+                                        <div class="form-group custom-form-group">
+                                            <label>PI Name</label>
+                                            @Html.DropDownListFor(M => M.PIName, new SelectList(ViewBag.PIList, "id", "name"), "Select PI", new { @id = "User", @class = "form-control selectpicker" })
+                                            <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.PIName)</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group custom-form-group">
+                                            <label>Project Number</label>
+                                            @Html.DropDownListFor(M => M.ProjectNo, new SelectList(ViewBag.PIProject, "id", "name"), "Select Project", new { @id = "HandItOverTo", @class = "form-control" })
+                                            <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.ProjectNo)</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="col-md-6 display-none">
+                                        <div class="form-group custom-form-group">
+                                            <label class="required">Documents</label>
+                                            @Html.TextBoxFor(model => model.files, new { type = "file", @class = "txt-wrap" })
+                                            <div class="txt-error txt-red">@Html.ValidationMessageFor(model => model.files)</div>
+                                            <label class="txt-red" id="lblerror"></label>
+                                            @if (Model.DocDetail != null && Model.DocDetail.Count > 0)
+                                            {
+                                                foreach (var item in Model.DocDetail)
+                                                {
+                                                    <p class="mt-sm">
+
+
+                                                        <a href="@Url.Action("ShowDocument", "Facility", new { TapalDocId = item.TapalDocDetailId, TapalId = item.TabalId })" target="_blank"> @item.FileName</a>
+                                                    </p>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        @if (Model.TapalId == 0)
+                        {
+                            <input type="submit" name="Button" value="Add" class="btn btn-primary" id="btnSave" />@:&nbsp; &nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        }
+                        else
+                        {
+                            <input type="submit" name="Button" value="Update" class="btn btn-primary" id="btnSave" />@:&nbsp; &nbsp;<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        }
+
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+
+</div>
+
+<link href="@Url.Content("~/Content/IOASContent/assets/bootstrap-select/css/bootstrap-select.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Content/IOASContent/assets/bootstrap-select/js/bootstrap-select.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FoolProof/mvcfoolproof.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //get the relevant form
+        var form = $('#frmTapal');
+        $('.selectpicker').selectpicker({
+            liveSearch: true
+        });
+        // delete validator in case someone called form.validate()
+        $(form).removeData("validator");
+        $.validator.unobtrusive.parse(form);
+
+        var pTapal = $("input[name='tapalType']:checked").val();
+        if (pTapal == 'Yes') {
+            $('#PIDiv').show();
+        }
+        else {
+            $('#PIDiv').hide();
+        }
+    });
+
+    $(':radio[name=tapalType]').change(function () {
+        var value = $(this).val();
+        if (value == 'Yes') {
+            $('#PIDiv').show();
+        }
+        else {
+            $('#PIDiv').hide();
+        }
+    });
+
+    $("#files").change(function () {
+        var file_size = $('#files')[0].files[0].size;
+        if (file_size > 5242880) {
+            $("#lblerror").show();
+            $("#lblerror").text('You can upload files up to 5 MB');
+            return false;
+        }
+        $("#lblerror").hide();
+        return true;
+    });
+
+    $("#User").change(function () {
+        var PIId = $(this).val();
+        if (PIId != "") {
+            $.getJSON("@Url.Action("LoadPIProject", "Facility")", { PIId: PIId },
+                       function (locationdata) {
+                           var select = $("#HandItOverTo");
+                           select.empty();
+                           $.each(locationdata, function (index, itemData) {
+
+                               select.append($('<option/>', {
+                                   value: itemData.id,
+                                   text: itemData.name
+                               }));
+                           });
+                       });
+        }
+    });
+
+    $("#btnSave").click(function (e) {
+        e.preventDefault();
+        var isValid = $('#frmTapal').valid();
+        var file = $('#files').val();
+        var isValidExten = false;
+        if (file != "") {
+            var file_size = $('#files')[0].files[0].size;
+            var extension = file.substr((file.lastIndexOf('.') + 1)).toLowerCase();
+            switch (extension) {
+                case 'doc':
+                case 'docx':
+                case 'pdf':
+                    isValidExten = true;
+                    break;
+                default:
+                    isValidExten = false;
+            }
+            if (isValidExten == false) {
+                $('#alert').html("Please upload any one of these type file [doc, docx, pdf].");
+                $('#Validation').modal('toggle');
+                return false;
+            }
+            else if (file_size > 5242880) {
+                $('#alert').html("You can upload the file up to 5 MB.");
+                $('#Validation').modal('toggle');
+                return false;
+            }
+        }
+        if (isValid)
+            $('#frmTapal').submit();
+
+    });
+</script>
+
