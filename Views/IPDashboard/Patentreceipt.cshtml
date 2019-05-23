@@ -17,13 +17,13 @@
             <div class="page-wrapper">
                 <div class="white-bg">
                     <h3><B>Receipt Details</B></h3>
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="row">                       
                             <div class="form-group custom-form-group">
                                 <table style="width:100%;" class="table table-hover">                                  
                                     <tr>
                                         <td>Title  </td>
                                         <td>@Model.receiptdetail.title</td>
+                                        <td style="font-size:large">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = Session["institute_bkpbutton"] }, new { })</td>
                                     </tr>
                                     <tr>
                                         <td>Application No. </td>
@@ -31,7 +31,7 @@
                                     </tr>
                                     <tr>
                                         <td>Filing Date  </td>
-                                        <td>@Model.receiptdetail.filing_dt   </td>
+                                        <td>@Model.receiptdetail.filing_dt</td>
                                     </tr>
                                     <tr>
                                         <td>Inventor </td>
@@ -49,8 +49,7 @@
                                         <td>Patent Date</td>
                                         <td>@Model.receiptdetail.pat_dt</td>
                                     </tr>
-                                </table>
-                            </div>
+                                </table>                        
                         </div>
                     </div>
                 </div>

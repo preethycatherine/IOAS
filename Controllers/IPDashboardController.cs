@@ -12,24 +12,22 @@ namespace IOAS.Controllers
 {
     public class IPDashboardController : Controller
     {
+       
         public ActionResult IndianfillingsPatents(string instid = null)
         {
-
+            Session["institute_bkpbutton"] = instid;
             Models.IPDashboard.wfadsModel records = new Models.IPDashboard.wfadsModel();
-            // Models.IPDashboard.IndianfillingsPatentsModel records1 = new Models.IPDashboard.IndianfillingsPatentsModel();
             List<Models.IPDashboard.IndianfillingsPatentsModel> records1 = new List<Models.IPDashboard.IndianfillingsPatentsModel>();
             try
             {
-                //WFADSEF obj = new WFADSEF();
-                //PatentModel patentDb = new PatentModel();
+               
                 using (WFADSEF obj = new WFADSEF())
                 {
                     records = obj.Database.SqlQuery<Models.IPDashboard.wfadsModel>(string.Format("SELECT EmployeeId,EmployeeName,DepartmentCode FROM Faculty_Details where EmployeeId like  '%{0}%' ", instid)).FirstOrDefault();
                 }
                 using (PatentModel patentDb = new PatentModel())
                 {
-                   // records1 = patentDb.Database.SqlQuery<Models.IPDashboard.IndianfillingsPatentsModel>(string.Format("select cast(fileno as int) as fileno,Title,Applcn_no,convert(date, Filing_dt, 103) as Filing_dt, Pat_no,convert(date, Pat_dt, 103) Pat_dt, Attorney, Status, Sub_Status, secondApplicant, Inventor1, Type from PatDetails where InstID like '%{0}%' ", instid)).ToList();
-                    records1 = patentDb.Database.SqlQuery<Models.IPDashboard.IndianfillingsPatentsModel>(string.Format("select  fileno,Title, Type,Applcn_no,convert(varchar, Filing_dt, 103) as Filing_dt,Pat_no,convert(varchar, Pat_dt, 103) as Pat_dt, Attorney, Status from PatDetails where InstID like '%{0}%' ", instid)).ToList();
+                     records1 = patentDb.Database.SqlQuery<Models.IPDashboard.IndianfillingsPatentsModel>(string.Format("select  fileno,Title, Type,Applcn_no,convert(varchar, Filing_dt, 103) as Filing_dt,Pat_no,convert(varchar, Pat_dt, 103) as Pat_dt, Attorney, Status from PatDetails where InstID like '%{0}%' ", instid)).ToList();
                 }
             }
             catch (Exception e)
@@ -102,19 +100,20 @@ namespace IOAS.Controllers
             return View("Patentreceipt", new IOAS.Models.IPDashboard.IPDashboardView {receiptdetail=records ,patentreceipt=records1,patentreceipttotal=records2});
         }
 
-        public ActionResult InternationalFilingsPatents(string InstID = null)
+        public ActionResult InternationalFilingsPatents(string instid = null)
         {
+            Session["institute_bkbutton"] = instid;
             List<Models.IPDashboard.InternationalFilingsPatentsModel> records = new List<Models.IPDashboard.InternationalFilingsPatentsModel>();
             try
             {
                 using (PatentModel patentDb = new PatentModel())
                 {
-                    records = patentDb.Database.SqlQuery<Models.IPDashboard.InternationalFilingsPatentsModel>(string.Format(" select B.subFileNo,B.Country,B.ApplicationNo as Applcn_no,convert(varchar,B.FilingDt,103) as Filing_dt,B.PatentNo,convert(nvarchar,B.PatentDt,103) PatentDt,B.TYPE,B.Attorney,B.Status,B.SubStatus from INTERNATIONAL as B WHERE exists(select a.fileno, A.Title, A.Applcn_no, convert(varchar, A.Filing_dt, 103) as Filing_dt, A.Pat_no, A.Pat_dt, A.Type, A.Attorney, A.Status, A.Sub_Status from PatDetails A WHERE B.fileno = A.fileno and A.InstID like '%{0}%') ", InstID)).ToList();
+                    records = patentDb.Database.SqlQuery<Models.IPDashboard.InternationalFilingsPatentsModel>(string.Format(" select B.subFileNo,B.Country,B.ApplicationNo as Applcn_no,convert(varchar,B.FilingDt,103) as Filing_dt,B.PatentNo,convert(nvarchar,B.PatentDt,103) PatentDt,B.TYPE,B.Attorney,B.Status,B.SubStatus from INTERNATIONAL as B WHERE exists(select a.fileno, A.Title, A.Applcn_no, convert(varchar, A.Filing_dt, 103) as Filing_dt, A.Pat_no, A.Pat_dt, A.Type, A.Attorney, A.Status, A.Sub_Status from PatDetails A WHERE B.fileno = A.fileno and A.InstID like '%{0}%') ", instid)).ToList();
                 }
             }
             catch (Exception e)
             { Console.WriteLine("Error:" + e); }
-            Session["fileno"] = InstID;
+            Session["fileno"] = instid;
             return View("InternationalFilingsPatents", new IOAS.Models.IPDashboard.IPDashboardView { internfillings = records });
         }
 
@@ -139,19 +138,19 @@ namespace IOAS.Controllers
             catch (Exception e)
             { Console.WriteLine("Error:" + e); }
             return View("patentinfoR202IPDetails", new IOAS.Models.IPDashboard.IPDashboardView { interncodetails = records, idfdetails = records1, invendetails = records2, indpatdetails=records3, internationalpatstatus=records4 });
-
         }
 
-        public ActionResult TechTransferAccounts(string fileno = null)
+        public ActionResult TechTransferAccounts(string instid = null)
         {
+            Session["institute_backbutton"] = instid;    
             Models.IPDashboard.TechTransferAccounts records = new Models.IPDashboard.TechTransferAccounts();
             List<Models.IPDashboard.patentinfoR102A> records1 = new List<Models.IPDashboard.patentinfoR102A>();
             try
             {
                 using (PatentModel patentDb = new PatentModel())
                 {
-                    records=patentDb.Database.SqlQuery<Models.IPDashboard.TechTransferAccounts>(string.Format("SELECT Inventor1,DeptCode,InstID FROM PatDetails WHERE InstID LIKE '%{0}%'", fileno)).FirstOrDefault();
-                    records1= patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102A>(string.Format("SELECT convert(nvarchar(15),fileno,103) as fileno,TITLE,INVENTOR1 AS INVENTOR,INDUSTRY1,INDUSTRY2,ABSTRACT,DEVELOPMENTSTATUS,COMMERCIALIZED,(SELECT convert(varchar, dbo.udf_NumberToCurrency(SUM(PAYMENTAMTINR), 'IND')) FROM PATENTPAYMENT WHERE fileno = PATDETAILS.fileno) AS PAYMENT,(SELECT  convert(varchar, dbo.udf_NumberToCurrency(SUM(cost_Rs), 'IND'))  FROM PATENTRECEIPT WHERE fileno = PATDETAILS.fileno) AS RECEIPT FROM PATDETAILS WHERE InstID like '%{0}%'", fileno)).ToList();
+                    records=patentDb.Database.SqlQuery<Models.IPDashboard.TechTransferAccounts>(string.Format("SELECT Inventor1,DeptCode,InstID FROM PatDetails WHERE InstID LIKE '%{0}%'", instid)).FirstOrDefault();
+                    records1= patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102A>(string.Format("SELECT convert(nvarchar(15),fileno,103) as fileno,TITLE,INVENTOR1 AS INVENTOR,INDUSTRY1,INDUSTRY2,ABSTRACT,DEVELOPMENTSTATUS,COMMERCIALIZED,(SELECT convert(varchar, dbo.udf_NumberToCurrency(SUM(PAYMENTAMTINR), 'IND')) FROM PATENTPAYMENT WHERE fileno = PATDETAILS.fileno) AS PAYMENT,(SELECT  convert(varchar, dbo.udf_NumberToCurrency(SUM(cost_Rs), 'IND'))  FROM PATENTRECEIPT WHERE fileno = PATDETAILS.fileno) AS RECEIPT FROM PATDETAILS WHERE InstID like '%{0}%'", instid)).ToList();
                 }
             }
             catch (Exception e)
@@ -161,8 +160,9 @@ namespace IOAS.Controllers
 
         public ActionResult patentinfoR102AIPDetails(string fileno = null)
         {
+            Session["institute_bkbutton"] = fileno;
             Models.IPDashboard.patentinfoR102AIPDetailsModel records = new Models.IPDashboard.patentinfoR102AIPDetailsModel();
-           List<Models.IPDashboard.patentinfoR102AInventordetails> records1 = new List<Models.IPDashboard.patentinfoR102AInventordetails>();
+            List<Models.IPDashboard.patentinfoR102AInventordetails> records1 = new List<Models.IPDashboard.patentinfoR102AInventordetails>();
             Models.IPDashboard.patentinfoR102AIPDetailsIndPatStat records2 = new Models.IPDashboard.patentinfoR102AIPDetailsIndPatStat();
             Models.IPDashboard.patentinfoR102AIPDetailsComercialization records3 = new Models.IPDashboard.patentinfoR102AIPDetailsComercialization();
             try
@@ -170,7 +170,7 @@ namespace IOAS.Controllers
                 using (PatentModel patentDb = new PatentModel())
                 {
                     records = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPDetailsModel>(string.Format("SELECT title,type,InitialFiling,firstApplicant,secondApplicant,convert(nvarchar(15),request_dt,103) as request_dt,Specification FROM PatDetails WHERE fileno LIKE '%{0}%'", fileno)).FirstOrDefault();
-                    records1= patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AInventordetails>(string.Format("select convert(varchar(15),SlNo+1,103) as SlNo,InventorName,InventorType,convert(nvarchar(15),InventorID,103) as InventorID,DeptOrOrganisation as Dept from coinventordetails where fileno like '%{0}%' union select convert(varchar(15),1,103) as SlNo, Inventor1 as InventorName, InventorType, convert(varchar(15),InstID,103) as  InventorID, Department as Dept from patdetails where fileno like '%{0}%'", fileno)).ToList();
+                    records1= patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AInventordetails>(string.Format("select convert(varchar(15),SlNo+1,103) as SlNo,InventorName,InventorType,convert(nvarchar(15),InventorID,103) as InventorID,DeptOrOrganisation as Dept from coinventordetails where fileno like '%{0}%' union select convert(varchar(15),1,103) as SlNo, Inventor1 as InventorName, InventorType, convert(varchar(15),InstID,103) as  InventorID, Department as Dept from patdetails where fileno like '%{0}%'", fileno.Trim())).ToList();
                     records2 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPDetailsIndPatStat>(string.Format("select Attorney,Applcn_no,convert(nvarchar(15),Filing_dt,103) as  Filing_dt,Examination,convert(nvarchar(15),Exam_dt,103) as  Exam_dt,Publication,convert(nvarchar(15),Pub_dt,103) as Pub_dt,Status,Sub_status, Pat_no,convert(nvarchar(15),Pat_dt,103) as Pat_dt from patdetails where fileno like  '%{0}%'", fileno)).FirstOrDefault();
                     records3 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPDetailsComercialization>(string.Format("select Commercial,InventionNo,convert(nvarchar(15),Validity_from_dt,103) as Validity_from_dt,convert(nvarchar(15),Validity_to_dt,103) as Validity_to_dt,Industry1,Industry2,Industry3,IPC_Code,Abstract,DevelopmentStatus,Commercialized,PatentLicense,TechTransNo,Remarks from patdetails where fileno like   '%{0}%'", fileno)).FirstOrDefault();
 

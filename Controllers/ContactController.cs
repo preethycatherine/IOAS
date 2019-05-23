@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace IOAS.Controllers
 {
-    public class OthersController : Controller
+    public class ContactController : Controller
     {
-        // GET: Others
-        public ActionResult GroupTravelInsurance()
+        // GET: Contact
+        public ActionResult Contact()
         {
-            return View("GroupTravelInsurance");
+            return View();
         }
     }
 }

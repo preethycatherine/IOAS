@@ -3,8 +3,17 @@
     ViewBag.Title = "patentinfoR102AIPDetails";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
 }
+
+
 @using (Html.BeginForm("patentinfoR102AIPDetails", "IPDashboard", FormMethod.Post))
 {
+    <head>
+        <style>
+            td {
+              text-align:left;
+            }
+        </style>
+    </head>
     <div id="addnewstatusbar">
         <div class="row hd-tt-bg">
             <div class="col-md-4">
@@ -12,46 +21,48 @@
             </div>
         </div>
     </div>
+    
 <div class="row">
     <div class="col-md-12">
-        <div class="page-wrapper">
+        <div class="page-wrapper">   
             <div class="white-bg">
-                <h3><B>IDF Details</B></h3>
+               <h3><B>IDF Details</B></h3>  
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group custom-form-group">
-                            <table style="width:100%;" class="table table-hover">
-                                <tr>
-                                    <td>Title </td>
-                                    <td>@Model.patinfoipdetail.title</td>
-                                </tr>
-                                <tr>
-                                    <td>IDF Type  </td>
-                                    <td>@Model.patinfoipdetail.type</td>
-                                </tr>
-                                <tr>
-                                    <td>Initial Filling </td>
-                                    <td>@Model.patinfoipdetail.InitialFiling</td>
-                                </tr>
-                                <tr>
-                                    <td>First Applicant  </td>
-                                    <td>@Model.patinfoipdetail.firstApplicant</td>
-                                </tr>
-                                <tr>
-                                    <td>Second Applicant </td>
-                                    <td>@Model.patinfoipdetail.secondApplicant</td>
-                                </tr>
-                                <tr>
-                                    <td>Request State </td>
-                                    <td>@Model.patinfoipdetail.request_dt</td>
-                                </tr>
-                                <tr>
-                                    <td>Write Up</td>
-                                    <td></td>
-                                </tr>
-                            </table>
-                        </div>
+                    <div style="text-align:right">
+                        <table style="width:100%;" class="table table-hover">
+                            <tr>
+                                <td>Title </td>
+                                <td align="left">@Model.patinfoipdetail.title</td>
+                                <td style="font-size:large">@Html.ActionLink("back", "TechTransferAccounts", "IPDashboard", new { instid = Session["institute_backbutton"] }, new { })</td>
+                            </tr>
+                            <tr>
+                                <td>IDF Type  </td>
+                                <td>@Model.patinfoipdetail.type</td>
+                            </tr>
+                            <tr>
+                                <td>Initial Filling </td>
+                                <td>@Model.patinfoipdetail.InitialFiling</td>
+                            </tr>
+                            <tr>
+                                <td>First Applicant  </td>
+                                <td>@Model.patinfoipdetail.firstApplicant</td>
+                            </tr>
+                            <tr>
+                                <td>Second Applicant </td>
+                                <td>@Model.patinfoipdetail.secondApplicant</td>
+                            </tr>
+                            <tr>
+                                <td>Request State </td>
+                                <td>@Model.patinfoipdetail.request_dt</td>
+                            </tr>
+                            <tr>
+                                <td>Write Up</td>
+                                <td></td>
+                            </tr>
+                        </table>
+
                     </div>
+                  
                 </div>
             </div>
             <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
@@ -61,6 +72,7 @@
 
 <div class="row mt30">
     <div class="col-md-12">
+
         <table class="table" id="tbllist">
             <thead>
                 <tr>

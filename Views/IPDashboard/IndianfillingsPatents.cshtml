@@ -4,8 +4,7 @@
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
 }
 <script>
-    $(function () {
-        //$("[data-toggle=popover]").popover({ html: true });
+    $(function () {      
 
         $('[data-toggle="popover"]').popover();
         $('.popuplink').on("click", function (e) {
@@ -25,14 +24,6 @@
         });
     });
 
-    //$('#fileno').click(function () {
-    //    var url = "/IPDashboard/patentinfoR102IPDetails";
-    //    var name = $('#fileno').val();
-    //    $.get(url, { input: name }, function (data) {
-    //        $("#fileno").html(data);
-    //    });
-    //})
-
 </script>
 @using (Html.BeginForm("IndianfillingsPatents", "IPDashboard", FormMethod.Post))
 {
@@ -42,9 +33,6 @@
                 padding: 15px;
                 text-space-collapse: collapse;
             }
-
-
-
             #headerpanel {
                 padding-top: 30px;
                 padding-bottom: 20px;

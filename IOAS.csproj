@@ -90,6 +90,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -206,11 +208,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IPDashboardController.cs" />
-    <Compile Include="Controllers\OthersController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\TravelInsuranceController.cs" />
+    <Compile Include="FTP\Ftpservice.cs" />
     <Compile Include="GenericServices\AccountService.cs" />
     <Compile Include="GenericServices\AdminService.cs" />
     <Compile Include="GenericServices\CommonConverter.cs" />
@@ -258,10 +262,27 @@
     <Compile Include="Models\IPDashboard\TechTransferAccounts\patentinfoR301PaymentDetailsR102total.cs" />
     <Compile Include="Models\IPDashboard\TechTransferAccounts\TechTransferAccounts.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Others\crystalReport\pdfmodel.cs" />
+    <Compile Include="Models\Others\insuranceInput.cs" />
+    <Compile Include="Models\Others\Model1.cs" />
+    <Compile Include="Models\Others\tblTravelInsurance.cs" />
+    <Compile Include="Models\Others\tblTravelinsurancepdf.cs" />
+    <Compile Include="Models\Others\TravelInsuranceModel.cs" />
     <Compile Include="Models\ProjectModels.cs" />
     <Compile Include="Models\SqlViewsModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\CrystalReportTravelInsurance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportTravelInsurance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\DataSetTravelInsurance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTravelInsurance.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +298,7 @@
     <Content Include="App_Data\Script\Subash\Subash table updates -07.09.18.sql" />
     <Content Include="App_Data\Script\Subash\Table Changes 21.09.18.sql" />
     <Content Include="App_Data\Script\Thomas\Script.sql" />
+    <Content Include="App_Data\testFile.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\InstituteLogo\37616b81-4f25-4a72-a506-d28385afe5bf_IITMadras.png" />
@@ -573,6 +595,17 @@
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\IOAS.pubxml" />
+    <Content Include="Reports\DataSetTravelInsurance.xsc">
+      <DependentUpon>DataSetTravelInsurance.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSetTravelInsurance.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTravelInsurance.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSetTravelInsurance.xss">
+      <DependentUpon>DataSetTravelInsurance.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FoolProof\mvcfoolproof.unobtrusive.min.js" />
     <Content Include="Scripts\FoolProof\MvcFoolproofJQueryValidation.min.js" />
@@ -597,6 +630,7 @@
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\Facility\TapalOutwardList.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\IPDashboard\Patentreceipt.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -671,7 +705,6 @@
     <Content Include="Views\IPDashboard\IndianfillingsPatents.cshtml" />
     <Content Include="Views\IPDashboard\patentinfoR102IPDetails.cshtml" />
     <Content Include="Views\IPDashboard\patentinfoR301PaymentDetailsR102.cshtml" />
-    <Content Include="Views\IPDashboard\Patentreceipt.cshtml" />
     <Content Include="Views\IPDashboard\InternationalFilingsPatents.cshtml" />
     <Content Include="Views\IPDashboard\patentinfoR202IPDetails.cshtml" />
     <Content Include="Views\IPDashboard\TechTransferAccounts.cshtml" />
@@ -679,11 +712,14 @@
     <Content Include="Views\IPDashboard\patentinfoR301PaymentDetailsR102A.cshtml" />
     <Content Include="Views\IPDashboard\patentinfoR102AIPReceipt.cshtml" />
     <Content Include="Views\IPDashboard\Glossary.cshtml" />
-    <Content Include="Views\Others\GroupTravelInsurance.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\TravelInsurance\TravInsurance.cshtml" />
+    <Content Include="Views\TravelInsurance\TravelIndex.cshtml" />
+    <Content Include="Views\TravelInsurance\DisplayInsurancepdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\PDFfiles\" />
-    <Folder Include="Reports\" />
+    <Folder Include="Reports\PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -705,6 +741,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\CrystalReportTravelInsurance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportTravelInsurance.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
