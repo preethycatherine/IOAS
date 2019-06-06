@@ -1,0 +1,126 @@
+﻿@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "TechTransferAccounts";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+<script>
+    $(function () {     
+
+        $('[data-toggle="popover"]').popover();
+        $('.popuplink').on("click", function (e) {
+            e.preventDefault();
+        });
+
+        $('.popuplink').click(function (e) {
+            $('.popuplink').not(this).popover('hide');
+            $(this).popover("toggle");
+            e.stopPropagation();
+        });
+
+        $(document).click(function (e) {
+            if (($('.popover').has(e.target).length == 0) || $(e.target).is('.close')) {
+                $('.popuplink').popover('hide');
+            }
+        });
+    });
+
+</script>
+@using (Html.BeginForm("TechTransferAccounts", "IPDashboard", FormMethod.Post))
+{
+    <head>
+        <style>
+            th, td {
+                padding: 15px;
+                text-space-collapse: collapse;
+            }
+            #headerpanel {
+                padding-top: 30px;
+                padding-bottom: 20px;
+                font-weight: 600;
+                font-size: 15px;
+            }
+        </style>
+    </head>
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Patent Information System</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group custom-form-group">
+                                <table style="width:100%;">
+                                    <tr>
+                                        <td><b>Institute ID : </b></td>
+                                        <td><span id="fileno">@Model.tectfr.InstID</span></td>
+                                        <td><b>Date :</b>@Model.tectfr.todaydate </td>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>CoordinatorName :</b></td>
+                                        <td><span>@Model.tectfr.Inventor1</span>  </td>
+                                        <td><b>Department :</b> </td>
+                                        <td><span>@Model.tectfr.DeptCode</span> </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt30">
+        <div class="col-md-12">
+            <table class="table" id="tbllist">
+                <thead>
+                    <tr>
+                        <th scope="col">File No.</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Development Status</th>
+                        <th scope="col">Industry1</th>
+                        <th scope="col">Industry2</th>
+                        <th scope="col">Commercialized</th>
+                        <th scope="col">Payment</th>
+                        <th scope="col">Receipt</th>
+                    </tr>
+
+                    @foreach (var rec in Model.patinfos)
+                    {
+                        <tr>
+                            <td><a href="#" class="popuplink" data-toggle="popover" title="" data-content="@popupLink(rec.fileno)" data-original-title='' data-html="true">@rec.fileno</a></td>
+                            @*<td>@rec.fileno</td>*@
+                            <td>@rec.TITLE</td>
+                            <td>@rec.DEVELOPMENTSTATUS</td>
+                            <td>@rec.INDUSTRY1</td>
+                            <td>@rec.INDUSTRY2</td>
+                            <td>@rec.COMMERCIALIZED</td>
+                            <td>@rec.PAYMENT</td>
+                            <td>@rec.PATENTRECEIPT</td>
+                        </tr>
+                    }
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@functions{
+    public string popupLink(string fileno)
+    {
+        string link = Html.ActionLink("IDF Details", "patentinfoR102AIPDetails", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        string link1 = Html.ActionLink("IDF Cost", "patentinfoR301PaymentDetailsR102A", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        string link2 = Html.ActionLink("IDF Receipt", "patentinfoR102AIPReceipt", "IPDashboard", new { fileno = fileno }, new { }).ToString();
+        return string.Format(@"{0} <br/>{1}<br/> {2} <br/>", link, link1, link2);
+    }
+}

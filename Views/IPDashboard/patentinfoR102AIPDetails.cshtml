@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "patentinfoR102AIPDetails";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+
+    string institid = Convert.ToString(Session["institute_backbutton"]);
 }
 
 
@@ -33,7 +35,7 @@
                             <tr>
                                 <td>Title </td>
                                 <td align="left">@Model.patinfoipdetail.title</td>
-                                <td style="font-size:large">@Html.ActionLink("back", "TechTransferAccounts", "IPDashboard", new { instid = Session["institute_backbutton"] }, new { })</td>
+                                <td style="font-size:large;padding-left:30px;">@Html.ActionLink("back", "TechTransferAccounts", "IPDashboard", new { instid = institid }, new { })</td>
                             </tr>
                             <tr>
                                 <td>IDF Type  </td>

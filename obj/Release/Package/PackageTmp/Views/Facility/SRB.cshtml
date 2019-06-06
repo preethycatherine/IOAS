@@ -1,0 +1,234 @@
+﻿@model IOAS.Models.SRBModel
+
+<div id="AddNewSRBModal" class="modal fade" role="dialog">
+    @using (Html.BeginForm("SRB", "Facility", FormMethod.Post, new { @id = "frmSRB", role = "form", enctype = "multipart/form-data" }))
+    {
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h3 class="modal-title">SRB</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="custom-jsgrid-normal">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Item category</label>
+                                        @Html.DropDownListFor(M => M.ItemCategory, new SelectList(ViewBag.CategoryList, "id", "name"), "Select Category", new { @class = "form-control", @required = "required" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.ItemCategory)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.HiddenFor(m => m.SRBId)
+                                    <div class="form-group custom-form-group">
+                                        <label>Item name</label>
+                                        @Html.TextBoxFor(M => M.ItemName, new { @class = "form-control", @required = "required" })
+                                        <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.ItemName)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>PO number</label>
+                                        @Html.TextBoxFor(M => M.PONumber, new { @class = "form-control", @required = "required" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.PONumber)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Purchase date</label>
+                                        @Html.EditorFor(M => M.PurchaseDate, new { @class = "form-control", @required = "required" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.PurchaseDate)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Inward date</label>
+                                        @Html.EditorFor(M => M.InwardDate, new { @class = "form-control", @required = "required" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.InwardDate)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Include project details</label><br />
+                                        @Html.CheckBoxFor(M => M.IsIncludeProjectDetails, new { @id = "IsIPD" })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div id="DivProNo" class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Project number</label> 
+                                        @Html.TextBoxFor(M => M.ProjectNumber, new { @id = "ProNo", @class = "form-control" })
+                                        <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.ProjectNumber)</div>
+                                    </div>
+                                </div>
+                                <div id="DivPIName" class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>PI name</label>
+                                        @Html.DropDownListFor(M => M.PIName, new SelectList(ViewBag.PIList, "id", "name"), "Select PI", new { @id = "ddlPI", @class = "form-control selectpicker" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.PIName)</div>
+                                    </div>
+                                </div>
+                                <div id="DivPIProNo" class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>Project number</label>
+                                        @Html.DropDownListFor(M => M.PIProjectNumber, new SelectList(ViewBag.PIProject, "id", "name"), "Select Project", new { @id = "ddlPIProject", @class = "form-control" })
+                                        <div class="txt-error txt-red"> @Html.ValidationMessageFor(M => M.PIProjectNumber)</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group custom-form-group">
+                                        <label>PO document</label>
+                                        @Html.TextBoxFor(model => model.PODocument, new { type = "file", @class = "txt-wrap" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(model => model.PODocument)</div>
+                                        @if (!String.IsNullOrEmpty(Model.DocFullName))
+                                        {<br /> <br />
+                                        <a class="txt-wrap" href="@Url.Action("ShowDocument", "Home", new { file = Model.DocFullName, filePath = "~/Content/SRBDocuments/" })" target="_blank"> @Model.DocName</a>
+                                        }
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="form-group custom-form-group">
+                                        <label>Remarks</label>
+                                        @Html.TextAreaFor(M => M.Remarks, new { @class = "form-control" })
+                                        <div class="txt-error txt-red">@Html.ValidationMessageFor(M => M.Remarks)</div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <input id="btnSubmit" type="submit" class="btn btn-primary mr10" value="Submit" name="Button" />
+                    <input type="button" data-dismiss="modal" class="btn btn-default" value="Close" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div id="ValidationModal" class="modal fade modal-warning" role="dialog">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <i class="ion-android-warning"></i>
+                <h3 class="modal-title">Warning</h3>
+            </div>
+            <div class="modal-body">
+
+                <p id="MsgValidation"></p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<link href="@Url.Content("~/Content/IOASContent/assets/bootstrap-select/css/bootstrap-select.min.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Content/IOASContent/assets/bootstrap-select/js/bootstrap-select.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/FoolProof/mvcfoolproof.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //get the relevant form
+        var form = $('#frmSRB');
+        $('.selectpicker').selectpicker({
+            liveSearch: true
+        });
+        // delete validator in case someone called form.validate()
+        $(form).removeData("validator");
+        $.validator.unobtrusive.parse(form);
+        if ($('#IsIPD').is(":checked")) {
+            $('#DivProNo').css("display", "none");
+            $('#DivPIName').css("display", "block");
+            $('#DivPIProNo').css("display", "block");
+        } else {
+            $('#DivProNo').css("display", "block");
+            $('#DivPIName').css("display", "none");
+            $('#DivPIProNo').css("display", "none");
+        }
+    });
+    $('#IsIPD').click(function () {
+        if ($(this).is(":checked")) {
+            $('#DivProNo').css("display", "none");
+            $('#DivPIName').css("display", "block");
+            $('#DivPIProNo').css("display", "block");
+        } else {
+            $('#DivProNo').css("display", "block");
+            $('#DivPIName').css("display", "none");
+            $('#DivPIProNo').css("display", "none");
+        }
+    });
+    $("#ddlPI").change(function () {
+        var PIId = $(this).val();
+        if (PIId != "") {
+            $.getJSON("@Url.Action("LoadPIProject", "Facility")", { PIId: PIId },
+                       function (locationdata) {
+                           var select = $("#ddlPIProject");
+                           select.empty();
+                           $.each(locationdata, function (index, itemData) {
+
+                               select.append($('<option/>', {
+                                   value: itemData.id,
+                                   text: itemData.name
+                               }));
+                           });
+                       });
+        }
+    });
+    $("#btnSubmit").click(function (e) {
+        e.preventDefault();
+        var isValid = $('#frmSRB').valid();
+        var file = $('#PODocument').val();
+        var isValidExten = false;
+        if (file != "") {
+            var file_size = $('#PODocument')[0].files[0].size;
+            var extension = file.substr((file.lastIndexOf('.') + 1)).toLowerCase();
+            switch (extension) {
+                case 'doc':
+                case 'docx':
+                case 'pdf':
+                    isValidExten = true;
+                    break;
+                default:
+                    isValidExten = false;
+            }
+            if (isValidExten == false) {
+                $('#MsgValidation').html("Please upload any one of these type file [doc, docx, pdf].");
+                $('#ValidationModal').modal('toggle');
+                return false;
+            }
+            else if (file_size > 5242880) {
+                $('#MsgValidation').html("You can upload the file up to 5 MB.");
+                $('#ValidationModal').modal('toggle');
+                return false;
+            }
+        }
+        if (isValid)
+            $('#frmSRB').submit();
+
+    });
+</script>
+

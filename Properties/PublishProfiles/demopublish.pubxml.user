@@ -1,0 +1,1456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\demoISSite</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="App_Data/Script/BenetShibin/Script.sql">
+      <publishTime>09/21/2018 16:34:46</publishTime>
+    </File>
+    <File Include="App_Data/Script/Ramesh/ramesh.sql">
+      <publishTime>02/08/2018 11:00:40</publishTime>
+    </File>
+    <File Include="App_Data/Script/Script.sql">
+      <publishTime>02/08/2018 11:00:40</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Alter Script - Add new Columns in tblProject.sql">
+      <publishTime>07/26/2018 14:55:54</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Alter Script - Agency Master table.sql">
+      <publishTime>07/26/2018 14:55:54</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Alter Script - Scheme Master table.sql">
+      <publishTime>07/26/2018 15:21:16</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/IOAS - Missing Data of Agency Master and Code Control table.sql">
+      <publishTime>07/26/2018 14:55:54</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/IOAS - Project tables Script update.sql">
+      <publishTime>01/08/2018 18:41:34</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/IOAS tblProjectStatusLog.sql">
+      <publishTime>10/08/2018 11:33:58</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Subash table updates -06.09.18.sql">
+      <publishTime>07/09/2018 16:19:42</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Subash table updates -07.09.18.sql">
+      <publishTime>09/17/2018 05:56:18</publishTime>
+    </File>
+    <File Include="App_Data/Script/Subash/Table Changes 21.09.18.sql">
+      <publishTime>09/21/2018 15:51:10</publishTime>
+    </File>
+    <File Include="App_Data/Script/Thomas/Script.sql">
+      <publishTime>10/08/2018 11:39:40</publishTime>
+    </File>
+    <File Include="App_Data/testFile.txt">
+      <publishTime>05/22/2019 10:57:45</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>02/08/2018 11:01:12</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.CrystalReports.Engine.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.ClientDoc.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.CommLayer.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.CommonControls.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.CommonObjectModel.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.Controllers.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.CubeDefModel.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.DataDefModel.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.DataSetConversion.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.ObjectFactory.dll">
+      <publishTime>01/24/2016 06:25:40</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.Prompting.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.ReportDefModel.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportAppServer.XmlSerialize.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.ReportSource.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/CrystalDecisions.Shared.dll">
+      <publishTime>01/24/2016 06:25:42</publishTime>
+    </File>
+    <File Include="bin/DynamicReports.dll">
+      <publishTime>05/24/2019 10:29:43</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>02/08/2018 11:03:28</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>02/08/2018 11:03:00</publishTime>
+    </File>
+    <File Include="bin/FoolproofValidation.dll">
+      <publishTime>02/08/2018 11:03:04</publishTime>
+    </File>
+    <File Include="bin/IOAS.DataModel.dll">
+      <publishTime>05/24/2019 10:29:43</publishTime>
+    </File>
+    <File Include="bin/IOAS.dll">
+      <publishTime>05/24/2019 11:17:31</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>02/08/2018 11:03:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>02/08/2018 11:03:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>02/08/2018 11:03:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>02/08/2018 11:03:30</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>02/08/2018 11:03:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>02/08/2018 11:03:28</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>02/08/2018 11:03:12</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>02/08/2018 11:03:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>02/08/2018 11:03:30</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>02/08/2018 11:03:32</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>02/08/2018 11:03:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>02/08/2018 11:03:44</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>02/08/2018 11:03:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Cookies.dll">
+      <publishTime>02/08/2018 11:03:48</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>02/08/2018 11:03:46</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Facebook.dll">
+      <publishTime>02/08/2018 11:03:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Google.dll">
+      <publishTime>02/08/2018 11:03:52</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.MicrosoftAccount.dll">
+      <publishTime>02/08/2018 11:03:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.OAuth.dll">
+      <publishTime>02/08/2018 11:03:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.Twitter.dll">
+      <publishTime>02/08/2018 11:03:54</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>02/08/2018 11:03:54</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>02/08/2018 11:04:08</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>02/08/2018 11:04:12</publishTime>
+    </File>
+    <File Include="bin/roslyn/csc.exe">
+      <publishTime>02/08/2018 11:03:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.Build.Tasks.CodeAnalysis.dll">
+      <publishTime>02/08/2018 11:03:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.CSharp.dll">
+      <publishTime>02/08/2018 11:04:22</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.dll">
+      <publishTime>02/08/2018 11:03:52</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CodeAnalysis.VisualBasic.dll">
+      <publishTime>02/08/2018 11:04:18</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.CSharp.Core.targets">
+      <publishTime>02/08/2018 11:03:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/Microsoft.VisualBasic.Core.targets">
+      <publishTime>02/08/2018 11:03:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Collections.Immutable.dll">
+      <publishTime>02/08/2018 11:03:40</publishTime>
+    </File>
+    <File Include="bin/roslyn/System.Reflection.Metadata.dll">
+      <publishTime>02/08/2018 11:03:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/vbc.exe">
+      <publishTime>02/08/2018 11:03:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe">
+      <publishTime>02/08/2018 11:03:42</publishTime>
+    </File>
+    <File Include="bin/roslyn/VBCSCompiler.exe.config">
+      <publishTime>02/08/2018 11:03:42</publishTime>
+    </File>
+    <File Include="bin/stdole.dll">
+      <publishTime>03/18/2010 23:21:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>02/08/2018 11:03:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>02/08/2018 11:03:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>02/08/2018 11:03:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>02/08/2018 11:03:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>02/08/2018 11:03:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>02/08/2018 11:03:38</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>02/08/2018 11:03:38</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>02/08/2018 11:04:24</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/37616b81-4f25-4a72-a506-d28385afe5bf_IITMadras.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/3bfc6937-04a6-49c4-ae2f-0df2aec617ab_IITG.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/442451dd-dae9-44d9-9154-8acae4258016_IITBBS.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/5c698ed2-1725-45b5-b896-37e3eba2930f_IITP.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/615b77a0-3797-45ed-a4ef-d9257d72ba75_IITI.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/673777cb-1a2b-48c2-a4d7-6902f3e39ad1_IITJ.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/744af94a-ddee-4dd6-8873-48aaef500351_IITKGP.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/83aea50b-c16f-4c50-a9e4-0532a357447e_logicfield-logo.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/893dd939-8415-4102-b415-e03d63c1d88a_IITGN.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/92dd9cde-5534-423f-ac14-2a78d5d087e6_IITD.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/b2c218ce-77bb-4adc-925a-0b6a9cdda315_IITB.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/b3345cef-df5e-4adc-a67a-42a5865802f4_IITMandi.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/b8b855b6-ae35-4e85-a505-87f8b64370dd_IITH.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/d0d1a828-8187-4998-ac3b-adb24d04509f_IITK.png">
+      <publishTime>07/25/2018 19:37:24</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/e57e1721-656a-4100-a5a6-2237ebd5862e_IITR.png">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/e8b695c8-cd2b-4a4e-8d34-a2e0683ee966_IITRPR.png">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/f982f76f-18b1-4867-91d4-52ebde89acde_IIT%28BHU%29_Varanasi.png">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/InstituteLogo/fba2117c-b9c6-45bc-aee7-9df5ea0a0c8d_IIT%28BHU%29_Varanasi.png">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/css/bootstrap-select.css">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/css/bootstrap-select.css.map">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/css/bootstrap-select.min.css">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/bootstrap-select.js">
+      <publishTime>07/25/2018 19:37:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/bootstrap-select.js.map">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/bootstrap-select.min.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ar_AR.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ar_AR.min.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-bg_BG.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-bg_BG.min.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-cro_CRO.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-cro_CRO.min.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-cs_CZ.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-cs_CZ.min.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-da_DK.js">
+      <publishTime>07/25/2018 19:37:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-da_DK.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-de_DE.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-de_DE.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-en_US.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-en_US.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-es_CL.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-es_CL.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-es_ES.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-es_ES.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-et_EE.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-et_EE.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-eu.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-eu.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fa_IR.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fa_IR.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fi_FI.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fi_FI.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fr_FR.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-fr_FR.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-hu_HU.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-hu_HU.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-id_ID.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-id_ID.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-it_IT.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-it_IT.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ja_JP.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ja_JP.min.js">
+      <publishTime>07/25/2018 19:37:30</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-kh_KM.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-kh_KM.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ko_KR.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ko_KR.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-lt_LT.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-lt_LT.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-nb_NO.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-nb_NO.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-nl_NL.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-nl_NL.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pl_PL.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pl_PL.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pt_BR.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pt_BR.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pt_PT.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-pt_PT.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ro_RO.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ro_RO.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ru_RU.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ru_RU.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sk_SK.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sk_SK.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sl_SI.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sl_SI.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sv_SE.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-sv_SE.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-tr_TR.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-tr_TR.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ua_UA.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-ua_UA.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-vi_VN.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-vi_VN.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-zh_CN.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-zh_CN.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-zh_TW.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/bootstrap-select/js/i18n/defaults-zh_TW.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/contact.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins-js.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/controls.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/imagesloaded.pkgd.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery-2.2.4.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery.colorbox.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery.easing.1.3.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery.filterizr.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery.mCustomScrollbar.concat.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/jquery.scrollUp.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/modernizr.custom.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/owl.carousel.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/owl.carousel.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/smooth-scrollbar.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/validator.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/plugins/wow.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/scripts.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/assets/js/scripts_v1.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/bootstrap-datepicker.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/bootstrap-datepicker.min.js">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_flat_0_aaaaaa_40x100.png">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_flat_75_ffffff_40x100.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_glass_55_fbf9ee_1x400.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_glass_65_ffffff_1x400.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_glass_75_dadada_1x400.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_glass_75_e6e6e6_1x400.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_glass_95_fef1ec_1x400.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-bg_highlight-soft_75_cccccc_1x100.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_222222_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_2e83ff_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_444444_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_454545_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_888888_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/images/ui-icons_cd0a0a_256x240.png">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/jquery-1.12.4.js">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/jquery-ui.css">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/jquery-ui.js">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/jquery.ui.datepicker.css">
+      <publishTime>07/25/2018 19:37:32</publishTime>
+    </File>
+    <File Include="Content/IOASContent/Base/style.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/css/bootstrap-theme.css">
+      <publishTime>09/22/2018 16:07:56</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/css/bootstrap-theme.min.css">
+      <publishTime>09/22/2018 16:07:56</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/css/bootstrap.css">
+      <publishTime>09/22/2018 16:07:56</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/css/bootstrap.min.css">
+      <publishTime>09/22/2018 16:07:58</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>09/22/2018 16:07:58</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/js/bootstrap.js">
+      <publishTime>09/22/2018 16:08:02</publishTime>
+    </File>
+    <File Include="Content/IOASContent/bootstrap-3.3.7/js/bootstrap.min.js">
+      <publishTime>09/22/2018 16:08:04</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/bootstrap-theme.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/bootstrap-theme.min.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/bootstrap.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/bootstrap.min.css">
+      <publishTime>01/05/2019 10:51:28</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/custom-css.css">
+      <publishTime>11/16/2018 20:16:20</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/custom-jsgrid.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/Developercss/Style.css">
+      <publishTime>10/20/2018 17:40:02</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/font-awesome.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/font-awesome.min.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/ioas-icons.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/ionicons.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/ionicons.min.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/jsgrid.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/jsgrid.min.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/owl.carousel.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/staff-portal-css.css">
+      <publishTime>09/22/2018 16:30:08</publishTime>
+    </File>
+    <File Include="Content/IOASContent/css/theme.css">
+      <publishTime>07/25/2018 19:37:34</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/fontawesome-webfont.eot">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/fontawesome-webfont.svg">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/fontawesome-webfont.ttf">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/fontawesome-webfont.woff">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/fontawesome-webfont.woff2">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/FontAwesome.otf">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/icomoon.eot">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/icomoon.svg">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/icomoon.ttf">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/icomoon.woff">
+      <publishTime>07/25/2018 19:37:36</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/ionicons.eot">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/ionicons.svg">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/ionicons.ttf">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/fonts/ionicons.woff">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/404-error-img.png">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/aboutus-bg.jpg">
+      <publishTime>09/22/2018 15:57:48</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/agriculture.png">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/checkbox-2x.png">
+      <publishTime>07/25/2018 19:37:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/event-calender-img.jpg">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/favicon.ico">
+      <publishTime>09/22/2018 16:26:20</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/features-bg.jpg">
+      <publishTime>09/22/2018 15:57:48</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/ICSR-bg.jpg">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/icsr-logo.png">
+      <publishTime>09/22/2018 16:15:38</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/iit-logo.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/iitm-icsr-logo.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/iitm-logo.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/Image_placeholder.png">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/index.png">
+      <publishTime>09/22/2018 15:57:48</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/jsgrid-icons-white.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/jsgrid-icons.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/laptop-img.jpg">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/login-bg-img.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/login-bg.jpg">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/news-bg.jpg">
+      <publishTime>09/22/2018 15:57:48</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/pattern-img-01.jpg">
+      <publishTime>07/25/2018 19:37:52</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/question-mark-img.jpg">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/radio-2x.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/stamp-icon.png">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/img/ux-trends-awwwards-07.jpg">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/bootstrap.js">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/bootstrap.min.js">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/css/icons-2x.png">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/css/icons.png">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/css/jsgrid.css">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/css/theme.css">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/db.js">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/jquery.min.1.11.3.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/jquery.twbsPagination.js">
+      <publishTime>07/25/2018 19:37:40</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/jquery.twbsPagination.min.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.checkbox.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.control.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.number.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.select.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.text.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/fields/jsgrid.field.textarea.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/cs.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/de.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/el.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/es.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/fa.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/fr.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/he.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/it.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/ja.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/ka.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/Ko.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/pl.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/pt-br.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/pt.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/ru.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/tr.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/zh-cn.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/i18n/zh-tw.js">
+      <publishTime>07/25/2018 19:37:44</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.core.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.field.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.load-indicator.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.load-strategies.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.min.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.sort-strategies.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid.validation.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/JSGrid/jsgrid_exclude_core.min.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/myscripts.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/owl.carousel.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/IOASContent/js/owl.carousel.min.js">
+      <publishTime>07/25/2018 19:37:42</publishTime>
+    </File>
+    <File Include="Content/ProposalDocuments/06b10ebe-4a0b-4e0e-807d-8ffb3e5e2e30_UAY17_IISC_001P.pdf">
+      <publishTime>07/25/2018 19:37:54</publishTime>
+    </File>
+    <File Include="Content/ProposalDocuments/8607f1d2-b522-4baa-9f69-9d07a6a2a49d_UAY17_IISC_001P.pdf">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Content/ProposalDocuments/a7f442b2-52af-409f-93ab-d753bc00376f_UAY17_IISC_002P.pdf">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/006fd666-00d5-4914-b107-5ba32e46e3b5_Test 1.pdf">
+      <publishTime>10/08/2018 08:05:34</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/0980e83b-32c9-4277-81f7-c0e500aab03c_Test 1.pdf">
+      <publishTime>10/08/2018 09:51:38</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/102e4d82-aa7f-45f6-9da4-b87b48a2ce10_Test Doc.docx">
+      <publishTime>12/08/2018 18:15:32</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/3037b516-8d0b-43ef-83c4-714a9f2bca7d_Document1.docx">
+      <publishTime>12/08/2018 18:20:50</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/34c391b2-539e-4b69-810c-1044ef962617_Test Doc.docx">
+      <publishTime>01/08/2018 17:50:54</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/3ad7c2d9-b4f3-4abf-8490-ac5aa3017557_Test Doc.docx">
+      <publishTime>10/08/2018 10:19:28</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/4141e512-55c6-4617-972c-dd1eba3a38b2_Document1.docx">
+      <publishTime>08/13/2018 11:17:18</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/43247b65-b363-4ed8-8e21-f689c21dd4de_Test 1.pdf">
+      <publishTime>10/08/2018 14:09:20</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/569dd5fe-1f43-4424-bd71-9a88c9c01d02_Test 1.pdf">
+      <publishTime>07/26/2018 16:30:48</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/83c32e37-8b50-4a0c-9079-c18f68986971_Test.docx">
+      <publishTime>12/08/2018 18:29:24</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/8db70579-b2e3-470e-9005-6fe33cd2c002_Test.docx">
+      <publishTime>10/08/2018 06:57:30</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/8f1e259e-5adf-4a5a-8798-8cfaaac89c69_Test Doc.docx">
+      <publishTime>07/26/2018 18:40:50</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/9306fc6d-5ee6-4e7a-8e69-eac5974851b3_Test 1.pdf">
+      <publishTime>10/08/2018 12:13:26</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/a107bc5b-a756-440c-9b14-4c40a9a51e5e_Test 1.pdf">
+      <publishTime>01/08/2018 17:36:46</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/a927a57f-4270-4e36-a742-3691a9442c8e_Test.docx">
+      <publishTime>06/08/2018 11:33:40</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/aa58d14b-cbeb-4965-a37d-bf32c2ddbff2_Test Doc.docx">
+      <publishTime>08/13/2018 10:57:38</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/b19f808a-4a1a-40e8-a126-a5a00efc2209_Test 1.pdf">
+      <publishTime>07/26/2018 18:33:32</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/f51c3d48-0b7f-4c24-9c95-f79b6b87c58f_Test.docx">
+      <publishTime>06/08/2018 11:47:24</publishTime>
+    </File>
+    <File Include="Content/SupportDocuments/f958d1fe-ac79-431a-a8d4-73788749aa51_Test Doc.docx">
+      <publishTime>01/08/2018 17:49:30</publishTime>
+    </File>
+    <File Include="Content/UserImage/cc326846-b3d0-4fcb-94c5-0a94a4ffd0b1_logicfield-logo.png">
+      <publishTime>07/25/2018 19:37:50</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>07/25/2018 19:37:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>07/25/2018 19:37:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>07/25/2018 19:37:54</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>07/25/2018 19:37:52</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/25/2018 19:37:22</publishTime>
+    </File>
+    <File Include="Reports/CrystalReportTravelInsurance.cs">
+      <publishTime>05/23/2019 15:37:00</publishTime>
+    </File>
+    <File Include="Reports/CrystalReportTravelInsurance.rpt">
+      <publishTime>05/23/2019 15:36:59</publishTime>
+    </File>
+    <File Include="Reports/DataSetTravelInsurance.xsc">
+      <publishTime>05/21/2019 16:05:04</publishTime>
+    </File>
+    <File Include="Reports/DataSetTravelInsurance.xss">
+      <publishTime>05/21/2019 16:05:04</publishTime>
+    </File>
+    <File Include="Scripts/Account/Addrole.js">
+      <publishTime>06/08/2018 17:33:20</publishTime>
+    </File>
+    <File Include="Scripts/Account/CreatePI.js">
+      <publishTime>08/08/2018 16:58:26</publishTime>
+    </File>
+    <File Include="Scripts/Account/CreateUser.js">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Scripts/Account/Department.js">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Scripts/Account/Functionrole.js">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Scripts/Account/Institute.js">
+      <publishTime>06/08/2018 17:33:20</publishTime>
+    </File>
+    <File Include="Scripts/ai.0.22.9-build00167.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>01/05/2019 10:30:35</publishTime>
+    </File>
+    <File Include="Scripts/Facility/TapalOutwardList.js">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Scripts/FoolProof/mvcfoolproof.unobtrusive.min.js">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Scripts/FoolProof/MvcFoolproofJQueryValidation.min.js">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Scripts/FoolProof/MvcFoolproofValidation.min.js">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/Process/ProcessGuideline.js">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Scripts/Project/Invoice.js">
+      <publishTime>01/14/2019 00:30:22</publishTime>
+    </File>
+    <File Include="Scripts/Project/ProjectClosing.js">
+      <publishTime>07/08/2018 13:48:38</publishTime>
+    </File>
+    <File Include="Scripts/Project/ProjectEnhancement.js">
+      <publishTime>09/14/2018 10:09:38</publishTime>
+    </File>
+    <File Include="Scripts/Project/ProjectStatus.js">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Scripts/Proposal/Proposal.js">
+      <publishTime>09/16/2018 18:08:54</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>07/25/2018 19:37:56</publishTime>
+    </File>
+    <File Include="Scripts/site.js">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>09/27/2018 11:17:02</publishTime>
+    </File>
+    <File Include="Views/Account/AccessRights.cshtml">
+      <publishTime>09/22/2018 20:19:10</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePasswordSuccess.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Account/CreatePI.cshtml">
+      <publishTime>12/08/2018 19:03:02</publishTime>
+    </File>
+    <File Include="Views/Account/Createuser.cshtml">
+      <publishTime>08/13/2018 12:51:18</publishTime>
+    </File>
+    <File Include="Views/Account/Department.cshtml">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Account/Institute.cshtml">
+      <publishTime>06/08/2018 17:33:20</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Views/Account/Role.cshtml">
+      <publishTime>02/08/2018 11:00:50</publishTime>
+    </File>
+    <File Include="Views/Contact/Contact.cshtml">
+      <publishTime>05/16/2019 16:41:47</publishTime>
+    </File>
+    <File Include="Views/CrystalReport/ProjectProposal.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Error/AccessDenied.cshtml">
+      <publishTime>02/08/2018 11:00:48</publishTime>
+    </File>
+    <File Include="Views/Facility/PopupSRBDetails.cshtml">
+      <publishTime>07/25/2018 19:45:18</publishTime>
+    </File>
+    <File Include="Views/Facility/PopupTapalDetails.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Facility/PopupTapalInward.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Facility/PopupTapalOutward.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Facility/SearchSRBList.cshtml">
+      <publishTime>07/26/2018 17:19:08</publishTime>
+    </File>
+    <File Include="Views/Facility/SRB.cshtml">
+      <publishTime>08/08/2018 16:32:06</publishTime>
+    </File>
+    <File Include="Views/Facility/SRBList.cshtml">
+      <publishTime>08/22/2018 17:44:36</publishTime>
+    </File>
+    <File Include="Views/Facility/Tapal.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Home/About.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Home/Contact.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Home/Dashboard.cshtml">
+      <publishTime>04/24/2019 12:29:24</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/Glossary.cshtml">
+      <publishTime>05/15/2019 13:57:50</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/IndianfillingsPatents.cshtml">
+      <publishTime>05/20/2019 12:23:37</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/InternationalFilingsPatents.cshtml">
+      <publishTime>05/24/2019 10:11:58</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR102AIPDetails.cshtml">
+      <publishTime>05/24/2019 11:00:50</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR102AIPReceipt.cshtml">
+      <publishTime>05/24/2019 11:01:35</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR102IPDetails.cshtml">
+      <publishTime>05/24/2019 10:57:31</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR202IPDetails.cshtml">
+      <publishTime>05/24/2019 10:59:52</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR301PaymentDetailsR102.cshtml">
+      <publishTime>05/24/2019 10:57:27</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/patentinfoR301PaymentDetailsR102A.cshtml">
+      <publishTime>05/24/2019 11:01:08</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/Patentreceipt.cshtml">
+      <publishTime>05/24/2019 10:58:29</publishTime>
+    </File>
+    <File Include="Views/IPDashboard/TechTransferAccounts.cshtml">
+      <publishTime>05/17/2019 12:02:45</publishTime>
+    </File>
+    <File Include="Views/Manage/AddPhoneNumber.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Manage/ChangePassword.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Manage/Index.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Manage/ManageLogins.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Manage/SetPassword.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/ProcessGuideline/ProcessGuideline.cshtml">
+      <publishTime>02/08/2018 11:00:50</publishTime>
+    </File>
+    <File Include="Views/Project/CreateProformaInvoice.cshtml">
+      <publishTime>03/04/2019 12:28:22</publishTime>
+    </File>
+    <File Include="Views/Project/CreateReceipt.cshtml">
+      <publishTime>10/20/2018 13:21:12</publishTime>
+    </File>
+    <File Include="Views/Project/Invoice.cshtml">
+      <publishTime>03/04/2019 14:04:58</publishTime>
+    </File>
+    <File Include="Views/Project/ProformaInvoice.cshtml">
+      <publishTime>03/04/2019 14:04:52</publishTime>
+    </File>
+    <File Include="Views/Project/ProjectEnhancement.cshtml">
+      <publishTime>07/09/2018 14:08:38</publishTime>
+    </File>
+    <File Include="Views/Project/ProjectInvoice.cshtml">
+      <publishTime>03/04/2019 14:00:06</publishTime>
+    </File>
+    <File Include="Views/Project/ProjectStatus.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Project/ReceiptList.cshtml">
+      <publishTime>12/11/2018 14:12:10</publishTime>
+    </File>
+    <File Include="Views/Project/SearchInvoiceList.cshtml">
+      <publishTime>02/19/2019 12:35:48</publishTime>
+    </File>
+    <File Include="Views/Project/SearchProformaInvoiceList.cshtml">
+      <publishTime>11/19/2018 16:52:16</publishTime>
+    </File>
+    <File Include="Views/Project/SearchReceiptList.cshtml">
+      <publishTime>10/15/2018 18:37:22</publishTime>
+    </File>
+    <File Include="Views/Proposal/CreateProposal.cshtml">
+      <publishTime>09/16/2018 19:01:20</publishTime>
+    </File>
+    <File Include="Views/Proposal/ProjectOpening.cshtml">
+      <publishTime>07/25/2018 20:45:26</publishTime>
+    </File>
+    <File Include="Views/Proposal/ViewProposal.cshtml">
+      <publishTime>08/23/2018 10:23:24</publishTime>
+    </File>
+    <File Include="Views/Reports/EditReport.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Reports/List.cshtml">
+      <publishTime>02/08/2018 11:00:50</publishTime>
+    </File>
+    <File Include="Views/Reports/ReportBuilder.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Reports/ReportLIst.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Reports/ReportViewer.cshtml">
+      <publishTime>10/08/2018 15:26:26</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/Date.cshtml">
+      <publishTime>02/08/2018 11:00:52</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/DateTime.cshtml">
+      <publishTime>02/08/2018 11:00:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/Lockout.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>01/05/2019 10:38:04</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutFluid.cshtml">
+      <publishTime>09/21/2018 16:31:42</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutLogin.cshtml">
+      <publishTime>09/22/2018 16:12:14</publishTime>
+    </File>
+    <File Include="Views/Shared/_LoginPartial.cshtml">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Views/Shared/_SidebarPartial.cshtml">
+      <publishTime>10/11/2018 16:25:42</publishTime>
+    </File>
+    <File Include="Views/TravelInsurance/DisplayInsurancepdf.cshtml">
+      <publishTime>05/23/2019 10:06:02</publishTime>
+    </File>
+    <File Include="Views/TravelInsurance/TravelIndex.cshtml">
+      <publishTime>05/23/2019 13:01:36</publishTime>
+    </File>
+    <File Include="Views/TravelInsurance/TravInsurance.cshtml">
+      <publishTime>05/21/2019 10:47:56</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/25/2018 19:37:58</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/24/2019 10:32:28</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,79 @@
+﻿@model IOAS.Models.SRBDetailsModel
+
+<div class="popup-dts">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ls-dts">
+                <p>
+                    <span>Item Name</span>
+                    <b>@Html.DisplayFor(m=>m.ItemName)</b>
+                </p>
+            </div>
+            <div class="ls-dts">
+                <p>
+                    <span>Inward Date</span>
+                    <b>@Html.DisplayFor(m => m.InwardDate)</b>
+                </p>
+            </div>
+            <div class="ls-dts">
+                <p>
+                    <span>PONumber</span>
+                    <b>@Html.DisplayFor(m => m.PONumber)</b>
+                </p>
+            </div>
+            
+            <div class="ls-dts">
+                <p>
+                    <span>PO Document</span>
+                    @if (Model.DocFullName != null)
+                                                {
+                                                <a class="icn" data-toggle="tooltip" data-placement="top" title="@Model.DocName" href="@Url.Action("ShowDocument", "Home", new { file = Model.DocFullName, filePath = "~/Content/SRBDocuments/" })" target="_blank"> <i class="ion-document" style="font-size: 22px;"></i></a>
+                                                }
+                                                else
+                                                {
+                                                <a class="icn" data-toggle="tooltip" data-placement="top" title="NA" href="javascript:void(0)"> <i class="ion-document" style="font-size: 22px;"></i></a>
+                                                }
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="ls-dts">
+                <p>
+                    <span>Item Number</span>
+                    <b>@Html.DisplayFor(m => m.ItemNumber)</b>
+                </p>
+            </div>
+            
+            <div class="ls-dts">
+                <p>
+                    <span>Purchase Date</span>
+                    <b>@Html.DisplayFor(m => m.PurchaseDate)</b>
+                </p>
+            </div>
+            <div class="ls-dts">
+                <p>
+                    <span>PI Name</span>
+                    <b>@Html.DisplayFor(m => m.PIName)</b>
+                </p>
+            </div>
+            <div class="ls-dts">
+                <p>
+                    <span>Project Number</span>
+                    <b>@Html.DisplayFor(m => m.ProjectNumber)</b>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="ls-dts">
+                <p>
+                    <span>Remarks</span>
+                    <b>@Html.Raw(Model.Remarks)</b>
+                </p>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="close-btn">
+        <i class="ion-android-cancel"></i>
+    </a>
+
+</div>

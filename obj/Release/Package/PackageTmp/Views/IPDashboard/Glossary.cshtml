@@ -1,0 +1,107 @@
+﻿
+@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "Glossary";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+@using (Html.BeginForm("Glossary", "IPDashboard", FormMethod.Post))
+{
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Glossary</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <table>
+                        <tr>
+
+                        <tr>
+                            <td>
+                                <strong>Development Status:</strong> <br />
+                                TRL - Technology readiness levels (as per IDF)<br />
+                                TRL1 - Basic principles observed<br />
+                                TRL2- Technology concept formulated <br />
+                                TRL3- Experimental proof of concept<br />
+                                TRL4 -Technology validated in lab<br />
+                                TRL5 - Technology validated in relevant environment (Industrially relevant environment in the case of key enabling technologies) <br />
+                                TRL6 - Technology demonstrated in relevant environment (Industrially relevant enabling technologies)<br />
+                                TRL7 - System prototype demonstrated in operational environment<br />
+                                TRL8 - System complete and qualified<br />
+                                TRL9 - Actual system proven in operational environment (competitive manufacturing in the case of key enabling technologies)<br />
+                                <strong>Note: </strong>Above not applicable for Pharma, Biotech<br />
+                            </td>
+                            <td>
+                                <strong>Status:</strong> <br />
+                                Pending Internal – Yet to be allotted to Attorney or Service Provider<br />
+                                Pending External – Allotted to Attorney or Service Provider<br />
+                                Closed Internal – Closed before refereeing to attorney <br />
+                                Closed External – Closed based on external search reportt<br />
+                                Granted – Patent granted<br />
+                                Direct International – Application directly filed in a jurisdiction outside India<br />
+                                Registered – Design / Trademark / Copyright registered<br />
+                                Pending Partner – Filing responsibility with other applicant / 3rd Party<br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br /><strong>Patent Search:</strong> <br />
+                                TSI1 - Technical Search - Internal 1<br />
+                                TSI2 - Technical Search – Internal 2<br />
+                                TSI3 – Technical Search – Internal 3<br />
+                                TCE- Techno Commercial Evaluation<br />
+                                TCEK0 – KPMG Phase 0<br />
+                                TCEK1 – KPMG Phase 1<br />
+                                TCEK2 – KPMG Phase 2<br />
+                                TCEK3 – KPMG Phase 3<br />
+                                TCEKP – KPMG TCE Pre-PCT<br />
+                                TCEBL - BCIL TCE<br />
+                                TCEND - NRDC TCE<br />
+                                TCEIP – IP-Metric TCE<br />
+                                TSAP – Technical Search – Attorney (Provisional)<br />
+                                TSAC – Technical Search – Attorney (Complete)<br />
+                            </td>
+                            <td>
+                                <strong>Commercial Status:</strong>  <br />
+                                Self- Commercialization taken care of the Inventor<br />
+                                NA- Not Applicable<br />
+                                Not Yet- Not Initiated<br />
+                                Stage I- Initial discussion and letters sent to the prospects<br />
+                                Stage II-Response to letters sent / Interest evinced by a party<br />
+                                Stage III- Interested party would like proposal<br />
+                                Stage IV- IP and Monetization concluded<br />
+                                Surrender-IP Closed<br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br /> <strong>Country:</strong>  <br />
+                                PCT – Patent Co-operative Treaty <br />
+                                http://www.wipo.int<br />
+                                USA, CANADA, KOREA, SOUTH AFRICA, CHINA etc….<br />
+                            </td>
+                            <td>
+                                <strong>Partner Ref No.:</strong> <br />
+                                Other Applicant or 3rd Party reference number
+                            </td>
+                        </tr>
+                        <tr style="text-align:center">
+                            <td colspan=2>
+                                <strong>IPC Code:</strong>  <br />
+                                Can be access from the following link,<br />
+                                <a href="http://www.wipo.int/classifications/ipc/" target="_blank">http://www.wipo.int/classifications/ipc/</a> <br />
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+}
+

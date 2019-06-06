@@ -38,6 +38,7 @@ namespace IOAS.Controllers
         }
         public ActionResult patentinfoR102IPDetails(string fileno = null)
         {
+            //Session[""]
             Models.IPDashboard.patentinfoR102IPDetailsModel records = new Models.IPDashboard.patentinfoR102IPDetailsModel();
             List<Models.IPDashboard.InventorDetailModel> records1 = new List<Models.IPDashboard.InventorDetailModel>();
             Models.IPDashboard.IndianPatentStatusModel records3 = new Models.IPDashboard.IndianPatentStatusModel();
@@ -61,6 +62,7 @@ namespace IOAS.Controllers
 
         public ActionResult patentinfoR301PaymentDetailsR102(string fileno = null)
         {
+
             Models.IPDashboard.IDFcostPaymentDetailsModel records = new Models.IPDashboard.IDFcostPaymentDetailsModel();
             List<Models.IPDashboard.PatentpaymentModel> records1 = new List<Models.IPDashboard.PatentpaymentModel>();
             Models.IPDashboard.IDFcostPaymenttotalModel records3 = new Models.IPDashboard.IDFcostPaymenttotalModel();
@@ -113,7 +115,7 @@ namespace IOAS.Controllers
             }
             catch (Exception e)
             { Console.WriteLine("Error:" + e); }
-            Session["fileno"] = instid;
+            //Session["fileno"] = instid;
             return View("InternationalFilingsPatents", new IOAS.Models.IPDashboard.IPDashboardView { internfillings = records });
         }
 
@@ -173,7 +175,6 @@ namespace IOAS.Controllers
                     records1= patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AInventordetails>(string.Format("select convert(varchar(15),SlNo+1,103) as SlNo,InventorName,InventorType,convert(nvarchar(15),InventorID,103) as InventorID,DeptOrOrganisation as Dept from coinventordetails where fileno like '%{0}%' union select convert(varchar(15),1,103) as SlNo, Inventor1 as InventorName, InventorType, convert(varchar(15),InstID,103) as  InventorID, Department as Dept from patdetails where fileno like '%{0}%'", fileno.Trim())).ToList();
                     records2 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPDetailsIndPatStat>(string.Format("select Attorney,Applcn_no,convert(nvarchar(15),Filing_dt,103) as  Filing_dt,Examination,convert(nvarchar(15),Exam_dt,103) as  Exam_dt,Publication,convert(nvarchar(15),Pub_dt,103) as Pub_dt,Status,Sub_status, Pat_no,convert(nvarchar(15),Pat_dt,103) as Pat_dt from patdetails where fileno like  '%{0}%'", fileno)).FirstOrDefault();
                     records3 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPDetailsComercialization>(string.Format("select Commercial,InventionNo,convert(nvarchar(15),Validity_from_dt,103) as Validity_from_dt,convert(nvarchar(15),Validity_to_dt,103) as Validity_to_dt,Industry1,Industry2,Industry3,IPC_Code,Abstract,DevelopmentStatus,Commercialized,PatentLicense,TechTransNo,Remarks from patdetails where fileno like   '%{0}%'", fileno)).FirstOrDefault();
-
                 }
             }
             catch (Exception e)
@@ -182,11 +183,9 @@ namespace IOAS.Controllers
         }        
         public ActionResult patentinfoR301PaymentDetailsR102A(string fileno = null)
         {
-
             Models.IPDashboard.patentinfoR301PaymentDetailsR102Apaymentdet records = new Models.IPDashboard.patentinfoR301PaymentDetailsR102Apaymentdet();
             List<Models.IPDashboard.patentinfoR301PaymentDetailsR102Acostdetails> records1 = new List<Models.IPDashboard.patentinfoR301PaymentDetailsR102Acostdetails>();
             Models.IPDashboard.patentinfoR301PaymentDetailsR102total records2 = new Models.IPDashboard.patentinfoR301PaymentDetailsR102total();
-
             try
             {
                 using (PatentModel patentDb = new PatentModel())
@@ -194,7 +193,6 @@ namespace IOAS.Controllers
                     records = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR301PaymentDetailsR102Apaymentdet>(string.Format("SELECT FileNo,Title,Applcn_no,convert(nvarchar(10),Filing_dt,103) as Filing_dt,Inventor1,Department,Pat_no,convert(nvarchar(10),Pat_dt,103) as Pat_dt FROM PatDetails WHERE FileNo LIKE '%{0}%'", fileno)).FirstOrDefault();
                     records1 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR301PaymentDetailsR102Acostdetails>(string.Format("SELECT convert(nvarchar(10),PaymentOrChequeDt,103) as PaymentOrChequeDt,CostGroup,Activity,InvoiceNo,convert(nvarchar(10),InvoiceDt,103) as InvoiceDt,PaymentRefOrChequeNo,PType,Party, dbo.udf_NumberToCurrency(PaymentAmtINR, 'IND') as amount FROM PatentPayment WHERE FileNo like  '%{0}%'", fileno)).ToList();
                     records2 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR301PaymentDetailsR102total>(string.Format("select dbo.udf_NumberToCurrency(SUM(PaymentAmtINR), 'IND') as total from PatentPayment where FileNo like '%{0}%'", fileno)).FirstOrDefault();
-
                 }
             }
             catch (Exception e)
@@ -213,7 +211,6 @@ namespace IOAS.Controllers
                     records = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102AIPReceiptDetails>(string.Format("select fileno,title,Inventor1 as Inventor,department,applcn_no as ApplicationNo,convert(nvarchar(10),filing_dt,103) as filing_dt,pat_no as PatentNo,convert(nvarchar(10),pat_dt,103) as  PatentDt from patdetails where fileno LIKE '%{0}%'", fileno)).FirstOrDefault();
                     records1 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102APReceiptdetailstble>(string.Format("select convert(nvarchar(10),EntryDt,103) as EntryDt ,FileNo,TechTransferNo,Party,PartyRefNo,convert(nvarchar(10),SubmissionDt,103) as SubmissionDt,TransType,TransDescription, PaymentGroup,PaymentDescription,convert(nvarchar(10),Currency,103) as  Currency,convert(nvarchar(10),ForeignCost,103) as ForeignCost,convert(nvarchar(10),ExRate,103) as ExRate,dbo.udf_NumberToCurrency(cost_Rs, 'IND') as total,convert(nvarchar(10),PaymentDate,103) as PaymentDate,PaymentRef,Year from patentreceipt where fileno LIKE '%{0}%'", fileno)).ToList();
                     records2 = patentDb.Database.SqlQuery<Models.IPDashboard.patentinfoR102APReceiptdetailstotal>(string.Format("select dbo.udf_NumberToCurrency(SUM(cost_Rs),'IND') as total from patentreceipt where fileno like '%{0}%'", fileno)).FirstOrDefault();
-
                 }
             }
             catch (Exception e)

@@ -1,0 +1,45 @@
+ #customers
+  {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
+
+            #customers td, #customers th
+            {
+                color:#086ea5;
+                border: 1px solid #086ea5;
+                /*padding: 8px;*/                
+            }
+           
+            #customers tr:nth-child(even) 
+            {
+                background-color: #ddd;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th 
+            {
+                /*padding-top: 12px;
+                padding-bottom: 12px;*/
+                text-align: left;
+                background-color: #023677;
+                color: white;
+            }
+
+            #scrolly
+            {
+            /*width: 1000px;
+            height: 190px;
+            overflow: auto;
+            overflow-y: hidden;
+            margin: 0 auto;
+            white-space: nowrap;*/
+              height:75vh;
+            width:85vw;
+            overflow-y:scroll;
+           overflow-x:scroll;
+        }

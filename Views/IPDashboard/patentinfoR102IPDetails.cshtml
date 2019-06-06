@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "patent_info_R102_IP_Details";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+    string institid = Convert.ToString(Session["institute_bkpbutton"]);
 }
+@*<h2>@Session["institute_bkpbutton"]</h2>*@
 @using (Html.BeginForm("patentinfoR102IPDetails", "IPDashboard", FormMethod.Post))
 {
     <div id="addnewstatusbar">
@@ -23,7 +25,7 @@
 
                                 <td>Title </td>
                                 <td>@Model.patentIPdetails.Title</td>
-                                <td style="font-size:large">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = Session["institute_backbutton"] }, new { })</td>
+                                <td style="font-size:large;padding-left:30px;">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = institid, area="" }, new { })</td>
 
                             </tr>
                             <tr>

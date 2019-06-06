@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "patentinfoR301PaymentDetailsR102";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+    string institid = Convert.ToString(Session["institute_bkpbutton"]);
 }
 @using (Html.BeginForm("patentinfoR301PaymentDetailsR102", "IPDashboard", FormMethod.Post))
 {
@@ -18,12 +19,15 @@
                 <div class="white-bg">
                     <h3><B>Payment Details</B></h3>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group custom-form-group">
+                        @*<div class="col-md-4">
+                            <div class="form-group custom-form-group">*@
                                 <table style="width:100%;" class="table table-hover">
                                     <tr>
                                         <td>File No. </td>
                                         <td>@Model.paymentdetails.FileNo</td>
+                                        @*<td style="font-size:large">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = Session["institute_bkpbutton"] }, new { })</td>*@
+                                        <td style="font-size:large;padding-left:80px;">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = institid }, new { })</td>
+
                                     </tr>
                                     <tr>
                                         <td>Title  </td>
@@ -54,8 +58,8 @@
                                         <td>@Model.paymentdetails.Pat_dt</td>
                                     </tr>
                                 </table>
-                            </div>
-                        </div>
+                            @*</div>
+                        </div>*@
                     </div>
                 </div>
                 <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>

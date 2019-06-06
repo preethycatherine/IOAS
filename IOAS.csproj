@@ -441,6 +441,8 @@
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\IOASContent\bootstrap-3.3.7\js\bootstrap.js" />
     <Content Include="Content\IOASContent\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="Content\IOASContent\bootstrap.css" />
+    <Content Include="Content\IOASContent\bootstrap.min.css" />
     <Content Include="Content\IOASContent\css\bootstrap-theme.css" />
     <Content Include="Content\IOASContent\css\bootstrap-theme.min.css" />
     <Content Include="Content\IOASContent\css\bootstrap.css" />
@@ -458,10 +460,25 @@
     <Content Include="Content\IOASContent\css\owl.carousel.css" />
     <Content Include="Content\IOASContent\css\staff-portal-css.css" />
     <Content Include="Content\IOASContent\css\theme.css" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.css" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.min.css" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.structure.css" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.structure.min.css" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.theme.css" />
+    <Content Include="Content\IOASContent\datepicker\jquery-ui.theme.min.css" />
+    <Content Include="Content\IOASContent\datepicker\table.css" />
     <Content Include="Content\IOASContent\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\IOASContent\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\IOASContent\fonts\icomoon.svg" />
     <Content Include="Content\IOASContent\fonts\ionicons.svg" />
+    <Content Include="Content\IOASContent\Images\log.png" />
+    <Content Include="Content\IOASContent\Images\logoutbutton.png" />
     <Content Include="Content\IOASContent\img\404-error-img.png" />
     <Content Include="Content\IOASContent\img\aboutus-bg.jpg" />
     <Content Include="Content\IOASContent\img\agriculture.png" />
@@ -532,6 +549,7 @@
     <Content Include="Content\IOASContent\js\owl.carousel.js" />
     <Content Include="Content\IOASContent\js\owl.carousel.min.js" />
     <Content Include="Content\IOASContent\js\db.js" />
+    <Content Include="Content\IOASContent\Site.css" />
     <Content Include="Content\UserImage\cc326846-b3d0-4fcb-94c5-0a94a4ffd0b1_logicfield-logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -544,8 +562,11 @@
     <Content Include="Scripts\Account\Department.js" />
     <Content Include="Scripts\Account\Functionrole.js" />
     <Content Include="Scripts\Account\Institute.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\ASPSnippets_Pager.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -594,6 +615,7 @@
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\IOASContent\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\demopublish.pubxml" />
     <None Include="Properties\PublishProfiles\IOAS.pubxml" />
     <Content Include="Reports\DataSetTravelInsurance.xsc">
       <DependentUpon>DataSetTravelInsurance.xsd</DependentUpon>
@@ -607,22 +629,33 @@
       <DependentUpon>DataSetTravelInsurance.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\datepicker\jquery-ui.js" />
     <Content Include="Scripts\FoolProof\mvcfoolproof.unobtrusive.min.js" />
     <Content Include="Scripts\FoolProof\MvcFoolproofJQueryValidation.min.js" />
     <Content Include="Scripts\FoolProof\MvcFoolproofValidation.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery-1.7.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\Process\ProcessGuideline.js" />
     <Content Include="Scripts\Project\Invoice.js" />
     <Content Include="Scripts\Project\ProjectClosing.js" />
     <Content Include="Scripts\Project\ProjectEnhancement.js" />
-    <Content Include="Scripts\Project\ProjectExtension.js" />
     <Content Include="Scripts\Project\ProjectStatus.js" />
     <Content Include="Scripts\Proposal\Proposal.js" />
     <Content Include="Scripts\respond.js" />

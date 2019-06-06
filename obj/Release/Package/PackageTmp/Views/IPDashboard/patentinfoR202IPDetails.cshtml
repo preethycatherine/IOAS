@@ -1,0 +1,306 @@
+﻿
+@model IOAS.Models.IPDashboard.IPDashboardView
+@{
+    ViewBag.Title = "patentinfoR202IPDetails";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+    string institid = Convert.ToString(Session["institute_bkbutton"]);
+}
+@using (Html.BeginForm("patentinfoR202IPDetails", "IPDashboard", FormMethod.Post))
+{
+    <head>
+        <style>
+            td {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Patent Information System</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><B>IDF Details</B></h3>
+                    <div class="row">
+                        <div style="text-align:right">
+                            <table  class="table table-hover">
+                                <tr>
+                                    <td><b>INSTITUTE ID </b></td>
+                                    <td>@Model.interncodetails.InstID</td>
+                                    <td style="font-size:large">@Html.ActionLink("back", "InternationalFilingsPatents", "IPDashboard", new { instid = institid }, new { })</td>
+
+                                </tr>
+                                <tr>
+                                    <td><b>Date </b>  </td>
+                                    <td>@Model.interncodetails.todaydate</td>
+                                </tr>
+                                <tr>
+                                    <td><b>CoordinatorName </b> </td>
+                                    <td>@Model.interncodetails.Inventor1</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Department </b> </td>
+                                    <td>@Model.interncodetails.DeptCode   </td>
+                                </tr>
+                               
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div style="text-align:right">
+                                <table style="width:100%;" class="table table-hover ">
+                                    <tr>
+                                        <td><b>INSTITUTE ID </b></td>
+                                        <td>@Model.interncodetails.InstID</td>
+                                        <td style="font-size:large">@Html.ActionLink("back", "InternationalFilingsPatents", "IPDashboard", new { instid = Session["institute_backbutton"] }, new { })</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td><b>Date </b>  </td>
+                                        <td>@Model.interncodetails.todaydate</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>CoordinatorName </b> </td>
+                                        <td>@Model.interncodetails.Inventor1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Department </b> </td>
+                                        <td>@Model.interncodetails.DeptCode   </td>
+                                    </tr>
+                                </table>
+                            </div>
+                </div>
+                </div>
+                    </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>*@
+
+
+
+    @*<div class="row mt30">
+        <div class="col-md-12">*@
+    <div class="page-wrapper">
+        <div class="white-bg">
+            <h3><b>IDF Details</b></h3>
+            <table style="width:100%;" class="table table-hover">
+                <tr>
+                    <td><b>Title</b> </td>
+                    <td>@Model.idfdetails.title</td>
+                </tr>
+                <tr>
+                    <td><b>IDF Type</b></td>
+                    <td>@Model.idfdetails.type</td>
+                </tr>
+                <tr>
+                    <td><b>Initial Filling </b> </td>
+                    <td>@Model.idfdetails.InitialFiling</td>
+                </tr>
+                <tr>
+                    <td><b>First Applicant</b>  </td>
+                    <td>@Model.idfdetails.firstApplicant</td>
+                </tr>
+                <tr>
+                    <td><b>Second Applicant</b>  </td>
+                    <td>@Model.idfdetails.secondApplicant</td>
+                </tr>
+                <tr>
+                    <td><b>Request State</b> </td>
+                    <td>@Model.idfdetails.request_dt</td>
+                </tr>
+                <tr>
+                    <td><b>Write Up</b> </td>
+                    <td>@Model.idfdetails.Specification</td>
+                </tr>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+            @*</div>
+                </div>*@
+
+            @*<div class="row mt30">
+                <div class="col-md-12">*@
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><b>Inventor Details</b></h3>
+                    <table style="width:100%;" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No. </th>
+                                <th scope="col">Inventor ID</th>
+                                <th scope="col">Inventor Name  </th>
+                                <th scope="col">Inventor Type  </th>
+                                <th scope="col">Department  </th>
+                            </tr>
+                            @foreach (var rec in Model.invendetails)
+                            {
+                                <tr>
+                                    <td>@rec.SlNo</td>
+                                    <td>@rec.InventorID</td>
+                                    <td>@rec.InventorName</td>
+                                    <td>@rec.InventorType</td>
+                                    <td>@rec.Dept</td>
+                                </tr>
+                            }
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            @*</div>
+                </div>
+
+                <div class="row mt30">
+                    <div class="col-md-12">*@
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><b>Indian Patent Status</b></h3>
+                    <table style="width:100%;" class="table table-hover">
+                        <tr>
+                            <td><b>Attorney</b> </td>
+                            <td>@Model.indpatdetails.Attorney</td>
+                        </tr>
+                        <tr>
+                            <td><b>Application Number</b></td>
+                            <td>@Model.indpatdetails.Applcn_no</td>
+                        </tr>
+                        <tr>
+                            <td><b>Filling Date </b> </td>
+                            <td>@Model.indpatdetails.Filing_dt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Examination</b>  </td>
+                            <td>@Model.indpatdetails.Examination</td>
+                        </tr>
+                        <tr>
+                            <td><b>Examination Date</b>  </td>
+                            <td>@Model.indpatdetails.Filing_dt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Publication</b> </td>
+                            <td>@Model.indpatdetails.Publication</td>
+                        </tr>
+                        <tr>
+                            <td><b>Publication Date</b> </td>
+                            <td>@Model.indpatdetails.Pub_dt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent Status </b> </td>
+                            <td>@Model.indpatdetails.Status</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent Sub Status</b>  </td>
+                            <td>@Model.indpatdetails.Sub_status</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent Grant Number</b>  </td>
+                            <td>@Model.indpatentstatus.Pat_no</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent Issue Date</b> </td>
+                            <td>@Model.indpatdetails.Pat_dt</td>
+                        </tr>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            @*</div>
+                </div>
+
+                        <div class="row mt30">
+                            <div class="col-md-12">*@
+            <div class="page-wrapper">
+                <div class="white-bg">
+                    <h3><b>Internationl Patent Status</b></h3>
+                    <table style="width:100%;" class="table table-hover">
+                        <tr>
+                            <td><b>SubFile No.</b> </td>
+                            <td>@Model.internationalpatstatus.subFileNo</td>
+                        </tr>
+                        <tr>
+                            <td><b>Request Date</b></td>
+                            <td>@Model.internationalpatstatus.RequestDt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Country </b> </td>
+                            <td>@Model.internationalpatstatus.Country</td>
+                        </tr>
+                        <tr>
+                            <td><b>Partner</b>  </td>
+                            <td>@Model.internationalpatstatus.partner</td>
+                        </tr>
+                        <tr>
+                            <td><b>Partner No.</b>  </td>
+                            <td>@Model.internationalpatstatus.PartnerNo</td>
+                        </tr>
+                        <tr>
+                            <td><b>Type</b> </td>
+                            <td>@Model.internationalpatstatus.type</td>
+                        </tr>
+                        <tr>
+                            <td><b>Attorney</b> </td>
+                            <td>@Model.internationalpatstatus.Attorney</td>
+                        </tr>
+                        <tr>
+                            <td><b>Application No. </b> </td>
+                            <td>@Model.internationalpatstatus.ApplicationNo</td>
+                        </tr>
+                        <tr>
+                            <td><b>Filling Date</b>  </td>
+                            <td>@Model.internationalpatstatus.dt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Publication No.</b>  </td>
+                            <td>@Model.internationalpatstatus.PublicationNo</td>
+                        </tr>
+                        <tr>
+                            <td><b>Publication Date</b> </td>
+                            <td>@Model.internationalpatstatus.pbdt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Status</b> </td>
+                            <td>@Model.internationalpatstatus.Status</td>
+                        </tr>
+                        <tr>
+                            <td><b>SubStatus</b>  </td>
+                            <td>@Model.internationalpatstatus.SubStatus</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent No.</b>  </td>
+                            <td>@Model.internationalpatstatus.PartnerNo</td>
+                        </tr>
+                        <tr>
+                            <td><b>Patent Date</b> </td>
+                            <td>@Model.internationalpatstatus.dt</td>
+                        </tr>
+                        <tr>
+                            <td><b>Remark</b> </td>
+                            <td>@Model.internationalpatstatus.Remark</td>
+                        </tr>
+
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+                    @*</div>
+                        </div>*@
+}

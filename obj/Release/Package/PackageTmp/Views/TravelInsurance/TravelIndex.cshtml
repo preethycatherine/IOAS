@@ -1,0 +1,99 @@
+﻿@model IOAS.Models.Others.insuranceInput
+@{
+    ViewBag.Title = "TravelInsurance";
+    Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+}
+@using (Html.BeginForm("TravelIndex", "TravelInsurance", FormMethod.Post, new { }))
+{
+    <div id="addnewstatusbar">
+        <div class="row hd-tt-bg">
+            <div class="col-md-4">
+                <h3>Travel Insurance Form</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-wrapper">
+                <div class="white-bg">                 
+                    <div class="row">
+                        <div>
+                            <table class="table table-hover">
+                                <tr>
+                                    <td>Employee Code</td>
+                                    <td>@Html.TextBoxFor(m => m.Employee_Code, "", new { })  </td>
+                                </tr>
+                                <tr>
+                                    <td>Journey Start Date </td>
+                                    <td>@Html.TextBoxFor(m => m.Start_Date, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Return Date</td>
+                                    <td>@Html.TextBoxFor(m => m.Return_Date, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                   <td>@Html.TextBoxFor(m => m.DOB, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Given Name (as per passport)</td>
+                                    <td>@Html.TextBoxFor(m => m.First_Name, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name (as per passport)</td>
+                                    <td>@Html.TextBoxFor(m => m.Surname, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>@Html.RadioButtonFor(m => m.Gender, "Male", new { })Male  @Html.RadioButtonFor(m => m.Gender, "Female", new { }) Female</td>                                
+                                </tr>
+                                <tr>
+                                    <td>Nominee Name</td>
+                                    <td>@Html.TextBoxFor(m => m.Nominee_Name, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Passport Number</td>
+                                    <td>@Html.TextBoxFor(m => m.Passport_Number, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Mobile Number</td>
+                                    <td>@Html.TextBoxFor(m => m.Mobile, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Email ID</td>
+                                    <td>@Html.TextBoxFor(m => m.mail, "", new { }) </td>
+                                </tr>
+                                <tr>
+                                    <td>Name for Insurance policy</td>
+                                    <td>@Html.TextBoxFor(m => m.adhar_card_name, "", new { }) </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Any pre-existing disease ?</td>
+                                    @*<td>@Html.RadioButton("Yes", new { })Yes  @Html.RadioButton("No", new { }) No </td>*@   
+                                    <td>@Html.RadioButtonFor(m=>m.disease,"Yes",new { } )Yes  @Html.RadioButtonFor(m => m.disease, "No", new { }) No</td>
+                                </tr>
+                                <tr>
+                                    <td>Deatils of the disease</td>
+                                    <td>@Html.TextAreaFor(m => m.disease_details,  new {  rows="5", cols="40" }) </td>
+                                </tr>
+                                <tr>
+                                   <td>Project Number</td>                                
+                                   <td>
+                                 
+                                    @Html.DropDownListFor(m => m.Project_no, new List<SelectListItem>() { new SelectListItem() { Text = "PCF", Value = "PCF" }, new SelectListItem() { Text = "Cash", Value = "Cash" }, new SelectListItem() { Text = "Others", Value = "Others" } })
+                                    </td>
+                                </tr>
+                               
+                                <tr><td align="right"><button type="submit">Submit</button></td><td></td></tr>
+                          </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="txt-error txt-red">@Html.ValidationSummary(true)</div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Patentreceipt";
     Layout = "~/Views/Shared/_LayoutFluid.cshtml";
+    string institid = Convert.ToString(Session["institute_bkpbutton"]);
 }
 @using (Html.BeginForm("Patentreceipt", "IPDashboard", FormMethod.Post))
 {
@@ -23,8 +24,10 @@
                                     <tr>
                                         <td>Title  </td>
                                         <td>@Model.receiptdetail.title</td>
-                                        <td style="font-size:large">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = Session["institute_bkpbutton"] }, new { })</td>
-                                    </tr>
+                                        @*<td style="font-size:large">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = Session["institute_bkpbutton"] }, new { })</td>*@
+                                        <td style="font-size:large;padding-left:30px;">@Html.ActionLink("back", "IndianfillingsPatents", "IPDashboard", new { instid = institid }, new { })</td>
+
+                                      </tr>
                                     <tr>
                                         <td>Application No. </td>
                                         <td>@Model.receiptdetail.applcn_no</td>
